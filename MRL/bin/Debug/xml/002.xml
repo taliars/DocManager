@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <ObjectInfo>
+    <ObjectName>Наименование объекта</ObjectName>
+    <ObjectAddress>Адрес объекта</ObjectAddress>
+    <Measurement>Измерение объекта</Measurement>
+    <Purpose>Цель</Purpose>
+    <Customer>Заказчик</Customer>
+    <CustomerAddress>Адрес заказчика</CustomerAddress>
+	    <CustomerName>Адрес заказчика</CustomerName>
+
+    <Order>Договор номер</Order>
+  </ObjectInfo>
+</root>

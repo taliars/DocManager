@@ -1,0 +1,103 @@
+﻿<UserControl
+    x:Class="MRL.View.UserControls.ActDataGrid"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    d:DesignHeight="100"
+    d:DesignWidth="900"
+    mc:Ignorable="d">
+
+    <Grid>
+        <DataGrid
+            VerticalAlignment="Top"
+            AutoGenerateColumns="False"
+            ColumnWidth="*"
+            ItemsSource="{Binding objectInfo.Acts}">
+
+            <DataGrid.ContextMenu>
+                <ContextMenu>
+
+                    <MenuItem
+                        Header=" Открыть"
+                        Icon="{StaticResource icon_file_edit}"
+                        Visibility="Visible" />
+
+                    <MenuItem
+                        Margin="0,2,0,0"
+                        VerticalContentAlignment="Center"
+                        Header=" Добавить"
+                        Icon="{StaticResource icon_file_add}">
+
+                        <MenuItem.Items>
+
+                            <MenuItem Header="Почва" />
+                            <MenuItem Header="Природная вода" />
+                            <MenuItem Header="Сточная вода" />
+                            <MenuItem Header="Донные отложения" />
+                            <MenuItem Header="Воздух" />
+                            <MenuItem Header="Атмосферные осадки" />
+                            <MenuItem Header="Отходы" />
+
+                        </MenuItem.Items>
+
+                    </MenuItem>
+
+                    <MenuItem Header=" Копировать" Icon="{StaticResource icon_file_copy}" />
+
+                    <MenuItem Header=" Удалить" Icon="{StaticResource icon_delete}" />
+
+                    <Separator />
+
+                    <MenuItem Header=" Экспортировать в PDF" Icon="{StaticResource icon_exportpdf}" />
+
+                    <Separator />
+
+                    <MenuItem
+                        Margin="0,0,0,2"
+                        Header="Справка"
+                        Icon="{StaticResource icon_information_circle}" />
+
+                </ContextMenu>
+            </DataGrid.ContextMenu>
+
+            <DataGrid.Columns>
+                <DataGridTemplateColumn Header="Вид работ" SortMemberPath="Species">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Species}" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTextColumn Binding="{Binding Name}" Header="Наименование акта" />
+
+                <DataGridTemplateColumn Header="Дата акта" SortMemberPath="Date">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Date, StringFormat='dd.MM.yyyy'}" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                    <DataGridTemplateColumn.CellEditingTemplate>
+                        <DataTemplate>
+                            <DatePicker SelectedDate="{Binding Date, Mode=TwoWay, StringFormat='dd.MM.yyyy'}" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellEditingTemplate>
+                </DataGridTemplateColumn>
+
+                <DataGridTemplateColumn
+                    Width="2*"
+                    Header="Дата измерений"
+                    SortMemberPath="Dates">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Dates}" TextWrapping="Wrap" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+            </DataGrid.Columns>
+
+        </DataGrid>
+    </Grid>
+
+</UserControl>
