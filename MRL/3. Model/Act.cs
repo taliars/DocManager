@@ -3,7 +3,7 @@ using System;
 
 namespace MRL.Model
 {
-    public class Act: PropertyChangedClass
+    public class Act
     {
         public string Species { get; set; }                 //вид  
         public string Name { get; set; }                    //наименование акта

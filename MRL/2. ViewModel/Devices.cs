@@ -4,115 +4,81 @@ using MRL.Model;
 
 namespace MRL.ViewModel
 {
-    class Devices: Device
+    public class DeviceViewModel: PropertyChangedClass
+    {
+        private readonly Device _device;
+
+        public Device Device
         {
+            get => _device;
+        }
+
         public bool IsSelected
         {
-            get { return _isselected; }
-            set
-            {
-                if (_isselected != value)
-                {
-                    _isselected = value;
-                    OnPropertyChanged(new PropertyChangedEventArgs("IsSelected"));
-                }
-            }
+            get => Device.IsSelected; 
+            set { Device.IsSelected = value; NotifyPropertyChanged("IsSelected");}
+                
         }
+
         public string Name
         {
-            get { return _name; }
-            set
-            {
-                if (_name != value)
-                {
-                    _name = value;
-                    OnPropertyChanged(new PropertyChangedEventArgs("Name"));
-                }
-            }
+            get => Device.Name;
+            set { Device.Name = value; NotifyPropertyChanged("Name"); }
+
         }
+
         public string Use
         {
-            get { return _use; }
-            set
-            {
-                if (_use != value)
-                {
-                    _use = value;
-                    OnPropertyChanged(new PropertyChangedEventArgs("Use"));
-                }
-            }
+            get => Device.Use;
+            set { Device.Use = value; NotifyPropertyChanged("Use"); }
+
         }
+
         public string Number
         {
-            get { return _number; }
-            set
-            {
-                if (_number != value)
-                {
-                    _number = value;
-                    OnPropertyChanged(new PropertyChangedEventArgs("Number"));
-                }
-            }
+            get => Device.Number;
+            set { Device.Number = value; NotifyPropertyChanged("Number"); }
+
         }
+
         public string VerNumber
         {
-            get { return _vernumber; }
-            set
-            {
-                if (_vernumber != value)
-                {
-                    _vernumber = value;
-                    OnPropertyChanged(new PropertyChangedEventArgs("VerNumber"));
-                }
-            }
+            get => Device.VerNumber;
+            set { Device.VerNumber = value; NotifyPropertyChanged("VerNumber"); }
+
         }
+
         public string VerOrganization
         {
-            get { return _verorganization; }
-            set
-            {
-                if (_verorganization != value)
-                {
-                    _verorganization = value;
-                    OnPropertyChanged(new PropertyChangedEventArgs("VerOrganization"));
-                }
-            }
+            get => Device.VerOrganization;
+            set { Device.VerOrganization = value; NotifyPropertyChanged("VerOrganization"); }
+
         }
+
         public DateTime VerExpiration
         {
-            get { return _verexpiration; }
-            set
-            {
-                if (_verexpiration != value)
-                {
-                    _verexpiration = value;
-                    OnPropertyChanged(new PropertyChangedEventArgs("VerExpiration"));
-                }
-            }
+            get => Device.VerExpiration;
+            set { Device.VerExpiration = value; NotifyPropertyChanged("VerExpiration"); }
+
         }
+
         public string Range
         {
-            get { return _range; }
-            set
-            {
-                if (_range != value)
-                {
-                    _range = value;
-                    OnPropertyChanged(new PropertyChangedEventArgs("Range"));
-                }
-            }
+            get => Device.Range;
+            set { Device.Range = value; NotifyPropertyChanged("Range"); }
+
         }
+
         public string Fault
         {
-            get { return _fault; }
-            set
-            {
-                if (_fault != value)
-                {
-                    _fault = value;
-                    OnPropertyChanged(new PropertyChangedEventArgs("Fault"));
-                }
-            }
+            get => Device.Fault;
+            set { Device.Fault = value; NotifyPropertyChanged("Fault"); }
+
+        }
+
+        public DeviceViewModel(Device device)
+        {
+            _device = device;
         }
     }
 }

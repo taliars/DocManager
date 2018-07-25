@@ -1,9 +1,9 @@
-﻿using System.ComponentModel;
-using System;
+﻿using System;
+using System.ComponentModel;
 
 namespace MRL.ViewModel
 {
-    public class PropertyChangedClass: INotifyPropertyChanged
+    public class PropertyChangedClass
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
