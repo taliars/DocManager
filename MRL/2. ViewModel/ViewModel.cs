@@ -15,29 +15,30 @@ namespace MRL.ViewModel
 {
      public class MainViewModel : PropertyChangedClass
     {
-        public ObjectInfo objectInfo { get; set; }
-        public Devices devices { get; set; }
-        public ICollectionView devicesView { get; set; }
+        public ObjectInfo ObjectInfo { get; set; }
+        public Devices Devices { get; set; }
+        public ICollectionView DevicesView { get; set; }
 
         public ICommand CommandWriteWord { get; set; }
         public ICommand CommandAddDate { get; set; }
         public ICommand CommandDeleteDate { get; set; }
         public ICommand CommandAddProtocol { get; set; }
 
-        private Protocol selectedprotocol;
-        public Protocol selectedProtocol
+        private Protocol _selectedProtocol;
+        public Protocol SelectedProtocol
         {
-            get { return selectedprotocol; }
+            get { return _selectedProtocol; }
             set
             {
-                if (selectedprotocol != value)
+                if (_selectedProtocol != value)
                 {
-                    selectedprotocol = value;
-                    OnPropertyChanged(new PropertyChangedEventArgs("selectedProtocol"));
-                    devicesView.Filter = i =>
+                    _selectedProtocol = value;
+                    OnPropertyChanged(new PropertyChangedEventArgs("_selectedProtocol"));
+                    DevicesView.Filter = i =>
                     {
                         Device device = i as Device;
-                        return device.Use.ToLower().Contains(selectedprotocol.Species.ToLower()) || device.Use.ToLower() == "Метеорология".ToLower();
+                        return device.Use.ToLower().Contains(_selectedProtocol.Species) || 
+                            device.Use.Equals("Метеорология",StringComparison.InvariantCultureIgnoreCase);
                     };
                 }
             }

@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-G:\PROG\DesktopProjects\MRLapp\MRL\obj\Debug\
+G:\PROG\DesktopProjects\DocManager\MRL\obj\Debug\
 MRL
 none
 false
 DEBUG;TRACE
-G:\PROG\DesktopProjects\MRLapp\MRL\App.xaml
+G:\PROG\DesktopProjects\DocManager\MRL\App.xaml
 10-2129354737
 
 27-1606274614
-17-1989407081
+17190511908
 1. View\UserControls\ActDataGrid.xaml;1. View\UserControls\DeviceDataGrid.xaml;1. View\UserControls\MeteoDataGrid.xaml;1. View\UserControls\ProtocolDataGrid.xaml;1. View\UserControls\TabControlDeviceMeteo.xaml;6. Resources\Icons.xaml;6. Resources\IconsNonShared.xaml;6. Resources\IconsRectangle.xaml;1. View\MainWindow.xaml;1. View\UserControls\CustomerControl.xaml;
 
-False
+True
 

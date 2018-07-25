@@ -68,3 +68,6 @@ G:\PROG\DesktopProjects\MRLapp\MRL\obj\Debug\MRL.csproj.GenerateResource.Cache
 G:\PROG\DesktopProjects\MRLapp\MRL\obj\Debug\MRL.exe
 G:\PROG\DesktopProjects\MRLapp\MRL\obj\Debug\MRL.pdb
 G:\PROG\DesktopProjects\MRLapp\MRL\obj\Debug\MRL.csprojResolveAssemblyReference.cache
+G:\PROG\DesktopProjects\DocManager\MRL\bin\Debug\MRL.exe.config
+G:\PROG\DesktopProjects\DocManager\MRL\obj\Debug\MRL.exe
+G:\PROG\DesktopProjects\DocManager\MRL\obj\Debug\MRL.pdb
