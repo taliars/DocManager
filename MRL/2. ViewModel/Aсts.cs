@@ -4,112 +4,48 @@ using MRL.Model;
 
 namespace MRL.ViewModel
 {
-    class Acts: Act
+    public class ActViewModel: PropertyChangedClass
     {
+        private readonly Act _act;
+
+        public Act Act
+        { 
+            get => _act; 
+        }
+
         public string Species
         {
-            get { return _species; }
-            set
-            {
-                if (_species != value)
-                {
-                    _species = value;
-                    OnPropertyChanged(new PropertyChangedEventArgs("Species"));
-                }
-            }
+            get => Act.Species;
+            set { Act.Species = value; NotifyPropertyChanged("Species"); }
         }
+
         public string Name
         {
-            get { return _name; };
-            set
-            {
-                if (_name != value)
-                {
-                    _name = value;
-                    OnPropertyChanged(new PropertyChangedEventArgs("Name"));
-                }
-            }
+            get => Act.Name;
+            set { Act.Name = value; NotifyPropertyChanged("Name"); }            
         }
+
         public string Date
         {
-            get { return _date; };
-            set
-            {
-                if (_date != value)
-                {
-                    _date = value;
-                    OnPropertyChanged(new PropertyChangedEventArgs("Name"));
-                }
-            }
+            get => Act.Date;            
+            set { Act.Date = value; NotifyPropertyChanged("Date"); }
         }
+
         public string Dates
         {
-            get { return _dates; }
-            set
-            {
-                if (_dates != value)
-                {
-                    _dates = value;
-                    OnPropertyChanged(new PropertyChangedEventArgs("Dates"));
-                }
-            }
+            get => Act.Dates;
+            set { Act.Date = value; NotifyPropertyChanged("Dates"); }
         }
+
         public string Perfomer
         {
-            get { return _perfomer; };
-            set
-            {
-                if (_perfomer != value)
-                {
-                    _perfomer = value;
-                    OnPropertyChanged(new PropertyChangedEventArgs("Perfomer"));
-                }
-            }
+            get => Act.Perfomer;           
+            set { Act.Perfomer = value; NotifyPropertyChanged("Perfomer"); }
         }
-
-        public void AddNew(string species)
+        
+        public ActViewModel(Act act)
         {
-            switch (species)
-            {
-                case "Шум":
-                    Name = "шм";
-                    break;
-
-                case "Инфрзвук":
-                    Name = "иф";
-                    break;
-
-                case "Вибрация":
-                    Name = "вб";
-                    break;
-
-                case "ЭМИ 50 Гц":
-                    Name = "эм";
-                    break;
-
-                case "Радиация":
-                    Name = "рн";
-                    break;
-
-                case "Радионуклиды":
-                    Name = "рн";
-                    break;
-
-                case "Почва":
-                    Name = "пч";
-                    break;
-
-                case "Вода":
-                    Name = "пв";
-                    break;
-
-                case "Воздух":
-                    Name = "ав";
-                    break;
-
-                default:
-                    break;
-            }
-        }
+            _act = act;
+        }        
     }
 }

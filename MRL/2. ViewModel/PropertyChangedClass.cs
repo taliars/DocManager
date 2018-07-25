@@ -1,14 +1,15 @@
 ﻿using System.ComponentModel;
+using System;
 
-namespace MRL.Common
+namespace MRL.ViewModel
 {
     public class PropertyChangedClass: INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
-        public void OnPropertyChanged(PropertyChangedEventArgs e)
+
+        protected void NotifyPropertyChanged(String info)
         {
-            if (PropertyChanged != null)
-                PropertyChanged(this, e);
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(info));
         }
     }
 }

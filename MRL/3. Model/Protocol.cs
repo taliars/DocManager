@@ -6,12 +6,11 @@ namespace MRL.Model
 {
     public class Protocol
     {
-        public string Species { get; set; }
-        public string Name { get; set; }
-        public string Date { get; set; }
-        public Devices Devices { get; set; }
-        public string Dates { get; set; }
-        public string Perfomer { get; set; }
+        public string Species { get; set; }         //вид протокола
+        public string Name { get; set; }            //нгаименование протокола
+        public string Date { get; set; }            //дата протокола
+        public string Dates { get; set; }           //даты измерений
+        public string Perfomer { get; set; }        //исполнитель
     }
 
     public class Protocols: RangedObservableCollection<Protocol>
