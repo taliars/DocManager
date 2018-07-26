@@ -1,7 +1,7 @@
 ﻿namespace MRL.Model
 {
     //информация об объекте
-    public class ObjectInfo
+    public class ObjectData
     {
         public string ObjectName { get; set; }       //объект для актов
         public string ObjectAddress { get; set; }    //адрес объекта
