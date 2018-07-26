@@ -50,17 +50,7 @@ namespace MRL.ViewModel
         
         public MainViewModel()
         {
-            objectInfo = new ObjectInfo(); 
-            XML.Read(objectInfo);
 
-            devices = new Devices();
-            XML.ReadDevices(devices);
-
-            devicesView = CollectionViewSource.GetDefaultView(devices);
-
-            CommandAddDate = new RelayCommand(arg => objectInfo.WeatherDays.AddDay());
-            CommandDeleteDate = new RelayCommand(arg => objectInfo.WeatherDays.Remove(selectedWeatherDay));
-            CommandAddProtocol = new RelayCommand(arg => objectInfo.Protocols.AddNew(arg.ToString()));
         }
     }
 }
