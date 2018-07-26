@@ -2,7 +2,7 @@
 
 namespace MRL.Model
 {
-    //класс, определяющий приборную базу 
+    //описываем характеристики прибора
     public class Device
     {
         public bool IsSelected { get; set; }               //выбранный прибор из списка

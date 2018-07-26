@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 G:\PROG\DesktopProjects\DocManager\MRL\App.xaml
-10-2129354737
+101955261819
 
-29-1359954403
+24-898013941
 171021357151
-1. View\UserControls\ActDataGrid.xaml;1. View\UserControls\DeviceDataGrid.xaml;1. View\UserControls\MeteoDataGrid.xaml;1. View\UserControls\ProtocolDataGrid.xaml;1. View\UserControls\TabControlDeviceMeteo.xaml;6. Resources\Icons.xaml;6. Resources\IconsNonShared.xaml;6. Resources\IconsRectangle.xaml;1. View\MainWindow.xaml;1. View\UserControls\CustomerControl.xaml;
+View\UserControls\ActDataGrid.xaml;View\UserControls\DeviceDataGrid.xaml;View\UserControls\MeteoDataGrid.xaml;View\UserControls\ProtocolDataGrid.xaml;View\UserControls\TabControlDeviceMeteo.xaml;Resources\Icons.xaml;Resources\IconsNonShared.xaml;Resources\IconsRectangle.xaml;View\MainWindow.xaml;View\UserControls\CustomerControl.xaml;
 
-True
+False
 
