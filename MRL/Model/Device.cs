@@ -1,5 +1,4 @@
 ﻿using System;
-using MRL.Common;
 
 namespace MRL.Model
 {
