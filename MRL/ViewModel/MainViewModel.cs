@@ -1,23 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Input;
-using System.ComponentModel;
-using System.Windows.Data;
-
-using MRL.Model;
-using MRL.Service;
-using MRL.Common;
+﻿using System.Collections.ObjectModel;
 
 namespace MRL.ViewModel
 {
     public class MainViewModel
-    {       
+    {
+        private readonly ObjectDataProvider ObjectDataProvider = new ObjectDataProvider();
+        public ObjectDataViewModel ObjectData { get; set; }
+
         public MainViewModel()
         {
-
+            ObjectData = ObjectDataProvider.GetObjectData();
         }
     }
 }
