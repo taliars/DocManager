@@ -4,7 +4,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
     xmlns:local="clr-namespace:MRL"
-    StartupUri="1. View/MainWindow.xaml">
+    StartupUri="View/MainWindow.xaml">
 
     <Application.Resources>
         <ResourceDictionary>
@@ -18,8 +18,8 @@
                 <!--  Accent and AppTheme setting  -->
                 <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Accents/Blue.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Accents/BaseLight.xaml" />
-                <ResourceDictionary Source="6. Resources/IconsRectangle.xaml" />
-                <ResourceDictionary Source="6. Resources/Icons.xaml" />
+                <ResourceDictionary Source="Resources/IconsRectangle.xaml" />
+                <ResourceDictionary Source="Resources/Icons.xaml" />
 
             </ResourceDictionary.MergedDictionaries>
 
