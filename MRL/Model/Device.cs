@@ -4,7 +4,7 @@ using MRL.Common;
 namespace MRL.Model
 {
     //класс определяющий приборную базу 
-    public class Device: PropertyChangedClass
+    public class Device
     {
         public bool IsSelected { get; set; }               //выбранный прибор из списка
         public string Name { get; set; }                   //наименование прибора    
