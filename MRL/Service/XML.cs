@@ -5,7 +5,7 @@ using MRL.Model;
 
 namespace MRL.Service
 {
-    public static class XML
+    /*public static class XML
     {
         private static string docpath;
         private static XDocument doc;
@@ -138,5 +138,5 @@ namespace MRL.Service
 
             doc.Save(System.IO.Directory.GetCurrentDirectory() + "\\xml\\002.xml");
         }
-    }
+    }*/
 }
