@@ -74,83 +74,85 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="1. View\UserControls\ActDataGrid.xaml.cs">
+    <Compile Include="ViewModel\ObservableColleciotnsClass.cs" />
+    <Compile Include="ViewModel\ProtocolViewModel.cs" />
+    <Compile Include="View\UserControls\ActDataGrid.xaml.cs">
       <DependentUpon>ActDataGrid.xaml</DependentUpon>
     </Compile>
-    <Compile Include="1. View\UserControls\DeviceDataGrid.xaml.cs">
+    <Compile Include="View\UserControls\DeviceDataGrid.xaml.cs">
       <DependentUpon>DeviceDataGrid.xaml</DependentUpon>
     </Compile>
-    <Compile Include="1. View\UserControls\MeteoDataGrid.xaml.cs">
+    <Compile Include="View\UserControls\MeteoDataGrid.xaml.cs">
       <DependentUpon>MeteoDataGrid.xaml</DependentUpon>
     </Compile>
-    <Compile Include="1. View\UserControls\ProtocolDataGrid.xaml.cs">
+    <Compile Include="View\UserControls\ProtocolDataGrid.xaml.cs">
       <DependentUpon>ProtocolDataGrid.xaml</DependentUpon>
     </Compile>
-    <Compile Include="1. View\UserControls\TabControlDeviceMeteo.xaml.cs">
+    <Compile Include="View\UserControls\TabControlDeviceMeteo.xaml.cs">
       <DependentUpon>TabControlDeviceMeteo.xaml</DependentUpon>
     </Compile>
-    <Compile Include="2. ViewModel\Aсts.cs" />
-    <Compile Include="2. ViewModel\Devices.cs" />
-    <Compile Include="2. ViewModel\Lists.cs" />
-    <Compile Include="3. Model\Act.cs" />
-    <Compile Include="3. Model\Device.cs" />
-    <Compile Include="3. Model\Protocol.cs" />
-    <Compile Include="3. Model\WeatherDay.cs" />
-    <Compile Include="4. Common\PropertyChangedClass.cs" />
-    <Compile Include="4. Common\RelayCommand.cs" />
-    <Compile Include="4. Common\RangedObservableCollection.cs" />
-    <Compile Include="5. Service\Word.cs" />
-    <Compile Include="1. View\UserControls\CustomerControl.xaml.cs">
+    <Compile Include="ViewModel\AсtViewModel.cs" />
+    <Compile Include="ViewModel\DeviceViewModel.cs" />
+    <Compile Include="ViewModel\Lists.cs" />
+    <Compile Include="Model\Act.cs" />
+    <Compile Include="Model\Device.cs" />
+    <Compile Include="Model\Protocol.cs" />
+    <Compile Include="Model\WeatherDay.cs" />
+    <Compile Include="ViewModel\PropertyChangedClass.cs" />
+    <Compile Include="Common\RelayCommand.cs" />
+    <Compile Include="Common\RangedObservableCollection.cs" />
+    <Compile Include="Service\Word.cs" />
+    <Compile Include="View\UserControls\CustomerControl.xaml.cs">
       <DependentUpon>CustomerControl.xaml</DependentUpon>
     </Compile>
-    <Page Include="1. View\UserControls\ActDataGrid.xaml">
+    <Page Include="View\UserControls\ActDataGrid.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="1. View\UserControls\DeviceDataGrid.xaml">
+    <Page Include="View\UserControls\DeviceDataGrid.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="1. View\UserControls\MeteoDataGrid.xaml">
+    <Page Include="View\UserControls\MeteoDataGrid.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="1. View\UserControls\ProtocolDataGrid.xaml">
+    <Page Include="View\UserControls\ProtocolDataGrid.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="1. View\UserControls\TabControlDeviceMeteo.xaml">
+    <Page Include="View\UserControls\TabControlDeviceMeteo.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="6. Resources\Icons.xaml">
+    <Page Include="Resources\Icons.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="6. Resources\IconsNonShared.xaml">
+    <Page Include="Resources\IconsNonShared.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="6. Resources\IconsRectangle.xaml">
+    <Page Include="Resources\IconsRectangle.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="1. View\MainWindow.xaml">
+    <Page Include="View\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Compile Include="5. Service\XML.cs" />
+    <Compile Include="Service\XML.cs" />
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="3. Model\ObjectInfo.cs" />
-    <Compile Include="2. ViewModel\MainViewModel.cs" />
-    <Compile Include="1. View\MainWindow.xaml.cs">
+    <Compile Include="Model\ObjectInfo.cs" />
+    <Compile Include="ViewModel\MainViewModel.cs" />
+    <Compile Include="View\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="1. View\UserControls\CustomerControl.xaml">
+    <Page Include="View\UserControls\CustomerControl.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -179,16 +181,16 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <AppDesigner Include="Properties\" />
-    <Resource Include="6. Resources\Entypo.ttf" />
+    <Resource Include="Resources\Entypo.ttf" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="6. Resources\WindowsIcons-license.txt" />
+    <Resource Include="Resources\WindowsIcons-license.txt" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="6. Resources\Entypo-license.txt" />
+    <Resource Include="Resources\Entypo-license.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

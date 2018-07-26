@@ -51,25 +51,4 @@ namespace MRL.ViewModel
             this.act = act;
         }        
     }
-
-    public class BookProvider
-    {
-        public ObservableCollection<ActViewModel> GetActs()
-        {
-            ObservableCollection<ActViewModel> acts = new ObservableCollection<ActViewModel>
-            {
-                new ActViewModel(new Act
-                {
-                    
-                }),
-
-                new ActViewModel(new Act
-                {
-                   
-                })
-            };
-
-            return acts;
-        }
-    }
 }
