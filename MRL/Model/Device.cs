@@ -3,7 +3,7 @@ using MRL.Common;
 
 namespace MRL.Model
 {
-    //класс определяющий приборную базу 
+    //класс, определяющий приборную базу 
     public class Device
     {
         public bool IsSelected { get; set; }               //выбранный прибор из списка
