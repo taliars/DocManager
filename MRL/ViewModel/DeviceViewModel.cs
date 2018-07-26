@@ -1,23 +1,23 @@
 ﻿using System;
-using System.ComponentModel;
 using MRL.Model;
 
 namespace MRL.ViewModel
 {
     public class DeviceViewModel: PropertyChangedClass
     {
-        private readonly Device _device;
+        private readonly Device device;
 
         public Device Device
         {
-            get => _device;
+            get => device;
         }
+
+        #region properties
 
         public bool IsSelected
         {
             get => Device.IsSelected; 
-            set { Device.IsSelected = value; NotifyPropertyChanged("IsSelected");}
-                
+            set { Device.IsSelected = value; NotifyPropertyChanged("IsSelected"); }                
         }
 
         public string Name
@@ -48,18 +48,17 @@ namespace MRL.ViewModel
 
         }
 
-        public string VerOrganization
+        public string VerOrganizaton
         {
             get => Device.VerOrganization;
             set { Device.VerOrganization = value; NotifyPropertyChanged("VerOrganization"); }
 
         }
-
+        
         public DateTime VerExpiration
         {
             get => Device.VerExpiration;
             set { Device.VerExpiration = value; NotifyPropertyChanged("VerExpiration"); }
-
         }
 
         public string Range
@@ -76,9 +75,11 @@ namespace MRL.ViewModel
 
         }
 
+        #endregion
+
         public DeviceViewModel(Device device)
         {
-            _device = device;
+            this.device = device;
         }
     }
 }

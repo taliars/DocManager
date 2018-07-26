@@ -1,17 +1,18 @@
-﻿using System;
-using System.ComponentModel;
-using MRL.Model;
+﻿using MRL.Model;
+using System.Collections.ObjectModel;
 
 namespace MRL.ViewModel
 {
     public class ActViewModel: PropertyChangedClass
     {
-        private readonly Act _act;
+        private readonly Act act;
 
         public Act Act
         { 
-            get => _act; 
+            get => act; 
         }
+
+        #region properties
 
         public string Species
         {
@@ -42,10 +43,33 @@ namespace MRL.ViewModel
             get => Act.Perfomer;           
             set { Act.Perfomer = value; NotifyPropertyChanged("Perfomer"); }
         }
-        
+
+        #endregion
+
         public ActViewModel(Act act)
         {
-            _act = act;
+            this.act = act;
         }        
+    }
+
+    public class BookProvider
+    {
+        public ObservableCollection<ActViewModel> GetActs()
+        {
+            ObservableCollection<ActViewModel> acts = new ObservableCollection<ActViewModel>
+            {
+                new ActViewModel(new Act
+                {
+                    
+                }),
+
+                new ActViewModel(new Act
+                {
+                   
+                })
+            };
+
+            return acts;
+        }
     }
 }
