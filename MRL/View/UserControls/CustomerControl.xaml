@@ -10,7 +10,7 @@
     FontSize="14"
     mc:Ignorable="d">
 
-    <Grid DataContext="{Binding objectInfo}">
+    <Grid DataContext="{Binding ObjectData}">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
@@ -115,6 +115,7 @@
                 </Grid.ColumnDefinitions>
 
                 <Label Grid.Row="1" Content="Заказчик:" />
+                
                 <TextBox
                     Grid.Row="1"
                     Grid.Column="1"

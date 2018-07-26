@@ -13,7 +13,7 @@
             VerticalAlignment="Top"
             AutoGenerateColumns="False"
             ColumnWidth="*"
-            ItemsSource="{Binding objectInfo.Acts}">
+            ItemsSource="{Binding ObjectData.Acts}">
 
             <DataGrid.ContextMenu>
                 <ContextMenu>

@@ -14,7 +14,7 @@
             VerticalAlignment="Top"
             AutoGenerateColumns="False"
             ColumnWidth="*"
-            ItemsSource="{Binding objectInfo.Protocols}"
+            ItemsSource="{Binding ObjectData.Protocols}"
             SelectedItem="{Binding selectedProtocol}">
 
             <DataGrid.ContextMenu>
