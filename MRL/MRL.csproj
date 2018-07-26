@@ -75,7 +75,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="ViewModel\ObservableColleciotnsClass.cs" />
-    <Compile Include="ViewModel\ProtocolViewModel.cs" />
+    <Compile Include="ViewModel\BasicViewModels\ProtocolViewModel.cs" />
     <Compile Include="View\UserControls\ActDataGrid.xaml.cs">
       <DependentUpon>ActDataGrid.xaml</DependentUpon>
     </Compile>
@@ -91,8 +91,8 @@
     <Compile Include="View\UserControls\TabControlDeviceMeteo.xaml.cs">
       <DependentUpon>TabControlDeviceMeteo.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ViewModel\AсtViewModel.cs" />
-    <Compile Include="ViewModel\DeviceViewModel.cs" />
+    <Compile Include="ViewModel\BasicViewModels\AсtViewModel.cs" />
+    <Compile Include="ViewModel\BasicViewModels\DeviceViewModel.cs" />
     <Compile Include="ViewModel\Lists.cs" />
     <Compile Include="Model\Act.cs" />
     <Compile Include="Model\Device.cs" />
