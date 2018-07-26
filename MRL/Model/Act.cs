@@ -1,7 +1,4 @@
-﻿using MRL.Common;
-using System;
-
-namespace MRL.Model
+﻿namespace MRL.Model
 {
     public class Act
     {
