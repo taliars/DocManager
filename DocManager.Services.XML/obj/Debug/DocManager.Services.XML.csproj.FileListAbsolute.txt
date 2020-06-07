@@ -1,8 +1,0 @@
-D:\m\DocManager\DocManager.Services.XML\bin\Debug\DocManager.Services.XML.dll
-D:\m\DocManager\DocManager.Services.XML\bin\Debug\DocManager.Services.XML.pdb
-D:\m\DocManager\DocManager.Services.XML\bin\Debug\DocManager.Core.dll
-D:\m\DocManager\DocManager.Services.XML\bin\Debug\DocManager.Core.pdb
-D:\m\DocManager\DocManager.Services.XML\obj\Debug\DocManager.Services.XML.csprojAssemblyReference.cache
-D:\m\DocManager\DocManager.Services.XML\obj\Debug\DocManager.Services.XML.csproj.CopyComplete
-D:\m\DocManager\DocManager.Services.XML\obj\Debug\DocManager.Services.XML.dll
-D:\m\DocManager\DocManager.Services.XML\obj\Debug\DocManager.Services.XML.pdb
