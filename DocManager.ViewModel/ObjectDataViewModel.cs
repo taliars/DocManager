@@ -99,9 +99,9 @@ namespace DocManager.ViewModel
             }
         }
 
-        public ObjectDataViewModel(ObjectInfo objectData)
+        public ObjectDataViewModel(IObjectInfoProvider objectDataProvider)
         {
-            ObjectData = objectData;
+            ObjectData = objectDataProvider.GetObjectInfo;
         }
     }
 }
