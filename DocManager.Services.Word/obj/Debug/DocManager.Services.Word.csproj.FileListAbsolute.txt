@@ -1,6 +1,0 @@
-D:\m\DocManager\DocManager.Services.Word\bin\Debug\DocManager.Services.Word.dll
-D:\m\DocManager\DocManager.Services.Word\bin\Debug\DocManager.Services.Word.pdb
-D:\m\DocManager\DocManager.Services.Word\obj\Debug\DocManager.Services.Word.csprojAssemblyReference.cache
-D:\m\DocManager\DocManager.Services.Word\obj\Debug\DocManager.Services.Word.csproj.CoreCompileInputs.cache
-D:\m\DocManager\DocManager.Services.Word\obj\Debug\DocManager.Services.Word.dll
-D:\m\DocManager\DocManager.Services.Word\obj\Debug\DocManager.Services.Word.pdb
