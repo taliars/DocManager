@@ -1,0 +1,5 @@
+D:\m\DocManager\DocManager.Core\bin\Debug\DocManager.Core.dll
+D:\m\DocManager\DocManager.Core\bin\Debug\DocManager.Core.pdb
+D:\m\DocManager\DocManager.Core\obj\Debug\DocManager.Core.dll
+D:\m\DocManager\DocManager.Core\obj\Debug\DocManager.Core.pdb
+D:\m\DocManager\DocManager.Core\obj\Debug\DocManager.Core.csprojAssemblyReference.cache

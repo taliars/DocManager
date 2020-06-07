@@ -1,0 +1,10 @@
+D:\m\DocManager\DocManager.ViewModel\bin\Debug\DocManager.ViewModel.dll
+D:\m\DocManager\DocManager.ViewModel\bin\Debug\DocManager.ViewModel.pdb
+D:\m\DocManager\DocManager.ViewModel\bin\Debug\DocManager.Core.dll
+D:\m\DocManager\DocManager.ViewModel\bin\Debug\DocManager.Services.XML.dll
+D:\m\DocManager\DocManager.ViewModel\bin\Debug\DocManager.Core.pdb
+D:\m\DocManager\DocManager.ViewModel\bin\Debug\DocManager.Services.XML.pdb
+D:\m\DocManager\DocManager.ViewModel\obj\Debug\DocManager.ViewModel.csprojAssemblyReference.cache
+D:\m\DocManager\DocManager.ViewModel\obj\Debug\DocManager.ViewModel.csproj.CopyComplete
+D:\m\DocManager\DocManager.ViewModel\obj\Debug\DocManager.ViewModel.dll
+D:\m\DocManager\DocManager.ViewModel\obj\Debug\DocManager.ViewModel.pdb

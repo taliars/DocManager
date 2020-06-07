@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <ObjectInfo>
+    <ObjectName>Новый объект</ObjectName>
+    <ObjectAddress>Адрес объекта</ObjectAddress>
+    <Measurement>23 га</Measurement>
+    <Purpose>Yflhfnm dsfjasdf</Purpose>
+    <Customer>Заказчик</Customer>
+    <CustomerAddress>Адрес заказчика</CustomerAddress>
+	<CustomerName>Bvz заказчика</CustomerName>
+    <Order>234</Order>
+	<Protocols>
+		<Protocol>
+			<Species>Шум</Species>
+			<Name>110шм-155-18</Name>
+			<Date>28.10.2017</Date>
+			<Dates>23.10.2017; 24.10.2017; 25.10.2017 г.</Dates>
+			<Perfomer>Кто-то</Perfomer>
+		</Protocol>
+		<Protocol>
+			<Species>Воздух</Species>
+			<Name>111шм-155-18</Name>
+			<Date>28.10.2017</Date>
+			<Dates>27.10.2017; 24.10.2017; 25.10.2017 г.</Dates>
+			<Perfomer>Кто-то</Perfomer>
+		</Protocol>
+		<Protocol>
+			<Species>Шум</Species>
+			<Name>112шм-155-18</Name>
+			<Date>30.10.2018</Date>
+			<Dates>23.10.2017; 24.13.2017; 25.11.2017 г.</Dates>
+			<Perfomer>Кто-то</Perfomer>
+		</Protocol>
+	</Protocols>
+	<Acts>
+		<Act>
+			<Species>почвогрунты</Species>
+			<Name>1пг-153</Name>
+			<Date>23.10.2023</Date>
+			<Dates>27.10.2017; 24.10.2017; 25.10.2017 г.</Dates>
+			<Perfomer>Кто-то еще</Perfomer>
+		</Act>
+		<Act>
+			<Species>почвогрунты</Species>
+			<Name>1пг-153</Name>
+			<Date>23.10.2023</Date>
+			<Dates>27.10.2017; 24.10.2017; 25.10.2017 г.</Dates>
+			<Perfomer>Кто-то еще</Perfomer>
+		</Act>
+		<Act>
+			<Species>воздух</Species>
+			<Name>1вх-153</Name>
+			<Date>23.10.2023</Date>
+			<Dates>25.10.2017; 21.10.2017; 20.15.2017 г.</Dates>
+			<Perfomer>Кто-то еще</Perfomer>
+		</Act>
+	</Acts>
+  </ObjectInfo>
+</root>

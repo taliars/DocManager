@@ -1,0 +1,142 @@
+C:\Users\El-Dabaa\Documents\Visual Studio 2015\Projects\MRL\MRL\obj\Debug\1. View\UserControls\ActDataGrid.baml
+C:\Users\El-Dabaa\Documents\Visual Studio 2015\Projects\MRL\MRL\obj\Debug\1. View\UserControls\DeviceDataGrid.baml
+C:\Users\El-Dabaa\Documents\Visual Studio 2015\Projects\MRL\MRL\obj\Debug\6. Resources\Icons.baml
+C:\Users\El-Dabaa\Documents\Visual Studio 2015\Projects\MRL\MRL\obj\Debug\6. Resources\IconsNonShared.baml
+C:\Users\El-Dabaa\Documents\Visual Studio 2015\Projects\MRL\MRL\obj\Debug\6. Resources\IconsRectangle.baml
+C:\Users\El-Dabaa\Documents\Visual Studio 2015\Projects\MRL\MRL\obj\Debug\1. View\UserControls\CustomerControl.baml
+C:\Users\El-Dabaa\Documents\Visual Studio 2015\Projects\MRL\MRL\obj\Debug\1. View\UserControls\ActDataGrid.g.cs
+C:\Users\El-Dabaa\Documents\Visual Studio 2015\Projects\MRL\MRL\obj\Debug\1. View\UserControls\DeviceDataGrid.g.cs
+C:\Users\El-Dabaa\Documents\Visual Studio 2015\Projects\MRL\MRL\obj\Debug\1. View\UserControls\MeteoDataGrid.g.cs
+C:\Users\El-Dabaa\Documents\Visual Studio 2015\Projects\MRL\MRL\obj\Debug\1. View\UserControls\ProtocolDataGrid.g.cs
+C:\Users\El-Dabaa\Documents\Visual Studio 2015\Projects\MRL\MRL\obj\Debug\1. View\UserControls\TabControlDeviceMeteo.g.cs
+C:\Users\El-Dabaa\Documents\Visual Studio 2015\Projects\MRL\MRL\obj\Debug\1. View\MainWindow.g.cs
+C:\Users\El-Dabaa\Documents\Visual Studio 2015\Projects\MRL\MRL\obj\Debug\1. View\UserControls\CustomerControl.g.cs
+C:\Users\El-Dabaa\Documents\Visual Studio 2015\Projects\MRL\MRL\obj\Debug\App.g.cs
+C:\Users\El-Dabaa\Documents\Visual Studio 2015\Projects\MRL\MRL\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Users\El-Dabaa\Documents\Visual Studio 2015\Projects\MRL\MRL\obj\Debug\MRL_MarkupCompile.cache
+C:\Users\El-Dabaa\Documents\Visual Studio 2015\Projects\MRL\MRL\obj\Debug\MRL_MarkupCompile.lref
+C:\Users\El-Dabaa\Documents\Visual Studio 2015\Projects\MRL\MRL\bin\Debug\MRL.exe.config
+C:\Users\El-Dabaa\Documents\Visual Studio 2015\Projects\MRL\MRL\bin\Debug\MRL.exe
+C:\Users\El-Dabaa\Documents\Visual Studio 2015\Projects\MRL\MRL\bin\Debug\MRL.pdb
+C:\Users\El-Dabaa\Documents\Visual Studio 2015\Projects\MRL\MRL\bin\Debug\MahApps.Metro.dll
+C:\Users\El-Dabaa\Documents\Visual Studio 2015\Projects\MRL\MRL\bin\Debug\System.Windows.Interactivity.dll
+C:\Users\El-Dabaa\Documents\Visual Studio 2015\Projects\MRL\MRL\bin\Debug\MahApps.Metro.pdb
+C:\Users\El-Dabaa\Documents\Visual Studio 2015\Projects\MRL\MRL\bin\Debug\MahApps.Metro.xml
+C:\Users\El-Dabaa\Documents\Visual Studio 2015\Projects\MRL\MRL\obj\Debug\App.baml
+C:\Users\El-Dabaa\Documents\Visual Studio 2015\Projects\MRL\MRL\obj\Debug\1. View\UserControls\MeteoDataGrid.baml
+C:\Users\El-Dabaa\Documents\Visual Studio 2015\Projects\MRL\MRL\obj\Debug\1. View\UserControls\ProtocolDataGrid.baml
+C:\Users\El-Dabaa\Documents\Visual Studio 2015\Projects\MRL\MRL\obj\Debug\1. View\UserControls\TabControlDeviceMeteo.baml
+C:\Users\El-Dabaa\Documents\Visual Studio 2015\Projects\MRL\MRL\obj\Debug\1. View\MainWindow.baml
+C:\Users\El-Dabaa\Documents\Visual Studio 2015\Projects\MRL\MRL\obj\Debug\MRL.g.resources
+C:\Users\El-Dabaa\Documents\Visual Studio 2015\Projects\MRL\MRL\obj\Debug\MRL.Properties.Resources.resources
+C:\Users\El-Dabaa\Documents\Visual Studio 2015\Projects\MRL\MRL\obj\Debug\MRL.csproj.GenerateResource.Cache
+C:\Users\El-Dabaa\Documents\Visual Studio 2015\Projects\MRL\MRL\obj\Debug\MRL.exe
+C:\Users\El-Dabaa\Documents\Visual Studio 2015\Projects\MRL\MRL\obj\Debug\MRL.pdb
+C:\Users\El-Dabaa\Documents\Visual Studio 2015\Projects\MRL\MRL\obj\Debug\MRL.csprojResolveAssemblyReference.cache
+G:\PROG\DesktopProjects\MRLapp\MRL\obj\Debug\1. View\UserControls\ActDataGrid.baml
+G:\PROG\DesktopProjects\MRLapp\MRL\obj\Debug\1. View\UserControls\DeviceDataGrid.baml
+G:\PROG\DesktopProjects\MRLapp\MRL\obj\Debug\6. Resources\Icons.baml
+G:\PROG\DesktopProjects\MRLapp\MRL\obj\Debug\6. Resources\IconsNonShared.baml
+G:\PROG\DesktopProjects\MRLapp\MRL\obj\Debug\6. Resources\IconsRectangle.baml
+G:\PROG\DesktopProjects\MRLapp\MRL\obj\Debug\1. View\UserControls\CustomerControl.baml
+G:\PROG\DesktopProjects\MRLapp\MRL\obj\Debug\1. View\UserControls\ActDataGrid.g.cs
+G:\PROG\DesktopProjects\MRLapp\MRL\obj\Debug\1. View\UserControls\DeviceDataGrid.g.cs
+G:\PROG\DesktopProjects\MRLapp\MRL\obj\Debug\1. View\UserControls\MeteoDataGrid.g.cs
+G:\PROG\DesktopProjects\MRLapp\MRL\obj\Debug\1. View\UserControls\ProtocolDataGrid.g.cs
+G:\PROG\DesktopProjects\MRLapp\MRL\obj\Debug\1. View\UserControls\TabControlDeviceMeteo.g.cs
+G:\PROG\DesktopProjects\MRLapp\MRL\obj\Debug\1. View\MainWindow.g.cs
+G:\PROG\DesktopProjects\MRLapp\MRL\obj\Debug\1. View\UserControls\CustomerControl.g.cs
+G:\PROG\DesktopProjects\MRLapp\MRL\obj\Debug\App.g.cs
+G:\PROG\DesktopProjects\MRLapp\MRL\obj\Debug\GeneratedInternalTypeHelper.g.cs
+G:\PROG\DesktopProjects\MRLapp\MRL\obj\Debug\MRL_MarkupCompile.cache
+G:\PROG\DesktopProjects\MRLapp\MRL\obj\Debug\MRL_MarkupCompile.lref
+G:\PROG\DesktopProjects\MRLapp\MRL\bin\Debug\MRL.exe.config
+G:\PROG\DesktopProjects\MRLapp\MRL\bin\Debug\MRL.exe
+G:\PROG\DesktopProjects\MRLapp\MRL\bin\Debug\MRL.pdb
+G:\PROG\DesktopProjects\MRLapp\MRL\bin\Debug\MahApps.Metro.dll
+G:\PROG\DesktopProjects\MRLapp\MRL\bin\Debug\System.Windows.Interactivity.dll
+G:\PROG\DesktopProjects\MRLapp\MRL\bin\Debug\MahApps.Metro.pdb
+G:\PROG\DesktopProjects\MRLapp\MRL\bin\Debug\MahApps.Metro.xml
+G:\PROG\DesktopProjects\MRLapp\MRL\obj\Debug\App.baml
+G:\PROG\DesktopProjects\MRLapp\MRL\obj\Debug\1. View\UserControls\MeteoDataGrid.baml
+G:\PROG\DesktopProjects\MRLapp\MRL\obj\Debug\1. View\UserControls\ProtocolDataGrid.baml
+G:\PROG\DesktopProjects\MRLapp\MRL\obj\Debug\1. View\UserControls\TabControlDeviceMeteo.baml
+G:\PROG\DesktopProjects\MRLapp\MRL\obj\Debug\1. View\MainWindow.baml
+G:\PROG\DesktopProjects\MRLapp\MRL\obj\Debug\MRL.g.resources
+G:\PROG\DesktopProjects\MRLapp\MRL\obj\Debug\MRL.Properties.Resources.resources
+G:\PROG\DesktopProjects\MRLapp\MRL\obj\Debug\MRL.csproj.GenerateResource.Cache
+G:\PROG\DesktopProjects\MRLapp\MRL\obj\Debug\MRL.exe
+G:\PROG\DesktopProjects\MRLapp\MRL\obj\Debug\MRL.pdb
+G:\PROG\DesktopProjects\MRLapp\MRL\obj\Debug\MRL.csprojResolveAssemblyReference.cache
+G:\PROG\DesktopProjects\DocManager\MRL\bin\Debug\MRL.exe.config
+G:\PROG\DesktopProjects\DocManager\MRL\bin\Debug\MRL.exe
+G:\PROG\DesktopProjects\DocManager\MRL\bin\Debug\MRL.pdb
+G:\PROG\DesktopProjects\DocManager\MRL\bin\Debug\MahApps.Metro.dll
+G:\PROG\DesktopProjects\DocManager\MRL\bin\Debug\System.Windows.Interactivity.dll
+G:\PROG\DesktopProjects\DocManager\MRL\bin\Debug\MahApps.Metro.pdb
+G:\PROG\DesktopProjects\DocManager\MRL\bin\Debug\MahApps.Metro.xml
+G:\PROG\DesktopProjects\DocManager\MRL\obj\Debug\View\UserControls\ActDataGrid.baml
+G:\PROG\DesktopProjects\DocManager\MRL\obj\Debug\View\UserControls\DeviceDataGrid.baml
+G:\PROG\DesktopProjects\DocManager\MRL\obj\Debug\Resources\Icons.baml
+G:\PROG\DesktopProjects\DocManager\MRL\obj\Debug\Resources\IconsNonShared.baml
+G:\PROG\DesktopProjects\DocManager\MRL\obj\Debug\Resources\IconsRectangle.baml
+G:\PROG\DesktopProjects\DocManager\MRL\obj\Debug\View\UserControls\CustomerControl.baml
+G:\PROG\DesktopProjects\DocManager\MRL\obj\Debug\View\UserControls\ActDataGrid.g.cs
+G:\PROG\DesktopProjects\DocManager\MRL\obj\Debug\View\UserControls\DeviceDataGrid.g.cs
+G:\PROG\DesktopProjects\DocManager\MRL\obj\Debug\View\UserControls\MeteoDataGrid.g.cs
+G:\PROG\DesktopProjects\DocManager\MRL\obj\Debug\View\UserControls\ProtocolDataGrid.g.cs
+G:\PROG\DesktopProjects\DocManager\MRL\obj\Debug\View\UserControls\TabControlDeviceMeteo.g.cs
+G:\PROG\DesktopProjects\DocManager\MRL\obj\Debug\View\MainWindow.g.cs
+G:\PROG\DesktopProjects\DocManager\MRL\obj\Debug\View\UserControls\CustomerControl.g.cs
+G:\PROG\DesktopProjects\DocManager\MRL\obj\Debug\App.g.cs
+G:\PROG\DesktopProjects\DocManager\MRL\obj\Debug\GeneratedInternalTypeHelper.g.cs
+G:\PROG\DesktopProjects\DocManager\MRL\obj\Debug\MRL_MarkupCompile.cache
+G:\PROG\DesktopProjects\DocManager\MRL\obj\Debug\MRL_MarkupCompile.lref
+G:\PROG\DesktopProjects\DocManager\MRL\obj\Debug\App.baml
+G:\PROG\DesktopProjects\DocManager\MRL\obj\Debug\View\UserControls\MeteoDataGrid.baml
+G:\PROG\DesktopProjects\DocManager\MRL\obj\Debug\View\UserControls\ProtocolDataGrid.baml
+G:\PROG\DesktopProjects\DocManager\MRL\obj\Debug\View\UserControls\TabControlDeviceMeteo.baml
+G:\PROG\DesktopProjects\DocManager\MRL\obj\Debug\View\MainWindow.baml
+G:\PROG\DesktopProjects\DocManager\MRL\obj\Debug\MRL.g.resources
+G:\PROG\DesktopProjects\DocManager\MRL\obj\Debug\MRL.Properties.Resources.resources
+G:\PROG\DesktopProjects\DocManager\MRL\obj\Debug\MRL.csproj.GenerateResource.cache
+G:\PROG\DesktopProjects\DocManager\MRL\obj\Debug\MRL.csproj.CoreCompileInputs.cache
+G:\PROG\DesktopProjects\DocManager\MRL\obj\Debug\MRL.csproj.CopyComplete
+G:\PROG\DesktopProjects\DocManager\MRL\obj\Debug\MRL.exe
+G:\PROG\DesktopProjects\DocManager\MRL\obj\Debug\MRL.pdb
+D:\m\DocManager\MRL\bin\Debug\MRL.exe.config
+D:\m\DocManager\MRL\bin\Debug\MRL.exe
+D:\m\DocManager\MRL\bin\Debug\MRL.pdb
+D:\m\DocManager\MRL\bin\Debug\MahApps.Metro.dll
+D:\m\DocManager\MRL\bin\Debug\System.Windows.Interactivity.dll
+D:\m\DocManager\MRL\bin\Debug\MahApps.Metro.pdb
+D:\m\DocManager\MRL\bin\Debug\MahApps.Metro.xml
+D:\m\DocManager\MRL\obj\Debug\MRL.csprojAssemblyReference.cache
+D:\m\DocManager\MRL\obj\Debug\View\UserControls\ActDataGrid.baml
+D:\m\DocManager\MRL\obj\Debug\View\UserControls\DeviceDataGrid.baml
+D:\m\DocManager\MRL\obj\Debug\Resources\Icons.baml
+D:\m\DocManager\MRL\obj\Debug\Resources\IconsNonShared.baml
+D:\m\DocManager\MRL\obj\Debug\Resources\IconsRectangle.baml
+D:\m\DocManager\MRL\obj\Debug\View\UserControls\CustomerControl.baml
+D:\m\DocManager\MRL\obj\Debug\View\UserControls\ActDataGrid.g.cs
+D:\m\DocManager\MRL\obj\Debug\View\UserControls\DeviceDataGrid.g.cs
+D:\m\DocManager\MRL\obj\Debug\View\UserControls\MeteoDataGrid.g.cs
+D:\m\DocManager\MRL\obj\Debug\View\UserControls\ProtocolDataGrid.g.cs
+D:\m\DocManager\MRL\obj\Debug\View\UserControls\TabControlDeviceMeteo.g.cs
+D:\m\DocManager\MRL\obj\Debug\View\MainWindow.g.cs
+D:\m\DocManager\MRL\obj\Debug\View\UserControls\CustomerControl.g.cs
+D:\m\DocManager\MRL\obj\Debug\App.g.cs
+D:\m\DocManager\MRL\obj\Debug\GeneratedInternalTypeHelper.g.cs
+D:\m\DocManager\MRL\obj\Debug\MRL_MarkupCompile.cache
+D:\m\DocManager\MRL\obj\Debug\MRL_MarkupCompile.lref
+D:\m\DocManager\MRL\obj\Debug\App.baml
+D:\m\DocManager\MRL\obj\Debug\View\UserControls\MeteoDataGrid.baml
+D:\m\DocManager\MRL\obj\Debug\View\UserControls\ProtocolDataGrid.baml
+D:\m\DocManager\MRL\obj\Debug\View\UserControls\TabControlDeviceMeteo.baml
+D:\m\DocManager\MRL\obj\Debug\View\MainWindow.baml
+D:\m\DocManager\MRL\obj\Debug\MRL.g.resources
+D:\m\DocManager\MRL\obj\Debug\MRL.Properties.Resources.resources
+D:\m\DocManager\MRL\obj\Debug\MRL.csproj.GenerateResource.cache
+D:\m\DocManager\MRL\obj\Debug\MRL.csproj.CopyComplete
+D:\m\DocManager\MRL\obj\Debug\MRL.exe
+D:\m\DocManager\MRL\obj\Debug\MRL.pdb

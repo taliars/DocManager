@@ -1,0 +1,169 @@
+﻿<UserControl
+    x:Class="DocManager.View.UserControls.MeteoDataGrid"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:Metro="http://metro.mahapps.com/winfx/xaml/controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:DocManager.ViewModel;assembly=DocManager.ViewModel"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:view="clr-namespace:DocManager.View"
+    d:DesignHeight="100"
+    d:DesignWidth="900"
+    mc:Ignorable="d">
+
+    <Grid>
+        <DataGrid
+            VerticalAlignment="Top"
+            ColumnWidth="*"
+            ItemsSource="{Binding objectInfo.WeatherDays}"
+            SelectedItem="{Binding selectedWeatherDay}"
+            SelectionMode="Single">
+
+            <DataGrid.ContextMenu>
+                <ContextMenu>
+                    <!--<MenuItem Header="Выбрать дату" Icon="{DynamicResource icon_check}" />
+
+                    <Separator />-->
+
+                    <MenuItem
+                        Command="{Binding CommandAddDate}"
+                        Header="Добавить дату"
+                        Icon="{DynamicResource icon_add}" />
+                    <MenuItem
+                        Command="{Binding CommandDeleteDate}"
+                        Header="Удалить дату"
+                        Icon="{DynamicResource icon_delete}" />
+
+                    <Separator />
+
+                    <MenuItem Header="Справка" Icon="{DynamicResource icon_information_circle}" />
+
+                </ContextMenu>
+            </DataGrid.ContextMenu>
+
+            <DataGrid.Columns>
+
+                <DataGridTemplateColumn
+                    Width="30"
+                    Header="*"
+                    SortMemberPath="IsSelected">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <CheckBox HorizontalAlignment="Center" IsChecked="{Binding IsSelected, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                    <DataGridTemplateColumn.CellEditingTemplate>
+                        <DataTemplate>
+                            <CheckBox HorizontalAlignment="Center" IsChecked="{Binding IsSelected, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellEditingTemplate>
+                </DataGridTemplateColumn>
+
+                <DataGridTemplateColumn
+                    Width="150"
+                    Header="Дата"
+                    SortMemberPath="Date"
+                    ToolTipService.ToolTip="Дата проведения измерений">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Date, StringFormat=dd.MM.yyyy}" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                    <DataGridTemplateColumn.CellEditingTemplate>
+                        <DataTemplate>
+                            <DatePicker SelectedDate="{Binding Date, Mode=TwoWay, StringFormat='dd.MM.yyyy'}" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellEditingTemplate>
+                </DataGridTemplateColumn>
+
+                <DataGridTextColumn
+                    Binding="{Binding Temperature, Mode=TwoWay}"
+                    Header="T, &#186;C"
+                    ToolTipService.ToolTip="Температура воздуха (градусы Цельсия) на высоте 2 метра над поверхностью земли" />
+
+                <DataGridTemplateColumn
+                    Header="dd, румбы"
+                    SortMemberPath="WindDirection"
+                    ToolTipService.ToolTip="Направление ветра (румбы)">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding WindDirection}" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                    <DataGridTemplateColumn.CellEditingTemplate>
+                        <DataTemplate>
+                            <ComboBox ItemsSource="{Binding Source={x:Static local:Lists.WindDirections}}" Text="{Binding WindDirection, Mode=TwoWay}" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellEditingTemplate>
+                </DataGridTemplateColumn>
+
+
+                <DataGridTemplateColumn
+                    Header="ff, м/с"
+                    SortMemberPath="WindSpeed"
+                    ToolTipService.ToolTip="Скорость ветра (метры в секунды)">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding WindSpeed}" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                    <DataGridTemplateColumn.CellEditingTemplate>
+                        <DataTemplate>
+                            <Metro:NumericUpDown
+                                FontSize="14"
+                                Maximum="5"
+                                Minimum="0"
+                                Value="{Binding WindSpeed, Mode=TwoWay}" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellEditingTemplate>
+                </DataGridTemplateColumn>
+
+                <DataGridTemplateColumn
+                    Header="N, баллы"
+                    SortMemberPath="Cloudness"
+                    ToolTipService.ToolTip="Общая облачность, баллы">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Cloudness}" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                    <DataGridTemplateColumn.CellEditingTemplate>
+                        <DataTemplate>
+                            <Metro:NumericUpDown
+                                FontSize="14"
+                                Maximum="10"
+                                Minimum="0"
+                                Value="{Binding Cloudness, Mode=TwoWay}" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellEditingTemplate>
+                </DataGridTemplateColumn>
+
+                <DataGridTextColumn
+                    Binding="{Binding Pressure, Mode=TwoWay}"
+                    Header="P, мм.рт.ст."
+                    ToolTipService.ToolTip="Атмосферное давление на уровне станции (миллиметры ртутного столба)" />
+
+                <DataGridTemplateColumn
+                    Header="U, %"
+                    SortMemberPath="Moisture"
+                    ToolTipService.ToolTip="Относительная влажность (%)">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Moisture}" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                    <DataGridTemplateColumn.CellEditingTemplate>
+                        <DataTemplate>
+                            <Metro:NumericUpDown
+                                FontSize="14"
+                                Maximum="100"
+                                Minimum="0"
+                                Value="{Binding Moisture, Mode=TwoWay}" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellEditingTemplate>
+                </DataGridTemplateColumn>
+
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</UserControl>

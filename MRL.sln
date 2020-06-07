@@ -3,7 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MRL", "MRL\MRL.csproj", "{E05F8CBD-0063-4FC4-8A2D-8EDF91602AD7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DocManager.View", "DocManager.View\DocManager.View.csproj", "{E05F8CBD-0063-4FC4-8A2D-8EDF91602AD7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DocManager.Core", "DocManager.Core\DocManager.Core.csproj", "{44142898-41BD-45BB-B636-D6132109E706}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DocManager.Services.Word", "DocManager.Services.Word\DocManager.Services.Word.csproj", "{ACF9EB16-75AF-4DFA-92CC-6664440FABF5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DocManager.Services.XML", "DocManager.Services.XML\DocManager.Services.XML.csproj", "{77071695-D37F-4B2E-B85A-D7863DCD0845}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DocManager.ViewModel", "DocManager.ViewModel\DocManager.ViewModel.csproj", "{09D4EC1B-9D1B-4713-97A9-EA15A3E35563}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,8 +23,26 @@ Global
 		{E05F8CBD-0063-4FC4-8A2D-8EDF91602AD7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E05F8CBD-0063-4FC4-8A2D-8EDF91602AD7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E05F8CBD-0063-4FC4-8A2D-8EDF91602AD7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{44142898-41BD-45BB-B636-D6132109E706}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{44142898-41BD-45BB-B636-D6132109E706}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{44142898-41BD-45BB-B636-D6132109E706}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{44142898-41BD-45BB-B636-D6132109E706}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ACF9EB16-75AF-4DFA-92CC-6664440FABF5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ACF9EB16-75AF-4DFA-92CC-6664440FABF5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ACF9EB16-75AF-4DFA-92CC-6664440FABF5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ACF9EB16-75AF-4DFA-92CC-6664440FABF5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{77071695-D37F-4B2E-B85A-D7863DCD0845}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{77071695-D37F-4B2E-B85A-D7863DCD0845}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{77071695-D37F-4B2E-B85A-D7863DCD0845}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{77071695-D37F-4B2E-B85A-D7863DCD0845}.Release|Any CPU.Build.0 = Release|Any CPU
+		{09D4EC1B-9D1B-4713-97A9-EA15A3E35563}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{09D4EC1B-9D1B-4713-97A9-EA15A3E35563}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{09D4EC1B-9D1B-4713-97A9-EA15A3E35563}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{09D4EC1B-9D1B-4713-97A9-EA15A3E35563}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
 	EndGlobalSection
 EndGlobal
