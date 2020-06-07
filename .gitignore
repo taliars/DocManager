@@ -2,9 +2,6 @@
 # Данный GITIGNORE-файл был автоматически создан Microsoft(R) Visual Studio.
 ################################################################################
 
-/MRL/obj/Debug/App.baml
-/MRL/obj/Debug/View/UserControls/ActDataGrid.baml
-/MRL/obj/Debug/View/UserControls/ActDataGrid.g.cs
-/MRL/obj/Debug/View/UserControls/ActDataGrid.g.i.cs
-/MRL/obj/Debug/View/UserControls/CustomerControl.baml
-/MRL/obj/Debug/View/UserControls/CustomerControl.g.cs
+obj/
+bin/
+.vs/

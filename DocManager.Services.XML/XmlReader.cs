@@ -68,11 +68,11 @@ namespace DocManager.Services.XML
         {
             return elements?.Select(e => new T
                 {
-                    Species = e.Element("Species")?.Value,
-                    Name = e.Element("Name")?.Value,
-                    Date = e.Element("Date")?.Value,
-                    Dates = e.Element("Dates")?.Value,
-                    Perfomer = e.Element("Perfomer")?.Value
+                    Species = e.GetOrNull(nameof(Document.Species)),
+                    Name = e.GetOrNull(nameof(Document.Name)),
+                    Date = e.GetOrNull(nameof(Document.Date)),
+                    Dates = e.GetOrNull(nameof(Document.Dates)),
+                    Perfomer = e.GetOrNull(nameof(Document.Perfomer)),
                 })
                 .ToList();
         }
@@ -82,15 +82,15 @@ namespace DocManager.Services.XML
         {
             return elements?.Select(e => new Device
             {
-                IsSelected = (bool) e.Element("IsSelected"),
-                Name = e.Element("Name")?.Value,
-                Use = e.Element("Use")?.Value,
-                Number = e.Element("Number")?.Value,
-                VerNumber = e.Element("VerNumber")?.Value,
-                VerOrganization = e.Element("VerOrganization")?.Value,
-                VerExpiration = (DateTime) e.Element("VerExpiration"),
-                Range = e.Element("Range")?.Value,
-                Fault = e.Element("Fault")?.Value,
+                IsSelected = (bool)e.Element("IsSelected"),
+                Name =e.GetOrNull(nameof(Device.Name)),
+                Use = e.GetOrNull(nameof(Device.Use)),
+                Number =e.GetOrNull(nameof(Device.Number)),
+                VerNumber = e.GetOrNull(nameof(Device.VerNumber)),
+                VerOrganization = e.GetOrNull(nameof(Device.VerOrganization)),
+                VerExpiration = (DateTime)e.Element("VerExpiration"),
+                Range =e.GetOrNull(nameof(Device.Range)),
+                Fault =e.GetOrNull(nameof(Device.Fault)),
             });
         }
 
@@ -99,14 +99,16 @@ namespace DocManager.Services.XML
             return elements?.Select(e => new WeatherInfo
             {
                 Date = (DateTime) e.Element("Date"),
-                Temperature = e.Element("Temperature")?.Value,
-                WindDirection = e.Element("WindDirection")?.Value,
+                Temperature = e.GetOrNull(nameof(WeatherInfo.Temperature)),
+                WindDirection = e.GetOrNull(nameof(WeatherInfo.WindDirection)),
                 WindSpeed = (int) e.Element("WindSpeed"),
                 Cloudness = (int) e.Element("Cloudness"),
                 Pressure = (int) e.Element("Pressure"),
                 Moisture = (int) e.Element("Moisture")
             });
         }
+
+        private static string GetOrNull(this XContainer xContainer, string name) => xContainer.Element(name)?.Value;
 
         private class XmlPathNode
         {
