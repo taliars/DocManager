@@ -9,11 +9,11 @@ namespace DocManager.Services.XML
     // Maybe use expressions?
     public static class XmlReader
     {
-        public static ObjectInfo ReadObjectInfo(string docPath)
+        public static ObjectData ReadObjectInfo(string docPath)
         {
             var xmlObjectInfo = TryToGetXmlObjectInfo(docPath);
 
-            return new ObjectInfo
+            return new ObjectData
             {
                 ObjectName = xmlObjectInfo.Element("ObjectName")?.Value,
                 ObjectAddress = xmlObjectInfo.Element("CustomerAddress")?.Value,
@@ -53,10 +53,10 @@ namespace DocManager.Services.XML
         {
             var xmlNodeNameDictionary = new Dictionary<Type, XmlPathNode>
             {
-                [typeof(Act)] = new XmlPathNode {MainNode = "Acts", SubNode = "Act",},
-                [typeof(Protocol)] = new XmlPathNode {MainNode = "Protocols", SubNode = "Protocol",},
-                [typeof(WeatherInfo)] = new XmlPathNode {MainNode = "WeatherInfo", SubNode = "WeatherInfo",},
-                [typeof(Device)] = new XmlPathNode {MainNode = "Devices", SubNode = "Device",}
+                [typeof(Act)] = new XmlPathNode { MainNode = "Acts", SubNode = "Act", },
+                [typeof(Protocol)] = new XmlPathNode { MainNode = "Protocols", SubNode = "Protocol", },
+                [typeof(WeatherDay)] = new XmlPathNode { MainNode = "WeatherDays", SubNode = "WeatherDay", },
+                [typeof(Device)] = new XmlPathNode { MainNode = "Devices", SubNode = "Device", }
             };
 
             var xmlNodeNames = xmlNodeNameDictionary[typeof(T)];
@@ -67,13 +67,13 @@ namespace DocManager.Services.XML
         private static IEnumerable<T> GetDocuments<T>(IEnumerable<XElement> elements) where T : Document, new()
         {
             return elements?.Select(e => new T
-                {
-                    Species = e.GetOrNull(nameof(Document.Species)),
-                    Name = e.GetOrNull(nameof(Document.Name)),
-                    Date = e.GetOrNull(nameof(Document.Date)),
-                    Dates = e.GetOrNull(nameof(Document.Dates)),
-                    Perfomer = e.GetOrNull(nameof(Document.Perfomer)),
-                })
+            {
+                Species = e.GetOrNull(nameof(Document.Species)),
+                Name = e.GetOrNull(nameof(Document.Name)),
+                Date = e.GetOrNull(nameof(Document.Date)),
+                Dates = e.GetOrNull(nameof(Document.Dates)),
+                Perfomer = e.GetOrNull(nameof(Document.Perfomer)),
+            })
                 .ToList();
         }
 
@@ -83,29 +83,42 @@ namespace DocManager.Services.XML
             return elements?.Select(e => new Device
             {
                 IsSelected = (bool)e.Element("IsSelected"),
-                Name =e.GetOrNull(nameof(Device.Name)),
+                Name = e.GetOrNull(nameof(Device.Name)),
                 Use = e.GetOrNull(nameof(Device.Use)),
-                Number =e.GetOrNull(nameof(Device.Number)),
+                Number = e.GetOrNull(nameof(Device.Number)),
                 VerNumber = e.GetOrNull(nameof(Device.VerNumber)),
                 VerOrganization = e.GetOrNull(nameof(Device.VerOrganization)),
                 VerExpiration = (DateTime)e.Element("VerExpiration"),
-                Range =e.GetOrNull(nameof(Device.Range)),
-                Fault =e.GetOrNull(nameof(Device.Fault)),
+                Range = e.GetOrNull(nameof(Device.Range)),
+                Fault = e.GetOrNull(nameof(Device.Fault)),
             });
         }
 
-        private static IEnumerable<WeatherInfo> GetWeatherDays(IEnumerable<XElement> elements)
+        private static IEnumerable<WeatherDay> GetWeatherDays(IEnumerable<XElement> elements)
         {
-            return elements?.Select(e => new WeatherInfo
+            return elements?.Select(e => new WeatherDay
             {
-                Date = (DateTime) e.Element("Date"),
-                Temperature = e.GetOrNull(nameof(WeatherInfo.Temperature)),
-                WindDirection = e.GetOrNull(nameof(WeatherInfo.WindDirection)),
-                WindSpeed = (int) e.Element("WindSpeed"),
-                Cloudness = (int) e.Element("Cloudness"),
-                Pressure = (int) e.Element("Pressure"),
-                Moisture = (int) e.Element("Moisture")
+                // Date = (DateTime)e.Element("Date"),
+                Temperature = e.GetOrNull(nameof(WeatherDay.Temperature)),
+                WindDirection = e.GetOrNull(nameof(WeatherDay.WindDirection)),
+                WindSpeed = e.TryParseToInt(nameof(WeatherDay.WindSpeed)),
+                Cloudness = e.TryParseToInt(nameof(WeatherDay.Cloudness)),
+                Pressure = e.TryParseToInt(nameof(WeatherDay.Pressure)),
+                Moisture = e.TryParseToInt(nameof(WeatherDay.Moisture)),
             });
+        }
+
+        private static int? TryParseToInt(this XContainer xContainer, string name)
+        {
+            try
+            {
+                var result = int.Parse(xContainer.Element(name)?.Value);
+                return result;
+            }
+            catch
+            {
+                return (int?)null;
+            }
         }
 
         private static string GetOrNull(this XContainer xContainer, string name) => xContainer.Element(name)?.Value;

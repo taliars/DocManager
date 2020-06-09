@@ -12,6 +12,4 @@ namespace DocManager.View
             InitializeComponent();
         }
     }
-
-
 }

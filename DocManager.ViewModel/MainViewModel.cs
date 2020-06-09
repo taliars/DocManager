@@ -1,4 +1,6 @@
-﻿namespace DocManager.ViewModel
+﻿using DocManager.ViewModel.Common;
+
+namespace DocManager.ViewModel
 {
     public class MainViewModel
     {
@@ -6,7 +8,8 @@
 
         public MainViewModel()
         {
-            ObjectData = ObjectDataProvider.GetObjectData();
+            ObjectData = ObjectDataProvider.GetObjectData;
         }
     }
 }
+

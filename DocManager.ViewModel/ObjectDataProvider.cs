@@ -2,6 +2,7 @@
 {
     public class ObjectDataProvider
     {
-        public static ObjectDataViewModel GetObjectData() => new ObjectDataViewModel(new XmlObjectInfoProvider());
+        public static ObjectDataViewModel GetObjectData => new ObjectDataViewModel(new XmlObjectInfoProvider());
     }
 }
+

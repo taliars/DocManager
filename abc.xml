@@ -31,5 +31,25 @@
                 <Perfomer>Астахов П.Ю.</Perfomer>
             </Act>
         </Acts>
+        <WeatherDays>
+            <WeatherDay>
+                <Date>12.02.2020</Date>
+                <Temperature>+3</Temperature>
+                <WindDirection>СЗ</WindDirection>
+                <WindSpeed>3</WindSpeed>
+                <Cloudness>3</Cloudness>
+                <Pressure>768</Pressure>
+                <Moisture>67</Moisture>
+            </WeatherDay>
+            <WeatherDay>
+                <Date>13.02.2020</Date>
+                <Temperature>+1</Temperature>
+                <WindDirection>СЗ</WindDirection>
+                <WindSpeed>3</WindSpeed>
+                <Cloudness>3</Cloudness>
+                <Pressure>768</Pressure>
+                <Moisture>67</Moisture>
+            </WeatherDay>
+        </WeatherDays>
     </ObjectInfo>
 </root>

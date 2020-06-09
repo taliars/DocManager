@@ -4,15 +4,15 @@ using DocManager.Services.XML;
 
 namespace DocManager.ViewModel
 {
-    public class XmlObjectInfoProvider : IObjectInfoProvider
+    internal class XmlObjectInfoProvider : IObjectDataProvider
     {
-        public ObjectInfo GetObjectInfo { get; }
+        public InnerObjectDataViewModel GetObjectData { get; }
 
         public XmlObjectInfoProvider()
         {
             var startupPath = Path.Combine(Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.FullName,
                 "abc.xml");
-            GetObjectInfo = XmlReader.ReadObjectInfo(startupPath);
+            GetObjectData = XmlReader.ReadObjectInfo(startupPath).ToInnerObjectDataViewModel();
         }
     }
 }

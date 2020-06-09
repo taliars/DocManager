@@ -16,10 +16,6 @@
     
     mc:Ignorable="d">
 
-    <Window.DataContext>
-        <local:MainViewModel />
-    </Window.DataContext>
-
     <controls:MetroAnimatedTabControl
         controls:TabControlHelper.Transition="Up"
         controls:TabControlHelper.UnderlineMouseOverBrush="Aquamarine"

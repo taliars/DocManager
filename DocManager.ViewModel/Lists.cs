@@ -7,7 +7,6 @@ namespace DocManager.ViewModel
 {
     public static class Lists
     {
-
         public static IEnumerable<object> WindDirections { get; } = new ObservableCollection<object>()
         {
             "C",
@@ -27,8 +26,8 @@ namespace DocManager.ViewModel
             new Separator(),
             "З",
             "ЗСЗ",
-            "СЗ",   
-            "ССЗ"         
+            "СЗ",
+            "ССЗ"
         };
 
         public static List<int> WindSpeed { get; set; } = Enumerable.Range(0, 6).ToList();

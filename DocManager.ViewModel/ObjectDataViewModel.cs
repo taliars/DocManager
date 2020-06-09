@@ -1,107 +1,122 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using DocManager.Core;
+﻿using DocManager.Core;
 using DocManager.ViewModel.Common;
+using System.Collections.ObjectModel;
 
 namespace DocManager.ViewModel
 {
-    public class ObjectDataViewModel : PropertyChangedClass
+    public class ObjectDataViewModel: PropertyChangedClass
     {
-        private ObjectInfo ObjectData { get; }
+        private InnerObjectDataViewModel InnerData { get; }
 
         public string ObjectName
         {
-            get => ObjectData.ObjectName;
+            get => InnerData.ObjectName;
             set
             {
-                ObjectData.ObjectName = value;
+                InnerData.ObjectName = value;
                 NotifyPropertyChanged(nameof(ObjectName));
             }
         }
 
         public string ObjectAddress
         {
-            get => ObjectData.ObjectAddress;
+            get => InnerData.ObjectAddress;
             set
             {
-                ObjectData.ObjectAddress = value;
+                InnerData.ObjectAddress = value;
                 NotifyPropertyChanged(nameof(ObjectAddress));
             }
         }
 
         public string Measurement
         {
-            get => ObjectData.Measurement;
+            get => InnerData.Measurement;
             set
             {
-                ObjectData.Measurement = value;
+                InnerData.Measurement = value;
                 NotifyPropertyChanged(nameof(Measurement));
             }
         }
 
         public string Purpose
         {
-            get => ObjectData.Purpose;
+            get => InnerData.Purpose;
             set
             {
-                ObjectData.Purpose = value;
+                InnerData.Purpose = value;
                 NotifyPropertyChanged(nameof(Purpose));
             }
         }
 
         public string CustomerName
         {
-            get => ObjectData.CustomerName;
+            get => InnerData.CustomerName;
             set
             {
-                ObjectData.CustomerName = value;
+                InnerData.CustomerName = value;
                 NotifyPropertyChanged(nameof(CustomerName));
             }
         }
 
         public string CustomerAddress
         {
-            get => ObjectData.CustomerAddress;
+            get => InnerData.CustomerAddress;
             set
             {
-                ObjectData.CustomerAddress = value;
+                InnerData.CustomerAddress = value;
                 NotifyPropertyChanged(nameof(CustomerAddress));
             }
         }
 
         public string Order
         {
-            get => ObjectData.Order;
+            get => InnerData.Order;
             set
             {
-                ObjectData.Order = value;
+                InnerData.Order = value;
                 NotifyPropertyChanged(nameof(Order));
             }
         }
 
-        public List<Act> Acts
+        public ObservableCollection<Act> Acts
         {
-            get => ObjectData.Acts?.ToList();
+            get => InnerData.Acts;
             set
             {
-                ObjectData.Acts = value;
+                InnerData.Acts = value;
                 NotifyPropertyChanged(nameof(Acts));
             }
         }
 
-        public List<Protocol> Protocols
+        public ObservableCollection<Protocol> Protocols
         {
-            get => ObjectData.Protocols?.ToList();
+            get => InnerData.Protocols;
             set
             {
-                ObjectData.Protocols = value;
+                InnerData.Protocols = value;
                 NotifyPropertyChanged(nameof(Protocols));
             }
         }
 
-        public ObjectDataViewModel(IObjectInfoProvider objectDataProvider)
+        public ObservableCollection<WeatherDay> WeatherDays
         {
-            ObjectData = objectDataProvider.GetObjectInfo;
+            get => InnerData.WeatherDays;
+            set
+            {
+                InnerData.WeatherDays = value;
+                NotifyPropertyChanged(nameof(WeatherDays));
+            }
+        }
+
+        public RelayCommand CommandAddDate => new RelayCommand(o =>
+        {
+            InnerData.WeatherDays.Add(new WeatherDay());
+            NotifyPropertyChanged(nameof(WeatherDays));
+        });
+
+        public ObjectDataViewModel(IObjectDataProvider objectDataProvider)
+        {
+            InnerData = objectDataProvider.GetObjectData;
         }
     }
 }
