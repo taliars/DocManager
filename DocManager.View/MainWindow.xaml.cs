@@ -1,4 +1,5 @@
-﻿using MahApps.Metro.Controls;
+﻿using DocManager.ViewModel;
+using MahApps.Metro.Controls;
 
 namespace DocManager.View
 {
@@ -10,6 +11,7 @@ namespace DocManager.View
         public MainWindow()
         {
             InitializeComponent();
+            this.DataContext = new MainViewModel();
         }
     }
 }

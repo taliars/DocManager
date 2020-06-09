@@ -13,7 +13,7 @@
             VerticalAlignment="Top"
             AutoGenerateColumns="False"
             ColumnWidth="*"
-            ItemsSource="{Binding Acts}">
+            ItemsSource="{Binding ObjectData.Acts}">
 
             <DataGrid.ContextMenu>
                 <ContextMenu>
@@ -91,6 +91,17 @@
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <TextBlock Text="{Binding Dates}" TextWrapping="Wrap" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+                <DataGridTemplateColumn
+                    Width="2*"
+                    Header="Расположение документа"
+                    SortMemberPath="DocLocation">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding DocLocation}" TextWrapping="Wrap" />
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
