@@ -124,6 +124,21 @@ namespace DocManager.ViewModel
             }
         }
 
+        public string Comment
+        {
+            get => InnerData.Comment;
+            set
+            {
+                InnerData.Comment = value;
+                NotifyPropertyChanged(nameof(Comment));
+            }
+        }
+
+
+
+
+
+
         public RelayCommand CommandAddDate => new RelayCommand(o =>
         {
             InnerData.WeatherDays.Add(new WeatherDay());

@@ -16,7 +16,6 @@ namespace DocManager.Core
         public IEnumerable<Protocol> Protocols { get; set; }
         public IEnumerable<Device> Devices { get; set; }
         public IEnumerable<WeatherDay> WeatherDays { get; set; }
-
         public string Comment { get; set; }
     }
 }

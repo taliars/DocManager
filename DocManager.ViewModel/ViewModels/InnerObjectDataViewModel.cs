@@ -16,5 +16,6 @@ namespace DocManager.ViewModel
         public ObservableCollection<Protocol> Protocols { get; set; }
         public ObservableCollection<Device> Devices { get; set; }
         public ObservableCollection<WeatherDay> WeatherDays { get; set; }
+        public string Comment { get; set; }
     }
 }

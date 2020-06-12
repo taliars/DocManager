@@ -23,6 +23,7 @@ namespace DocManager.ViewModel
                     Protocols = objectData.Protocols.ToObservableCollection(),
                     Devices = objectData.Devices.ToObservableCollection(),
                     WeatherDays = objectData.WeatherDays.ToObservableCollection(),
+                    Comment = objectData.Comment, 
                 };
         }
 
@@ -43,6 +44,7 @@ namespace DocManager.ViewModel
                     Protocols = viewModel.Protocols,
                     Devices = viewModel.Devices,
                     WeatherDays = viewModel.WeatherDays,
+                    Comment = viewModel.Comment,
                 };
         }
 
