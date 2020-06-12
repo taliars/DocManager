@@ -24,7 +24,7 @@
                     <Separator />-->
 
                     <MenuItem
-                        Command="{Binding CommandAddDate}"
+                        Command="{Binding ObjectData.CommandAddDate}"
                         Header="Добавить дату"
                         Icon="{DynamicResource icon_add}" />
                     <MenuItem

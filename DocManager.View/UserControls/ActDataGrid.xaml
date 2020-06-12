@@ -30,7 +30,6 @@
                         Icon="{StaticResource icon_file_add}">
 
                         <MenuItem.Items>
-
                             <MenuItem Header="Почва" />
                             <MenuItem Header="Природная вода" />
                             <MenuItem Header="Сточная вода" />

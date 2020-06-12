@@ -16,49 +16,75 @@
     
     mc:Ignorable="d">
 
-    <controls:MetroAnimatedTabControl
+    <Window.Resources>
+        <DataTemplate x:Key="MenuItemTemplate" DataType="{x:Type controls:HamburgerMenuGlyphItem}">
+            <Grid Height="48">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="48" />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Column="0"
+                    FontSize="16"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    FontFamily="Segoe MDL2 Assets"
+                    Foreground="White"
+                    Text="{Binding Glyph}" />
+                <TextBlock Grid.Column="1"
+                    VerticalAlignment="Center"
+                    FontSize="16"
+                    Foreground="White"
+                    Text="{Binding Label}" />
+            </Grid>
+        </DataTemplate>
+    </Window.Resources>
+
+
+    <controls:HamburgerMenu>
+        <controls:MetroAnimatedTabControl
         controls:TabControlHelper.Transition="Up"
         controls:TabControlHelper.UnderlineMouseOverBrush="Aquamarine"
         controls:TabControlHelper.Underlined="TabPanel"
         controls:TabStripPlacement="Top">
 
-        <TabControl.Resources>
-            <Style TargetType="{x:Type TabPanel}">
-                <Setter Property="HorizontalAlignment" Value="Center" />
-            </Style>
-        </TabControl.Resources>
+            <TabControl.Resources>
+                <Style TargetType="{x:Type TabPanel}">
+                    <Setter Property="HorizontalAlignment" Value="Center" />
+                </Style>
+            </TabControl.Resources>
 
-        <TabItem Header="ДАННЫЕ ЗАКАЗА">
-            <usercontrols:Customer Margin="15" />
-        </TabItem>
+            <TabItem Header="ДАННЫЕ ЗАКАЗА">
+                <usercontrols:Customer Margin="15" />
+            </TabItem>
 
-        <TabItem Header="ПРОТОКОЛЫ">
-            <Grid Margin="15">
-                <Grid.RowDefinitions>
-                    <RowDefinition />
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition />
-                </Grid.RowDefinitions>
+            <TabItem Header="ПРОТОКОЛЫ">
+                <Grid Margin="15">
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
 
-                <usercontrols:ProtocolDataGrid Grid.Row="0" />
-                <GridSplitter Grid.Row="1" Height="5" />
-                <usercontrols:TabControlDeviceMeteo Grid.Row="2" />
-            </Grid>
-        </TabItem>
+                    <usercontrols:ProtocolDataGrid Grid.Row="0" />
+                    <GridSplitter Grid.Row="1" Height="5" />
+                    <usercontrols:TabControlDeviceMeteo Grid.Row="2" />
+                </Grid>
+            </TabItem>
 
-        <TabItem Header="АКТЫ">
-            <Grid Margin="15">
-                <Grid.RowDefinitions>
-                    <RowDefinition />
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition />
-                </Grid.RowDefinitions>
+            <TabItem Header="АКТЫ">
+                <Grid Margin="15">
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
 
-                <usercontrols:ActDataGrid Grid.Row="0" />
-                <GridSplitter Grid.Row="1" />
-                <usercontrols:TabControlDeviceMeteo Grid.Row="2" />
-            </Grid>
-        </TabItem>
-    </controls:MetroAnimatedTabControl>
+                    <usercontrols:ActDataGrid Grid.Row="0" />
+                    <GridSplitter Grid.Row="1" />
+                    <usercontrols:TabControlDeviceMeteo Grid.Row="2" />
+                </Grid>
+            </TabItem>
+        </controls:MetroAnimatedTabControl>
+    </controls:HamburgerMenu>
 
 </controls:MetroWindow>

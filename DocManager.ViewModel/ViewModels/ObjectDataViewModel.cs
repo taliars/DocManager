@@ -1,12 +1,28 @@
 ﻿using DocManager.Core;
+using DocManager.Data.DataProviders;
 using DocManager.ViewModel.Common;
+using System;
 using System.Collections.ObjectModel;
 
 namespace DocManager.ViewModel
 {
-    public class ObjectDataViewModel: PropertyChangedClass
+    public class ObjectDataViewModel : PropertyChangedBase
     {
+        private Protocol selectedProtocol;
+
+        public Protocol SelectedProtocol
+        {
+            get => selectedProtocol;
+            set
+            {
+                selectedProtocol = value;
+                NotifyPropertyChanged(nameof(SelectedProtocol));
+            }
+        }
+
         private InnerObjectDataViewModel InnerData { get; }
+
+        private IObjectDataProvider _objectDataProvider;
 
         public string ObjectName
         {
@@ -114,9 +130,52 @@ namespace DocManager.ViewModel
             NotifyPropertyChanged(nameof(WeatherDays));
         });
 
+        public RelayCommand CommandAddAct => new RelayCommand(o =>
+        {
+            InnerData.Acts.Add(new Act());
+            NotifyPropertyChanged(nameof(Acts));
+        });
+
+        public RelayCommand CommandAddProtocol => new RelayCommand(o =>
+        {
+            if (!(o is string s))
+            {
+                return;
+            }
+
+            InnerData.Protocols.Add(new Protocol
+            {
+                Species = s,
+                Path = "not specified",
+                Date = DateTime.Now,
+                Dates = null,
+                Name = Protocol.GetNameForProtocol(s, Order),
+                Perfomer = "Астахов П.Ю.",
+            });
+            NotifyPropertyChanged(nameof(Protocols));
+        });
+
+
+        public RelayCommand RemoveProtocol => new RelayCommand(o =>
+        {
+            if (!(o is Protocol p))
+            {
+                return;
+            }
+
+            InnerData.Protocols.Remove(p);
+            NotifyPropertyChanged(nameof(Protocols));
+        });
+
+        public void Save()
+        {
+            _objectDataProvider.Save(InnerData.ToObjectData());
+        }
+
         public ObjectDataViewModel(IObjectDataProvider objectDataProvider)
         {
-            InnerData = objectDataProvider.GetObjectData;
+            _objectDataProvider = objectDataProvider;
+            InnerData = objectDataProvider.ObjectData.ToInnerObjectDataViewModel();
         }
     }
 }

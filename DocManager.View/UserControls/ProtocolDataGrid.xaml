@@ -14,30 +14,30 @@
             AutoGenerateColumns="False"
             ColumnWidth="*"
             ItemsSource="{Binding ObjectData.Protocols}"
-            SelectedItem="{Binding selectedProtocol}">
+            SelectedItem="{Binding ObjectData.SelectedProtocol}">
 
             <DataGrid.ContextMenu>
                 <ContextMenu>
                     <MenuItem Header=" Открыть" Icon="{StaticResource icon_file_edit}" />
                     <MenuItem Header=" Добавить" Icon="{StaticResource icon_file_add}">
                         <MenuItem.Items>
-                            <MenuItem Header="Шум" Command="{Binding CommandAddProtocol}" CommandParameter="Шум"/>
-                            <MenuItem Header="Инфразвук" Command="{Binding CommandAddProtocol}" CommandParameter="Инфразвук"/>
-                            <MenuItem Header="Вибрация" Command="{Binding CommandAddProtocol}" CommandParameter="Вибрация"/>
-                            <MenuItem Header="ЭМИ 50 Гц" Command="{Binding CommandAddProtocol}" CommandParameter="ЭМИ 50 Гц"/>
+                            <MenuItem Header="Шум" Command="{Binding ObjectData.CommandAddProtocol}" CommandParameter="Шум"/>
+                            <MenuItem Header="Инфразвук" Command="{Binding ObjectData.CommandAddProtocol}" CommandParameter="Инфразвук"/>
+                            <MenuItem Header="Вибрация" Command="{Binding ObjectData.CommandAddProtocol}" CommandParameter="Вибрация"/>
+                            <MenuItem Header="ЭМИ 50 Гц" Command="{Binding ObjectData.CommandAddProtocol}" CommandParameter="ЭМИ 50 Гц"/>
                             <Separator />
-                            <MenuItem Header="Радиация" Command="{Binding CommandAddProtocol}" CommandParameter="Радиация"/>
-                            <MenuItem Header="Радионуклиды" Command="{Binding CommandAddProtocol}" CommandParameter="Радионуклиды"/>
+                            <MenuItem Header="Радиация" Command="{Binding ObjectData.CommandAddProtocol}" CommandParameter="Радиация"/>
+                            <MenuItem Header="Радионуклиды" Command="{Binding ObjectData.CommandAddProtocol}" CommandParameter="Радионуклиды"/>
                             <Separator />
-                            <MenuItem Header="Почва" Command="{Binding CommandAddProtocol}" CommandParameter="Почва"/>
-                            <MenuItem Header="Вода" Command="{Binding CommandAddProtocol}" CommandParameter="Вода"/>
-                            <MenuItem Header="Воздух" Command="{Binding CommandAddProtocol}" CommandParameter="Воздух"/>
+                            <MenuItem Header="Почва" Command="{Binding ObjectData.CommandAddProtocol}" CommandParameter="Почва"/>
+                            <MenuItem Header="Вода" Command="{Binding ObjectData.CommandAddProtocol}" CommandParameter="Вода"/>
+                            <MenuItem Header="Воздух" Command="{Binding ObjectData.CommandAddProtocol}" CommandParameter="Воздух"/>
                         </MenuItem.Items>
                     </MenuItem>
                     <MenuItem Header=" Копировать" Icon="{StaticResource icon_file_copy}" />
-                    <MenuItem Header=" Удалить" Icon="{StaticResource icon_delete}" />
+                    <MenuItem Header=" Удалить"  Command="{Binding ObjectData.RemoveProtocol}" CommandParameter="{Binding ObjectData.SelectedProtocol}" Icon="{StaticResource icon_delete}" />
                     <Separator />
-                    <MenuItem Header=" Открыть папку" Icon="{StaticResource icon_folder_open}" />
+                    <MenuItem Header=" Открыть папку"  Icon="{StaticResource icon_folder_open}" />
                     <Separator />
                     <MenuItem Header=" Экспортировать в PDF" Icon="{StaticResource icon_exportpdf}" />
                     <Separator />
@@ -87,7 +87,7 @@
                     SortMemberPath="DocLocation">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <TextBlock Text="{Binding DocLocation}" TextWrapping="Wrap" />
+                            <TextBlock Text="{Binding Path}" TextWrapping="Wrap" />
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>

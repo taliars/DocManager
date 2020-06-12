@@ -4,10 +4,9 @@ using System.Linq;
 using System.Xml.Linq;
 using DocManager.Core;
 
-namespace DocManager.Services.XML
+namespace DocManager.Data.Xml
 {
-    // Maybe use expressions?
-    public static class XmlReader
+    internal static class XmlReader
     {
         public static ObjectData ReadObjectInfo(string docPath)
         {
@@ -26,6 +25,7 @@ namespace DocManager.Services.XML
                 Protocols = xmlObjectInfo.GetData(GetDocuments<Protocol>),
                 Devices = xmlObjectInfo.GetData(GetDevices),
                 WeatherDays = xmlObjectInfo.GetData(GetWeatherDays),
+                Comment = xmlObjectInfo.Element("Comment")?.Value,
             };
         }
 

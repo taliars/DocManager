@@ -26,6 +26,26 @@ namespace DocManager.ViewModel
                 };
         }
 
+        public static ObjectData ToObjectData(this InnerObjectDataViewModel viewModel)
+        {
+            return viewModel == null
+                ? null
+                : new ObjectData
+                {
+                    ObjectName = viewModel.ObjectName,
+                    ObjectAddress = viewModel.ObjectAddress,
+                    Measurement = viewModel.Measurement,
+                    Purpose = viewModel.Purpose,
+                    CustomerName = viewModel.CustomerName,
+                    CustomerAddress = viewModel.CustomerAddress,
+                    Order = viewModel.Order,
+                    Acts = viewModel.Acts,
+                    Protocols = viewModel.Protocols,
+                    Devices = viewModel.Devices,
+                    WeatherDays = viewModel.WeatherDays,
+                };
+        }
+
         private static ObservableCollection<T> ToObservableCollection<T>(this IEnumerable<T> collection)
         {
             return collection == null ? null : new ObservableCollection<T>(collection);

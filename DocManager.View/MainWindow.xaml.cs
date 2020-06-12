@@ -8,10 +8,19 @@ namespace DocManager.View
     /// </summary>
     public partial class MainWindow : MetroWindow
     {
+        public MainViewModel viewModel;
+
         public MainWindow()
         {
             InitializeComponent();
-            this.DataContext = new MainViewModel();
+            viewModel = new MainViewModel();
+            this.DataContext = viewModel;
+            this.Closing += MainWindow_Closing;
+        }
+
+        private void MainWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            viewModel.ObjectData.Save();
         }
     }
 }

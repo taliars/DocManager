@@ -9,12 +9,18 @@
     d:DesignWidth="750"
     mc:Ignorable="d">
     <Grid>
-        <TabControl>
-            <TabItem Header="Приборы">
-                <usercontrols:DeviceDataGrid />
-            </TabItem>
+        <TabControl Padding="10">
+            <TabControl.Resources>
+                <Style TargetType="{x:Type TabPanel}">
+                    <Setter Property="HorizontalAlignment" Value="Center" />
+                </Style>
+            </TabControl.Resources>
+
             <TabItem Header="Метеоусловия">
-                <usercontrols:MeteoDataGrid />
+                <usercontrols:MeteoDataGrid Padding="10"/>
+            </TabItem>
+            <TabItem Header="Приборы">
+                <usercontrols:DeviceDataGrid Padding="10"/>
             </TabItem>
         </TabControl>
     </Grid>

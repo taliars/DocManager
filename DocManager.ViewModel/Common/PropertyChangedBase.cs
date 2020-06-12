@@ -2,7 +2,7 @@ using System.ComponentModel;
 
 namespace DocManager.ViewModel.Common
 {
-    public class PropertyChangedClass
+    public class PropertyChangedBase
     {
         public event PropertyChangedEventHandler PropertyChanged;
 

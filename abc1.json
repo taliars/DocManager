@@ -1,0 +1,9 @@
+{
+  "ObjectName": "объект №2",
+  "ObjectAddress": "Юридический адрес заказчика №1",
+  "Measurement": "2.0 км",
+  "Purpose": "новое строительство",
+  "CustomerName": "Заказчик №1",
+  "CustomerAddress": "Юридический адрес заказчика №1",
+  "Order": "112-20"
+}

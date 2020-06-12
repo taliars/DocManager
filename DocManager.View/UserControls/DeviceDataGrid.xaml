@@ -15,23 +15,6 @@
             <RowDefinition />
         </Grid.RowDefinitions>
 
-        <Grid Grid.Row="0" Margin="10">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="150"/>
-                <ColumnDefinition Width="350"/>
-                <ColumnDefinition/>                
-            </Grid.ColumnDefinitions>
-
-            <CheckBox Content="только используемые" />
-            <TextBox
-                Grid.Column="1"
-                FontSize="12"
-                controls:TextBoxHelper.ClearTextButton="True"
-                controls:TextBoxHelper.Watermark="Поиск..." />
-
-        </Grid>
-
-
         <DataGrid
             Grid.Row="1"
             VerticalAlignment="Top"
@@ -39,7 +22,7 @@
             ItemsSource="{Binding devicesView}"
             ToolTipService.IsEnabled="False"
             ToolTipService.ShowOnDisabled="True">
-
+            
             <DataGrid.Columns>
                 <DataGridTemplateColumn
                     MinWidth="43"
