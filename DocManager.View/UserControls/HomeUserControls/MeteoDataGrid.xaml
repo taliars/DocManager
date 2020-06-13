@@ -15,7 +15,7 @@
             VerticalAlignment="Top"
             AutoGenerateColumns="False"
             ColumnWidth="*"
-            ItemsSource="{Binding ObjectData.WeatherDays}"
+            ItemsSource="{Binding ObjectData.WeatherDays.Weatherdays}"
             SelectedItem="{Binding ObjectData.SelectedWeatherDay}">
 
             <DataGrid.ContextMenu>

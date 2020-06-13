@@ -13,7 +13,7 @@
             VerticalAlignment="Top"
             AutoGenerateColumns="False"
             ColumnWidth="*"
-            ItemsSource="{Binding ObjectData.Acts}"
+            ItemsSource="{Binding ObjectData.Acts.Acts}"
             SelectedItem="{Binding ObjectData.SelectedAct}">
 
             <DataGrid.ContextMenu>
@@ -28,7 +28,7 @@
                         Header=" Добавить"
                         Icon="{StaticResource icon_file_add}">
                         <MenuItem.Items>
-                            <MenuItem Header="Почва" Command="{Binding ObjectData.AddAct}" CommandParameter="Почва"/>
+                            <MenuItem Header="Почва" Command="{Binding ObjectData.Acts.AddAct}" CommandParameter="Почва"/>
                             <MenuItem Header="Природная вода"  Command="{Binding ObjectData.AddAct}" CommandParameter="Природная вода"/>
                             <MenuItem Header="Сточная вода"  Command="{Binding ObjectData.AddAct}" CommandParameter="Сточная вода"/>
                             <MenuItem Header="Донные отложения"  Command="{Binding ObjectData.AddAct}" CommandParameter="Донные отложения"/>

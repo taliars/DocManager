@@ -1,52 +1,13 @@
-﻿using DocManager.Core;
-using DocManager.Data.DataProviders;
+﻿using DocManager.Data.DataProviders;
 using DocManager.ViewModel.Common;
-using System;
-using System.Collections.ObjectModel;
 
 namespace DocManager.ViewModel
 {
     public class ObjectDataViewModel : PropertyChangedBase
     {
-        private Protocol selectedProtocol;
-
-        private WeatherDay selectedWeatherDay;
-
-        private Act selectedAct;
-
         private InnerObjectDataViewModel InnerData { get; }
 
         private IObjectDataProvider _objectDataProvider;
-
-        public Protocol SelectedProtocol
-        {
-            get => selectedProtocol;
-            set
-            {
-                selectedProtocol = value;
-                NotifyPropertyChanged(nameof(SelectedProtocol));
-            }
-        }
-
-        public Act SelectedAct
-        {
-            get => selectedAct;
-            set
-            {
-                selectedAct = value;
-                NotifyPropertyChanged(nameof(SelectedAct));
-            }
-        }
-
-        public WeatherDay SelectedWeatherDay
-        {
-            get => selectedWeatherDay;
-            set
-            {
-                selectedWeatherDay = value;
-                NotifyPropertyChanged(nameof(SelectedWeatherDay));
-            }
-        }    
 
         public string ObjectName
         {
@@ -118,36 +79,6 @@ namespace DocManager.ViewModel
             }
         }
 
-        public ObservableCollection<Act> Acts
-        {
-            get => InnerData.Acts;
-            set
-            {
-                InnerData.Acts = value;
-                NotifyPropertyChanged(nameof(Acts));
-            }
-        }
-
-        public ObservableCollection<Protocol> Protocols
-        {
-            get => InnerData.Protocols;
-            set
-            {
-                InnerData.Protocols = value;
-                NotifyPropertyChanged(nameof(Protocols));
-            }
-        }
-
-        public ObservableCollection<WeatherDay> WeatherDays
-        {
-            get => InnerData.WeatherDays;
-            set
-            {
-                InnerData.WeatherDays = value;
-                NotifyPropertyChanged(nameof(WeatherDays));
-            }
-        }
-
         public string Comment
         {
             get => InnerData.Comment;
@@ -158,72 +89,23 @@ namespace DocManager.ViewModel
             }
         }
 
+        public ProtocolViewModel Protocols { get; set; }
 
-        public RelayCommand AddDate => new RelayCommand(o =>
-        {
-            InnerData.WeatherDays.Add(new WeatherDay());
-            NotifyPropertyChanged(nameof(WeatherDays));
-        });
+        public ActViewModel Acts { get; set; }
 
-        public RelayCommand RemoveDate => new RelayCommand(o =>
-        {
-            InnerData.WeatherDays.Remove(SelectedWeatherDay);
-            NotifyPropertyChanged(nameof(WeatherDays));
-        });
+        public DeviceViewModel Devices { get; set; }
 
-        public RelayCommand AddAct => new RelayCommand(o =>
-        {
-            if (!(o is string species))
-            {
-                return;
-            }
-
-            InnerData.Acts.Add(new Act().New(species, DateTime.Now, Order));
-            NotifyPropertyChanged(nameof(Acts));
-        });
-
-        public RelayCommand RemoveAct => new RelayCommand(o =>
-        {
-            if (!(o is Act act))
-            {
-                return;
-            }
-
-            InnerData.Acts.Remove(act);
-            NotifyPropertyChanged(nameof(Acts));
-        });
-
-        public RelayCommand AddProtocol => new RelayCommand(o =>
-        {
-            if (!(o is string species))
-            {
-                return;
-            }
-
-            InnerData.Protocols.Add((new Protocol()).New(species, DateTime.Now, Order));
-            NotifyPropertyChanged(nameof(Protocols));
-        });
-
-        public RelayCommand RemoveProtocol => new RelayCommand(o =>
-        {
-            if (!(o is Protocol protocol))
-            {
-                return;
-            }
-
-            InnerData.Protocols.Remove(protocol);
-            NotifyPropertyChanged(nameof(Protocols));
-        });
-
-        public void Save()
-        {
-            _objectDataProvider.Save(InnerData.ToObjectData());
-        }
+        public WeatherDayViewModel WeatherDays { get; set; }
 
         public ObjectDataViewModel(IObjectDataProvider objectDataProvider)
         {
             _objectDataProvider = objectDataProvider;
             InnerData = objectDataProvider.ObjectData.ToInnerObjectDataViewModel();
+
+            Protocols = new ProtocolViewModel(InnerData.Protocols);
+            Acts = new ActViewModel(InnerData.Acts);
+            WeatherDays = new WeatherDayViewModel(InnerData.WeatherDays);
+            Devices = new DeviceViewModel(InnerData.Devices);
         }
     }
 }
