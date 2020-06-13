@@ -14,6 +14,10 @@ namespace DocManager.ViewModel
 
         private Act selectedAct;
 
+        private InnerObjectDataViewModel InnerData { get; }
+
+        private IObjectDataProvider _objectDataProvider;
+
         public Protocol SelectedProtocol
         {
             get => selectedProtocol;
@@ -42,14 +46,7 @@ namespace DocManager.ViewModel
                 selectedWeatherDay = value;
                 NotifyPropertyChanged(nameof(SelectedWeatherDay));
             }
-        }
-
-    
-
-        private InnerObjectDataViewModel InnerData { get; }
-
-        private IObjectDataProvider _objectDataProvider;
-
+        }    
 
         public string ObjectName
         {
