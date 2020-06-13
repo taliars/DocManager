@@ -67,6 +67,8 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\MahApps.Metro.1.5.0\lib\net45\System.Windows.Interactivity.dll</HintPath>
       <Private>True</Private>
@@ -105,6 +107,9 @@
     <Compile Include="UserControls\DeviceDataGrid.xaml.cs">
       <DependentUpon>DeviceDataGrid.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\Home.xaml.cs">
+      <DependentUpon>Home.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\MeteoDataGrid.xaml.cs">
       <DependentUpon>MeteoDataGrid.xaml</DependentUpon>
     </Compile>
@@ -113,6 +118,9 @@
     </Compile>
     <Compile Include="UserControls\TabControlDeviceMeteo.xaml.cs">
       <DependentUpon>TabControlDeviceMeteo.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\Settings.xaml.cs">
+      <DependentUpon>Settings.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -147,6 +155,10 @@
     <Page Include="UserControls\DeviceDataGrid.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="UserControls\Home.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="UserControls\MeteoDataGrid.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -154,6 +166,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UserControls\TabControlDeviceMeteo.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\Settings.xaml">
+      <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>

@@ -39,7 +39,6 @@
                     HorizontalAlignment="Stretch"
                     controls:TextBoxHelper.ClearTextButton="True"
                     controls:TextBoxHelper.Watermark="Введите номер заказа"
-                    KeyDown="TextBox_KeyDown"
                     AcceptsReturn="True"
                     Text="{Binding Order, Mode=TwoWay}"
                     TextWrapping="Wrap" />

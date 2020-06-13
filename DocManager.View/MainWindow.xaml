@@ -37,66 +37,77 @@
                     Text="{Binding Label}" />
             </Grid>
         </DataTemplate>
+        <DataTemplate x:Key="MenuItemTemplate2" DataType="{x:Type controls:HamburgerMenuItem}">
+            <Grid Height="48">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="48" />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Column="0"
+                    FontSize="16"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    FontFamily="Segoe MDL2 Assets"
+                    Foreground="White"
+                    Text="{Binding Glyph}" />
+                <Grid Grid.Column="1"
+                    VerticalAlignment="Center"  >
+                    <Label Content="Поиск"/>
+                </Grid>
+            </Grid>
+        </DataTemplate>
     </Window.Resources>
 
 
-    <controls:HamburgerMenu>
-        <controls:MetroAnimatedTabControl
-        controls:TabControlHelper.Transition="Up"
-        controls:TabControlHelper.UnderlineMouseOverBrush="Aquamarine"
-        controls:TabControlHelper.Underlined="TabPanel"
-        controls:TabStripPlacement="Top">
+    <controls:HamburgerMenu 
+        x:Name="HamburgerMenuControl"
+                        ItemTemplate="{StaticResource MenuItemTemplate}"
+                        OptionsItemTemplate="{StaticResource MenuItemTemplate}"
+                        DisplayMode="CompactInline"
+                            ItemClick="HamburgerMenuControl_ItemClick" >
 
-            <TabControl.Resources>
-                <Style TargetType="{x:Type TabPanel}">
-                    <Setter Property="HorizontalAlignment" Value="Center" />
-                </Style>
-            </TabControl.Resources>
-
-            <TabItem Header="ДАННЫЕ ЗАКАЗА">
-                <usercontrols:Customer Margin="15" KeyDown="Customer_KeyDown" />
-            </TabItem>
-
-            <TabItem Header="ПРОТОКОЛЫ">
-                <Grid Margin="15">
-                    <Grid.RowDefinitions>
-                        <RowDefinition />
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition />
-                    </Grid.RowDefinitions>
-
-                    <usercontrols:ProtocolDataGrid Grid.Row="0" />
-                    <GridSplitter Grid.Row="1" Height="5" />
-                    <usercontrols:TabControlDeviceMeteo Grid.Row="2" />
+        <controls:HamburgerMenu.ContentTemplate>
+            <DataTemplate DataType="{x:Type controls:HamburgerMenuItem}">
+                <Grid x:Name="TheContentGrid" Margin="20">
+                    <ContentControl x:Name="TheContent"                         
+                            Focusable="False"
+                            Foreground="{DynamicResource BlackBrush}"
+                            Content="{Binding Tag}" />
                 </Grid>
-            </TabItem>
+            </DataTemplate>
+        </controls:HamburgerMenu.ContentTemplate>
 
-            <TabItem Header="АКТЫ">
-                <Grid Margin="15">
-                    <Grid.RowDefinitions>
-                        <RowDefinition />
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition />
-                    </Grid.RowDefinitions>
+        <controls:HamburgerMenu.ItemsSource>
+           
+            <controls:HamburgerMenuItemCollection>
+                <controls:HamburgerMenuItem>
+                   
+                </controls:HamburgerMenuItem>
 
-                    <usercontrols:ActDataGrid Grid.Row="0" />
-                    <GridSplitter Grid.Row="1" />
-                    <usercontrols:TabControlDeviceMeteo Grid.Row="2" />
-                </Grid>
-            </TabItem>
+                <controls:HamburgerMenuGlyphItem Glyph="" Label="Home" >
+                    <controls:HamburgerMenuGlyphItem.Tag>
+                        <usercontrols:Home />
+                    </controls:HamburgerMenuGlyphItem.Tag>
+                </controls:HamburgerMenuGlyphItem>
 
-            <TabItem Header="ДРУГИЕ ДОКУМЕНТЫ">
-                <Grid Margin="15">
-                    <Grid.RowDefinitions>
-                        <RowDefinition />
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition />
-                    </Grid.RowDefinitions>
+                <!--<controls:HamburgerMenuGlyphItem Glyph="" Label="Private">
+                    <controls:HamburgerMenuGlyphItem.Tag>
+                        <usercontrols:ActDataGrid />
+                    </controls:HamburgerMenuGlyphItem.Tag>
+                </controls:HamburgerMenuGlyphItem>-->
 
-                    <usercontrols:AdditionalDocumentsGrid Grid.Row="0" Grid.RowSpan="3" />
-                </Grid>
-            </TabItem>
-        </controls:MetroAnimatedTabControl>
+                <controls:HamburgerMenuGlyphItem Glyph="" Label="Settings">
+                    <controls:HamburgerMenuGlyphItem.Tag>
+                        <usercontrols:Settings />
+                    </controls:HamburgerMenuGlyphItem.Tag>
+                </controls:HamburgerMenuGlyphItem>
+            </controls:HamburgerMenuItemCollection>
+        </controls:HamburgerMenu.ItemsSource>
+
+        <controls:HamburgerMenu.Content>
+            <usercontrols:Home/>
+        </controls:HamburgerMenu.Content>
+
     </controls:HamburgerMenu>
 
 </controls:MetroWindow>

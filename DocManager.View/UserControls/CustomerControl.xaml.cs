@@ -12,13 +12,13 @@ namespace DocManager.View.UserControls
             InitializeComponent();
         }
 
-        public delegate void TextBoxKeyDown(object sender, System.Windows.Input.KeyEventArgs e);
+        //public delegate void TextBoxKeyDown(object sender, System.Windows.Input.KeyEventArgs e);
 
-        public event TextBoxKeyDown TextBoxKeyDownChanged;
+        //public event TextBoxKeyDown TextBoxKeyDownChanged;
 
-        private void TextBox_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
-        {
-            TextBoxKeyDownChanged?.Invoke(sender, e);
-        }
+        //private void TextBox_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
+        //{
+        //    TextBoxKeyDownChanged?.Invoke(sender, e);
+        //}
     }
 }

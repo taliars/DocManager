@@ -21,6 +21,7 @@ namespace DocManager.View
             viewModel = new MainViewModel();
             this.DataContext = viewModel;
             this.Closing += MainWindow_Closing;
+            this.HamburgerMenuControl.SelectedIndex = 0;
         }
 
         private async void MainWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
@@ -67,6 +68,12 @@ namespace DocManager.View
                 MessageDialogStyle.AffirmativeAndNegative, mySettings);
 
             var decision = result == MessageDialogResult.Affirmative;
+        }
+
+        private void HamburgerMenuControl_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            this.HamburgerMenuControl.Content = e.ClickedItem;
+            this.HamburgerMenuControl.IsPaneOpen = false;
         }
     }
 }
