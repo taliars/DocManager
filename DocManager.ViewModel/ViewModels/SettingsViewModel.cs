@@ -1,31 +1,35 @@
-﻿using DocManager.ViewModel.Common;
+﻿using DocManager.Core;
+using DocManager.ViewModel.Common;
 
 namespace DocManager.ViewModel
 {
     public class SettingsViewModel : PropertyChangedBase
     {
-        private string templatesPath = @"C:/";
-
-        private string rootPath = @"D:/";
+        private Settings settings;
 
         public string TemplatesPath
         {
-            get => templatesPath;
+            get => settings.TemplatesPath;
             set
             {
-                templatesPath = value;
+                settings.TemplatesPath = value;
                 NotifyPropertyChanged(TemplatesPath);
             }
         }
 
         public string RootPath
         {
-            get => rootPath;
+            get => settings.RootPath;
             set
             {
-                rootPath = value;
+                settings.RootPath = value;
                 NotifyPropertyChanged(RootPath);
             }
+        }
+
+        public SettingsViewModel()
+        {
+            settings = new Settings();
         }
     }
 }

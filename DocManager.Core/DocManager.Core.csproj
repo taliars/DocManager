@@ -37,6 +37,7 @@
     <Compile Include="Document.cs" />
     <Compile Include="ObjectData.cs" />
     <Compile Include="Protocol.cs" />
+    <Compile Include="Settings.cs" />
     <Compile Include="WeatherDay.cs" />
   </ItemGroup>
   <ItemGroup>
