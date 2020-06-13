@@ -10,6 +10,10 @@ namespace DocManager.ViewModel
     {
         private Protocol selectedProtocol;
 
+        private WeatherDay selectedWeatherDay;
+
+        private Act selectedAct;
+
         public Protocol SelectedProtocol
         {
             get => selectedProtocol;
@@ -20,9 +24,32 @@ namespace DocManager.ViewModel
             }
         }
 
+        public Act SelectedAct
+        {
+            get => selectedAct;
+            set
+            {
+                selectedAct = value;
+                NotifyPropertyChanged(nameof(SelectedAct));
+            }
+        }
+
+        public WeatherDay SelectedWeatherDay
+        {
+            get => selectedWeatherDay;
+            set
+            {
+                selectedWeatherDay = value;
+                NotifyPropertyChanged(nameof(SelectedWeatherDay));
+            }
+        }
+
+    
+
         private InnerObjectDataViewModel InnerData { get; }
 
         private IObjectDataProvider _objectDataProvider;
+
 
         public string ObjectName
         {
@@ -135,50 +162,59 @@ namespace DocManager.ViewModel
         }
 
 
-
-
-
-
-        public RelayCommand CommandAddDate => new RelayCommand(o =>
+        public RelayCommand AddDate => new RelayCommand(o =>
         {
             InnerData.WeatherDays.Add(new WeatherDay());
             NotifyPropertyChanged(nameof(WeatherDays));
         });
 
-        public RelayCommand CommandAddAct => new RelayCommand(o =>
+        public RelayCommand RemoveDate => new RelayCommand(o =>
         {
-            InnerData.Acts.Add(new Act());
+            InnerData.WeatherDays.Remove(SelectedWeatherDay);
+            NotifyPropertyChanged(nameof(WeatherDays));
+        });
+
+        public RelayCommand AddAct => new RelayCommand(o =>
+        {
+            if (!(o is string species))
+            {
+                return;
+            }
+
+            InnerData.Acts.Add(new Act().New(species, DateTime.Now, Order));
             NotifyPropertyChanged(nameof(Acts));
         });
 
-        public RelayCommand CommandAddProtocol => new RelayCommand(o =>
+        public RelayCommand RemoveAct => new RelayCommand(o =>
         {
-            if (!(o is string s))
+            if (!(o is Act act))
             {
                 return;
             }
 
-            InnerData.Protocols.Add(new Protocol
+            InnerData.Acts.Remove(act);
+            NotifyPropertyChanged(nameof(Acts));
+        });
+
+        public RelayCommand AddProtocol => new RelayCommand(o =>
+        {
+            if (!(o is string species))
             {
-                Species = s,
-                Path = "not specified",
-                Date = DateTime.Now,
-                Dates = null,
-                Name = Protocol.GetNameForProtocol(s, Order),
-                Perfomer = "Астахов П.Ю.",
-            });
+                return;
+            }
+
+            InnerData.Protocols.Add((new Protocol()).New(species, DateTime.Now, Order));
             NotifyPropertyChanged(nameof(Protocols));
         });
 
-
         public RelayCommand RemoveProtocol => new RelayCommand(o =>
         {
-            if (!(o is Protocol p))
+            if (!(o is Protocol protocol))
             {
                 return;
             }
 
-            InnerData.Protocols.Remove(p);
+            InnerData.Protocols.Remove(protocol);
             NotifyPropertyChanged(nameof(Protocols));
         });
 

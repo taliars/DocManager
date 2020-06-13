@@ -15,7 +15,8 @@
             VerticalAlignment="Top"
             AutoGenerateColumns="False"
             ColumnWidth="*"
-            ItemsSource="{Binding ObjectData.WeatherDays}">
+            ItemsSource="{Binding ObjectData.WeatherDays}"
+            SelectedItem="{Binding ObjectData.SelectedWeatherDay}">
 
             <DataGrid.ContextMenu>
                 <ContextMenu>
@@ -24,11 +25,12 @@
                     <Separator />-->
 
                     <MenuItem
-                        Command="{Binding ObjectData.CommandAddDate}"
+                        Command="{Binding ObjectData.AddDate}"
                         Header="Добавить дату"
                         Icon="{DynamicResource icon_add}" />
                     <MenuItem
-                        Command="{Binding CommandDeleteDate}"
+                        Command="{Binding ObjectData.RemoveDate}"
+                        CommandParameter="{Binding ObjectData.SelectedWeatherDay}"
                         Header="Удалить дату"
                         Icon="{DynamicResource icon_delete}" />
 

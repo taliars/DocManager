@@ -39,6 +39,7 @@
                     HorizontalAlignment="Stretch"
                     controls:TextBoxHelper.ClearTextButton="True"
                     controls:TextBoxHelper.Watermark="Введите номер заказа"
+                    KeyDown="TextBox_KeyDown"
                     AcceptsReturn="True"
                     Text="{Binding Order, Mode=TwoWay}"
                     TextWrapping="Wrap" />
@@ -183,6 +184,7 @@
                     VerticalAlignment="Stretch"
                     TextWrapping="Wrap"
                     AcceptsReturn="True"
+                    Background="#F5F5F5"
                     VerticalScrollBarVisibility="Visible"
                     controls:TextBoxHelper.Watermark="Укажите комментарии"
                     Text="{Binding Comment, Mode=TwoWay}" />

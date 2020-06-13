@@ -1,10 +1,11 @@
+using System;
 using System.Collections.Generic;
 
 namespace DocManager.Core
 {
     public class Protocol : Document
     {
-        public static string GetNameForProtocol(string species, string order)
+        protected override string GetNameForDocument(string species, string order)
         {
             var dictionary = new Dictionary<string, string>
             {
@@ -19,6 +20,19 @@ namespace DocManager.Core
             };
 
             return dictionary[species];
+        }
+
+        public Protocol New(string species, DateTime? dateTime, string order, string performer = "Астахов П.Ю.")
+        { 
+            return new Protocol
+            {
+                Species = species,
+                Path = "not specified",
+                Date = dateTime,
+                Dates = dateTime.ToString(),
+                Name = GetNameForDocument(species, order),
+                Perfomer = performer,
+            };
         }
     }
 }

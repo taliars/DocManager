@@ -8,7 +8,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:usercontrols="clr-namespace:DocManager.View.UserControls"
     Title="DocManager"
-    Width="800"
+    Width="900"
     Height="600"
     
     GlowBrush="Black"
@@ -54,7 +54,7 @@
             </TabControl.Resources>
 
             <TabItem Header="ДАННЫЕ ЗАКАЗА">
-                <usercontrols:Customer Margin="15" />
+                <usercontrols:Customer Margin="15" KeyDown="Customer_KeyDown" />
             </TabItem>
 
             <TabItem Header="ПРОТОКОЛЫ">
@@ -82,6 +82,18 @@
                     <usercontrols:ActDataGrid Grid.Row="0" />
                     <GridSplitter Grid.Row="1" />
                     <usercontrols:TabControlDeviceMeteo Grid.Row="2" />
+                </Grid>
+            </TabItem>
+
+            <TabItem Header="ДРУГИЕ ДОКУМЕНТЫ">
+                <Grid Margin="15">
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+
+                    <usercontrols:AdditionalDocumentsGrid Grid.Row="0" Grid.RowSpan="3" />
                 </Grid>
             </TabItem>
         </controls:MetroAnimatedTabControl>

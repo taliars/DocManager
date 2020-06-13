@@ -96,6 +96,9 @@
     <Compile Include="UserControls\ActDataGrid.xaml.cs">
       <DependentUpon>ActDataGrid.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\AdditionalDocumentsGrid.xaml.cs">
+      <DependentUpon>AdditionalDocumentsGrid.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\CustomerControl.xaml.cs">
       <DependentUpon>CustomerControl.xaml</DependentUpon>
     </Compile>
@@ -132,6 +135,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="UserControls\ActDataGrid.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\AdditionalDocumentsGrid.xaml">
+      <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UserControls\CustomerControl.xaml">

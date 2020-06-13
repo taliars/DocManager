@@ -1,6 +1,8 @@
 ﻿using DocManager.ViewModel;
 using MahApps.Metro.Controls;
 using MahApps.Metro.Controls.Dialogs;
+using System;
+using System.Windows.Controls;
 
 namespace DocManager.View
 {
@@ -27,20 +29,44 @@ namespace DocManager.View
             if (_shutdown) return;
             var mySettings = new MetroDialogSettings()
             {
-                AffirmativeButtonText = "Quit",
-                NegativeButtonText = "Cancel",
-                AnimateShow = true,
+                AffirmativeButtonText = "Выйти",
+                NegativeButtonText = "Отмена",
+                AnimateShow = false,
                 AnimateHide = false
             };
-            var result = await this.ShowMessageAsync("Quit application?",
-                "Sure you want to quit application?",
+            var result = await this.ShowMessageAsync("Выйти из приложение",
+                "Есть не сохраненные данные. Отменить изменения и выйти?",
                 MessageDialogStyle.AffirmativeAndNegative, mySettings);
 
             _shutdown = result == MessageDialogResult.Affirmative;
             if (_shutdown)
             {
                 viewModel.ObjectData.Save();
+                Environment.Exit(0);
             }
+        }
+
+        private async void Customer_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
+        {
+            var s = (sender as TextBox)?.Text;
+
+            if (viewModel.ObjectData.Order == "125")
+            {
+                return;
+            }
+
+            var mySettings = new MetroDialogSettings()
+            {
+                AffirmativeButtonText = "Создать",
+                NegativeButtonText = "Отмена",
+                AnimateShow = true,
+                AnimateHide = false
+            };
+            var result = await this.ShowMessageAsync("Заказ не найден",
+                "Заказ с указанным номером не найден. Создать новый?",
+                MessageDialogStyle.AffirmativeAndNegative, mySettings);
+
+            var decision = result == MessageDialogResult.Affirmative;
         }
     }
 }
