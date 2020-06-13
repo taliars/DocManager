@@ -1,4 +1,5 @@
-﻿using System.Windows.Controls;
+﻿using DocManager.ViewModel;
+using System.Windows.Controls;
 
 namespace DocManager.View.UserControls
 {
@@ -10,6 +11,7 @@ namespace DocManager.View.UserControls
         public Settings()
         {
             InitializeComponent();
+            this.DataContext = new SettingsViewModel();
         }
     }
 }

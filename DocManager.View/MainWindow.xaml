@@ -4,9 +4,9 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:local="clr-namespace:DocManager.ViewModel;assembly=DocManager.ViewModel"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:usercontrols="clr-namespace:DocManager.View.UserControls"
+
     Title="DocManager"
     Width="900"
     Height="600"
@@ -58,6 +58,11 @@
         </DataTemplate>
     </Window.Resources>
 
+    <controls:MetroWindow.RightWindowCommands>
+        <controls:WindowCommands>
+            <Button Click="Button_Click" Content="Settings" ToolTip="Application settings"/>
+        </controls:WindowCommands>
+    </controls:MetroWindow.RightWindowCommands>
 
     <controls:HamburgerMenu 
         x:Name="HamburgerMenuControl"
@@ -80,10 +85,6 @@
         <controls:HamburgerMenu.ItemsSource>
            
             <controls:HamburgerMenuItemCollection>
-                <controls:HamburgerMenuItem>
-                   
-                </controls:HamburgerMenuItem>
-
                 <controls:HamburgerMenuGlyphItem Glyph="" Label="Home" >
                     <controls:HamburgerMenuGlyphItem.Tag>
                         <usercontrols:Home />

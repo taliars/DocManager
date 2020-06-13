@@ -40,6 +40,7 @@
     <Compile Include="ViewModels\InnerObjectDataViewModel.cs" />
     <Compile Include="Lists.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
+    <Compile Include="ViewModels\SettingsViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="PresentationCore" />

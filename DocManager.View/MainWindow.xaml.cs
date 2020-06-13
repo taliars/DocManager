@@ -11,15 +11,12 @@ namespace DocManager.View
     /// </summary>
     public partial class MainWindow : MetroWindow
     {
-        public MainViewModel viewModel;
-
         private bool _shutdown;
 
         public MainWindow()
         {
             InitializeComponent();
-            viewModel = new MainViewModel();
-            this.DataContext = viewModel;
+
             this.Closing += MainWindow_Closing;
             this.HamburgerMenuControl.SelectedIndex = 0;
         }
@@ -35,45 +32,27 @@ namespace DocManager.View
                 AnimateShow = false,
                 AnimateHide = false
             };
-            var result = await this.ShowMessageAsync("Выйти из приложение",
+            var result = await this.ShowMessageAsync("Выйти из приложения",
                 "Есть не сохраненные данные. Отменить изменения и выйти?",
                 MessageDialogStyle.AffirmativeAndNegative, mySettings);
 
             _shutdown = result == MessageDialogResult.Affirmative;
             if (_shutdown)
             {
-                viewModel.ObjectData.Save();
                 Environment.Exit(0);
             }
-        }
-
-        private async void Customer_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
-        {
-            var s = (sender as TextBox)?.Text;
-
-            if (viewModel.ObjectData.Order == "125")
-            {
-                return;
-            }
-
-            var mySettings = new MetroDialogSettings()
-            {
-                AffirmativeButtonText = "Создать",
-                NegativeButtonText = "Отмена",
-                AnimateShow = true,
-                AnimateHide = false
-            };
-            var result = await this.ShowMessageAsync("Заказ не найден",
-                "Заказ с указанным номером не найден. Создать новый?",
-                MessageDialogStyle.AffirmativeAndNegative, mySettings);
-
-            var decision = result == MessageDialogResult.Affirmative;
         }
 
         private void HamburgerMenuControl_ItemClick(object sender, ItemClickEventArgs e)
         {
             this.HamburgerMenuControl.Content = e.ClickedItem;
             this.HamburgerMenuControl.IsPaneOpen = false;
+        }
+
+        private void Button_Click(object sender, System.Windows.RoutedEventArgs e)
+        {
+            this.HamburgerMenuControl.SelectedIndex = 1;
+            this.HamburgerMenuControl.Content = HamburgerMenuControl.Items[1];
         }
     }
 }
