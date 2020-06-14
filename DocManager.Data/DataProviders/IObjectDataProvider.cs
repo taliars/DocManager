@@ -2,10 +2,10 @@
 
 namespace DocManager.Data.DataProviders
 {
-    public interface IObjectDataProvider
+    public interface IOrderDataProvider
     {
-        ObjectData ObjectData { get; }
+        OrderData OrderData { get; }
 
-        void Save(ObjectData objectData);
+        void Save();
     }
 }

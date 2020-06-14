@@ -1,18 +1,17 @@
 ﻿using DocManager.Core;
-using DocManager.Data.Xml;
 
 namespace DocManager.Data.DataProviders
 {
-    public class XmlObjectInfoProvider : DataProviderBase, IObjectDataProvider
+    public class XmlObjectInfoProvider : DataProviderBase, IOrderDataProvider
     {
-        public ObjectData ObjectData { get; }
+        public OrderData OrderData { get; }
 
         public XmlObjectInfoProvider()
         {
-            ObjectData = XmlReader.ReadObjectInfo(WorkingFolderPath("abc.xml"));
+            throw new System.NotImplementedException();
         }
 
-        public void Save(ObjectData objectData)
+        public void Save()
         {
             throw new System.NotImplementedException();
         }

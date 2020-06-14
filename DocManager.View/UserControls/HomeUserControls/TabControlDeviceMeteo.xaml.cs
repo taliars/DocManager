@@ -8,6 +8,12 @@
         public TabControlDeviceMeteo()
         {
             InitializeComponent();
+            DataContextChanged += TabControlDeviceMeteo_DataContextChanged;
+        }
+
+        private void TabControlDeviceMeteo_DataContextChanged(object sender, System.Windows.DependencyPropertyChangedEventArgs e)
+        {
+            var context = this.DataContext;
         }
     }
 }

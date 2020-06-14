@@ -36,6 +36,7 @@
     <Compile Include="Device.cs" />
     <Compile Include="Document.cs" />
     <Compile Include="ObjectData.cs" />
+    <Compile Include="OrderData.cs" />
     <Compile Include="Protocol.cs" />
     <Compile Include="Settings.cs" />
     <Compile Include="WeatherDay.cs" />

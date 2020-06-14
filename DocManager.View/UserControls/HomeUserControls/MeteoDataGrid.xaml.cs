@@ -8,6 +8,12 @@
         public MeteoDataGrid()
         {
             InitializeComponent();
+            DataContextChanged += MeteoDataGrid_DataContextChanged;
+        }
+
+        private void MeteoDataGrid_DataContextChanged(object sender, System.Windows.DependencyPropertyChangedEventArgs e)
+        {
+            var context = this.DataContext;
         }
     }
 }

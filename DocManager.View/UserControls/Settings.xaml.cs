@@ -11,7 +11,6 @@ namespace DocManager.View.UserControls
         public Settings()
         {
             InitializeComponent();
-            this.DataContext = new SettingsViewModel();
-        }
+        }      
     }
 }

@@ -3,19 +3,19 @@ using DocManager.Data.Json;
 
 namespace DocManager.Data.DataProviders
 {
-    public class JsonDataProvider : DataProviderBase, IObjectDataProvider
+    public class JsonDataProvider : DataProviderBase, IOrderDataProvider
     {
         public JsonDataProvider(string name)
         {
             fullPath = WorkingFolderPath($"{name}.json");
-            ObjectData = JsonReader.Deserialize<ObjectData>(fullPath);
+            OrderData = JsonReader.Deserialize<OrderData>(fullPath);
         }
 
-        public ObjectData ObjectData { get; }
+        public OrderData OrderData { get; }
 
-        public void Save(ObjectData objectData)
+        public void Save()
         {
-            JsonReader.Serialize(objectData, fullPath);
+            JsonReader.Serialize(OrderData, fullPath);
         }
     }
 }

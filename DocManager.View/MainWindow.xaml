@@ -60,55 +60,10 @@
 
     <controls:MetroWindow.RightWindowCommands>
         <controls:WindowCommands>
-            <Button Click="Button_Click" Content="Settings" ToolTip="Application settings"/>
         </controls:WindowCommands>
     </controls:MetroWindow.RightWindowCommands>
 
-    <controls:HamburgerMenu 
-        x:Name="HamburgerMenuControl"
-                        ItemTemplate="{StaticResource MenuItemTemplate}"
-                        OptionsItemTemplate="{StaticResource MenuItemTemplate}"
-                        DisplayMode="CompactInline"
-                            ItemClick="HamburgerMenuControl_ItemClick" >
+    <usercontrols:Home/>
 
-        <controls:HamburgerMenu.ContentTemplate>
-            <DataTemplate DataType="{x:Type controls:HamburgerMenuItem}">
-                <Grid x:Name="TheContentGrid" Margin="20">
-                    <ContentControl x:Name="TheContent"                         
-                            Focusable="False"
-                            Foreground="{DynamicResource BlackBrush}"
-                            Content="{Binding Tag}" />
-                </Grid>
-            </DataTemplate>
-        </controls:HamburgerMenu.ContentTemplate>
-
-        <controls:HamburgerMenu.ItemsSource>
-           
-            <controls:HamburgerMenuItemCollection>
-                <controls:HamburgerMenuGlyphItem Glyph="" Label="Home" >
-                    <controls:HamburgerMenuGlyphItem.Tag>
-                        <usercontrols:Home />
-                    </controls:HamburgerMenuGlyphItem.Tag>
-                </controls:HamburgerMenuGlyphItem>
-
-                <!--<controls:HamburgerMenuGlyphItem Glyph="" Label="Private">
-                    <controls:HamburgerMenuGlyphItem.Tag>
-                        <usercontrols:ActDataGrid />
-                    </controls:HamburgerMenuGlyphItem.Tag>
-                </controls:HamburgerMenuGlyphItem>-->
-
-                <controls:HamburgerMenuGlyphItem Glyph="" Label="Settings">
-                    <controls:HamburgerMenuGlyphItem.Tag>
-                        <usercontrols:Settings />
-                    </controls:HamburgerMenuGlyphItem.Tag>
-                </controls:HamburgerMenuGlyphItem>
-            </controls:HamburgerMenuItemCollection>
-        </controls:HamburgerMenu.ItemsSource>
-
-        <controls:HamburgerMenu.Content>
-            <usercontrols:Home/>
-        </controls:HamburgerMenu.Content>
-
-    </controls:HamburgerMenu>
 
 </controls:MetroWindow>

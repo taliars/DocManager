@@ -10,40 +10,41 @@
 
     <Grid>
         <DataGrid
+            x:Name="r"
             VerticalAlignment="Top"
             AutoGenerateColumns="False"
             ColumnWidth="*"
-            ItemsSource="{Binding ObjectData.Protocols.Protocols}"
-            SelectedItem="{Binding ObjectData.SelectedProtocol}">
+            DataContext="{Binding ProtocolViewModel}"
+            ItemsSource="{Binding Protocols}"
+            SelectedItem="{Binding SelectedProtocol}">
 
             <DataGrid.ContextMenu>
                 <ContextMenu>
-                    <MenuItem Header=" Открыть" Command="{Binding ObjectData.OpenProtocol}" CommandParameter="{Binding ObjectData.SelectedProtocol}" Icon="{StaticResource icon_file_edit}" />
+                    <MenuItem Header=" Открыть" Command="{Binding OpenProtocol}" CommandParameter="{Binding ObjectData.SelectedProtocol}" Icon="{StaticResource icon_file_edit}" />
                     <MenuItem Header=" Добавить" Icon="{StaticResource icon_file_add}">
                         <MenuItem.Items>
-                            <MenuItem Header="Шум" Command="{Binding ObjectData.AddProtocol}" CommandParameter="Шум"/>
-                            <MenuItem Header="Инфразвук" Command="{Binding ObjectData.AddProtocol}" CommandParameter="Инфразвук"/>
-                            <MenuItem Header="Вибрация" Command="{Binding ObjectData.AddProtocol}" CommandParameter="Вибрация"/>
-                            <MenuItem Header="ЭМИ 50 Гц" Command="{Binding ObjectData.AddProtocol}" CommandParameter="ЭМИ 50 Гц"/>
+                            <MenuItem Header="Шум" Command="{Binding AddProtocol}" CommandParameter="Шум"/>
+                            <MenuItem Header="Инфразвук" Command="{Binding AddProtocol}" CommandParameter="Инфразвук"/>
+                            <MenuItem Header="Вибрация" Command="{Binding AddProtocol}" CommandParameter="Вибрация"/>
+                            <MenuItem Header="ЭМИ 50 Гц" Command="{Binding AddProtocol}" CommandParameter="ЭМИ 50 Гц"/>
                             <Separator />
-                            <MenuItem Header="Радиация" Command="{Binding ObjectData.AddProtocol}" CommandParameter="Радиация"/>
-                            <MenuItem Header="Радионуклиды" Command="{Binding ObjectData.AddProtocol}" CommandParameter="Радионуклиды"/>
+                            <MenuItem Header="Радиация" Command="{Binding AddProtocol}" CommandParameter="Радиация"/>
+                            <MenuItem Header="Радионуклиды" Command="{Binding AddProtocol}" CommandParameter="Радионуклиды"/>
                             <Separator />
-                            <MenuItem Header="Почва" Command="{Binding ObjectData.AddProtocol}" CommandParameter="Почва"/>
-                            <MenuItem Header="Вода" Command="{Binding ObjectData.AddProtocol}" CommandParameter="Вода"/>
-                            <MenuItem Header="Воздух" Command="{Binding ObjectData.AddProtocol}" CommandParameter="Воздух"/>
+                            <MenuItem Header="Почва" Command="{Binding AddProtocol}" CommandParameter="Почва"/>
+                            <MenuItem Header="Вода" Command="{Binding AddProtocol}" CommandParameter="Вода"/>
+                            <MenuItem Header="Воздух" Command="{Binding AddProtocol}" CommandParameter="Воздух"/>
                         </MenuItem.Items>
                     </MenuItem>
-                    <MenuItem Header=" Удалить" Command="{Binding ObjectData.RemoveProtocol}" CommandParameter="{Binding ObjectData.SelectedProtocol}" Icon="{StaticResource icon_delete}" />
+                    <MenuItem Header=" Удалить" Command="{Binding RemoveProtocol}" CommandParameter="{Binding SelectedProtocol}" Icon="{StaticResource icon_delete}" />
                     <Separator />
-                    <MenuItem Header=" Открыть папку" Command="{Binding ObjectData.OpenFolder}" Icon="{StaticResource icon_folder_open}" />
+                    <MenuItem Header=" Открыть папку" Command="{Binding OpenFolder}" Icon="{StaticResource icon_folder_open}" />
                     <Separator />
-                    <MenuItem Header=" Экспортировать в PDF" Command="{Binding ObjectData.ExportToPDF}" Icon="{StaticResource icon_exportpdf}" />
+                    <MenuItem Header=" Экспортировать в PDF" Command="{Binding ExportToPDF}" Icon="{StaticResource icon_exportpdf}" />
                     <Separator />
                     <MenuItem Header="Справка" Icon="{StaticResource icon_information_circle}" />
                 </ContextMenu>
             </DataGrid.ContextMenu>
-
 
             <DataGrid.Columns>
                 <DataGridTemplateColumn Header="Вид работ" SortMemberPath="Species">

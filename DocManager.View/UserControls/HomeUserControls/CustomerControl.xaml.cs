@@ -1,6 +1,4 @@
-﻿using MahApps.Metro.Controls.Dialogs;
-
-namespace DocManager.View.UserControls
+﻿namespace DocManager.View.UserControls
 {
     /// <summary>
     /// Interaction logic for CustomerInfo.xaml
@@ -11,7 +9,7 @@ namespace DocManager.View.UserControls
         {
             InitializeComponent();
         }
-
+  
         //public delegate void TextBoxKeyDown(object sender, System.Windows.Input.KeyEventArgs e);
 
         //public event TextBoxKeyDown TextBoxKeyDownChanged;

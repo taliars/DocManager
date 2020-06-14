@@ -1,4 +1,6 @@
-﻿namespace DocManager.View.UserControls
+﻿using System.Windows.Controls;
+
+namespace DocManager.View.UserControls
 {
     /// <summary>
     /// Interaction logic for ProtocolControl.xaml
@@ -9,5 +11,5 @@
         {
             InitializeComponent();
         }
-    }
+      }
 }

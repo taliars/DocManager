@@ -15,18 +15,19 @@
             VerticalAlignment="Top"
             AutoGenerateColumns="False"
             ColumnWidth="*"
-            ItemsSource="{Binding ObjectData.WeatherDays.Weatherdays}"
-            SelectedItem="{Binding ObjectData.SelectedWeatherDay}">
+            DataContext="{Binding WeatherDaysViewModel}"
+            ItemsSource="{Binding WeatherDays}"
+            SelectedItem="{Binding SelectedWeatherDay}">
 
             <DataGrid.ContextMenu>
                 <ContextMenu>
                     <MenuItem
-                        Command="{Binding ObjectData.AddDate}"
+                        Command="{Binding AddDate}"
                         Header="Добавить дату"
                         Icon="{DynamicResource icon_add}" />
                     <MenuItem
-                        Command="{Binding ObjectData.RemoveDate}"
-                        CommandParameter="{Binding ObjectData.SelectedWeatherDay}"
+                        Command="{Binding RemoveDate}"
+                        CommandParameter="{Binding SelectedWeatherDay}"
                         Header="Удалить дату"
                         Icon="{DynamicResource icon_delete}" />
 
@@ -45,12 +46,12 @@
                     SortMemberPath="IsSelected">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <CheckBox HorizontalAlignment="Center" IsChecked="{Binding IsSelected, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                            <CheckBox HorizontalAlignment="Center" IsChecked="{Binding IsSelected, Mode=TwoWay}" />
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                     <DataGridTemplateColumn.CellEditingTemplate>
                         <DataTemplate>
-                            <CheckBox HorizontalAlignment="Center" IsChecked="{Binding IsSelected, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                            <CheckBox HorizontalAlignment="Center" IsChecked="{Binding IsSelected, Mode=TwoWay}" />
                         </DataTemplate>
                     </DataGridTemplateColumn.CellEditingTemplate>
                 </DataGridTemplateColumn>
