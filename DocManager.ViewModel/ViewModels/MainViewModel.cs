@@ -1,9 +1,12 @@
-﻿using DocManager.Data.DataProviders;
+﻿using DocManager.Core;
+using DocManager.Data.DataProviders;
+using DocManager.Services;
 using DocManager.ViewModel.Common;
+using System.Threading.Tasks;
 
 namespace DocManager.ViewModel
 {
-    public class MainViewModel 
+    public class MainViewModel : PropertyChangedBase
     {
         private IOrderDataProvider _objectDataProvider;
 
@@ -24,6 +27,15 @@ namespace DocManager.ViewModel
             _objectDataProvider.Save();
         }
 
+        public RelayCommand PrintToWord =>
+                new RelayCommand(async o =>
+                {
+                    var objectData = ObjectDataViewModel.ToObjectData();
+                    var orderData = new OrderData { ObjectData = objectData };
+                    await Task.Run(() => WordService.WriteWord(orderData, TemplateType.Vibration));
+                });
+
+
         public MainViewModel()
         {
             _objectDataProvider = new JsonDataProvider("abc");
@@ -38,5 +50,7 @@ namespace DocManager.ViewModel
             ObjectDataViewModel.Order = "123";
             ObjectDataViewModel.CustomerAddress = "asdasd";
         }
+
+
     }
 }

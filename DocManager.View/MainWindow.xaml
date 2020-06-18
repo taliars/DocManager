@@ -16,47 +16,6 @@
     
     mc:Ignorable="d">
 
-    <Window.Resources>
-        <DataTemplate x:Key="MenuItemTemplate" DataType="{x:Type controls:HamburgerMenuGlyphItem}">
-            <Grid Height="48">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="48" />
-                    <ColumnDefinition />
-                </Grid.ColumnDefinitions>
-                <TextBlock Grid.Column="0"
-                    FontSize="16"
-                    HorizontalAlignment="Center"
-                    VerticalAlignment="Center"
-                    FontFamily="Segoe MDL2 Assets"
-                    Foreground="White"
-                    Text="{Binding Glyph}" />
-                <TextBlock Grid.Column="1"
-                    VerticalAlignment="Center"
-                    FontSize="16"
-                    Foreground="White"
-                    Text="{Binding Label}" />
-            </Grid>
-        </DataTemplate>
-        <DataTemplate x:Key="MenuItemTemplate2" DataType="{x:Type controls:HamburgerMenuItem}">
-            <Grid Height="48">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="48" />
-                    <ColumnDefinition />
-                </Grid.ColumnDefinitions>
-                <TextBlock Grid.Column="0"
-                    FontSize="16"
-                    HorizontalAlignment="Center"
-                    VerticalAlignment="Center"
-                    FontFamily="Segoe MDL2 Assets"
-                    Foreground="White"
-                    Text="{Binding Glyph}" />
-                <Grid Grid.Column="1"
-                    VerticalAlignment="Center"  >
-                    <Label Content="Поиск"/>
-                </Grid>
-            </Grid>
-        </DataTemplate>
-    </Window.Resources>
 
     <controls:MetroWindow.RightWindowCommands>
         <controls:WindowCommands>

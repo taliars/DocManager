@@ -58,6 +58,10 @@
       <Project>{f51b5dcb-b434-4e31-bd61-0d3f54a515c8}</Project>
       <Name>DocManager.Data</Name>
     </ProjectReference>
+    <ProjectReference Include="..\DocManager.Services.Word\DocManager.Services.Word.csproj">
+      <Project>{acf9eb16-75af-4dfa-92cc-6664440fabf5}</Project>
+      <Name>DocManager.Services.Word</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

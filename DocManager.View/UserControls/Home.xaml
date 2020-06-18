@@ -8,62 +8,78 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800" DataContext="{Binding}" >
 
-    <controls:MetroAnimatedTabControl
+    <Grid>
+
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition Height="Auto"/>
+
+        </Grid.RowDefinitions>
+
+
+        <controls:MetroAnimatedTabControl
     
         controls:TabControlHelper.Transition="Up"
         controls:TabControlHelper.UnderlineMouseOverBrush="Aquamarine"
         controls:TabControlHelper.Underlined="TabPanel"
         controls:TabStripPlacement="Top">
 
-        <TabControl.Resources>
-            <Style TargetType="{x:Type TabPanel}">
-                <Setter Property="HorizontalAlignment" Value="Center" />
-            </Style>
-        </TabControl.Resources>
+            <TabControl.Resources>
+                <Style TargetType="{x:Type TabPanel}">
+                    <Setter Property="HorizontalAlignment" Value="Center" />
+                </Style>
+            </TabControl.Resources>
 
-        <TabItem Header="ДАННЫЕ ЗАКАЗА">
-            <usercontrols:Customer Margin="15" />
-        </TabItem>
+            <TabItem Header="ДАННЫЕ ЗАКАЗА">
+                <usercontrols:Customer Margin="15" />
+            </TabItem>
 
-        <TabItem Header="ПРОТОКОЛЫ">
-            <Grid Margin="15">
-                <Grid.RowDefinitions>
-                    <RowDefinition />
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition />
-                </Grid.RowDefinitions>
+            <TabItem Header="ПРОТОКОЛЫ">
+                <Grid Margin="15">
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
 
-                <usercontrols:ProtocolDataGrid Grid.Row="0" />
-                <GridSplitter Grid.Row="1" Height="5" />
-                <usercontrols:TabControlDeviceMeteo Grid.Row="2" />
-            </Grid>
-        </TabItem>
+                    <usercontrols:ProtocolDataGrid Grid.Row="0" />
+                    <GridSplitter Grid.Row="1" Height="5" />
+                    <usercontrols:TabControlDeviceMeteo Grid.Row="2" />
+                </Grid>
+            </TabItem>
 
-        <TabItem Header="АКТЫ">
-            <Grid Margin="15">
-                <Grid.RowDefinitions>
-                    <RowDefinition />
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition />
-                </Grid.RowDefinitions>
+            <TabItem Header="АКТЫ">
+                <Grid Margin="15">
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
 
-                <usercontrols:ActDataGrid Grid.Row="0" />
-                <GridSplitter Grid.Row="1" />
-                <usercontrols:TabControlDeviceMeteo Grid.Row="2" />
-            </Grid>
-        </TabItem>
+                    <usercontrols:ActDataGrid Grid.Row="0" />
+                    <GridSplitter Grid.Row="1" />
+                    <usercontrols:TabControlDeviceMeteo Grid.Row="2" />
+                </Grid>
+            </TabItem>
 
-        <TabItem Header="ДРУГИЕ ДОКУМЕНТЫ">
-            <Grid Margin="15">
-                <Grid.RowDefinitions>
-                    <RowDefinition />
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition />
-                </Grid.RowDefinitions>
+            <TabItem Header="ДРУГИЕ ДОКУМЕНТЫ">
+                <Grid Margin="15">
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
 
-                <usercontrols:AdditionalDocumentsGrid Grid.Row="0" Grid.RowSpan="3" />
-            </Grid>
-        </TabItem>
-    </controls:MetroAnimatedTabControl>
+                    <usercontrols:AdditionalDocumentsGrid Grid.Row="0" Grid.RowSpan="3" />
+                </Grid>
+            </TabItem>
 
+        </controls:MetroAnimatedTabControl>
+
+        <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Right">
+            <Button  Content="Save" Command="{Binding PrintToWord}" Margin="10" Width="100" />
+            <Button  Content="Close" Margin="10" Width="100" />
+        </StackPanel>
+
+    </Grid>
 </UserControl>

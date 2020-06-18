@@ -1,30 +1,59 @@
+using DocManager.Core;
+using System.Collections.Generic;
+using Word = Microsoft.Office.Interop.Word;
+
 namespace DocManager.Services
 {
+    public enum TemplateType
+    {
+        Noise,
+        NoiseRailway,
+        NoiseAvia,
+        Emi,
+        Radiation,
+        Infrasound,
+        Vibration,
+    }
+
     public class WordService
     {
-        //private static word.Application wordApp;
-        //private static word.Document wordDoc;
+        private static readonly string commonPath = @"D:\m\DocManager\норд\формы протоколов\";
 
+        private static readonly string finalPath = @"D:\m\DocManager\норд\final\";
 
-        //public static void WriteWord(ObjectInfo objectinfo)
-        //{
-        //    wordApp = new word.Application();
+        private static readonly Dictionary<TemplateType, string> templateProtocolPaths = new Dictionary<TemplateType, string>
+        {
+            [TemplateType.Noise] = "шум.docx",
+            [TemplateType.NoiseAvia] = @"шум авиа.docx",
+            [TemplateType.Radiation] = @"шум жд.docx",
+            [TemplateType.Emi] = @"эми.docx",
+            [TemplateType.Radiation] = @"радиация.docx",
+            [TemplateType.Infrasound] = @"инфразвук.docx",
+            [TemplateType.Vibration] = @"вибрация.docx",
+        };
 
-        //    string FileName = @"C:\Users\El-Dabaa\Desktop\шаблоны\ш новый шаблон от 24.08.17.docx";
-        //    wordDoc = wordApp.Documents.Open(FileName);
+        public static void WriteWord(OrderData orderData, TemplateType template)
+        {
+            var wordApp = new Word.Application();
+            string templateFilePath = $"{commonPath}{templateProtocolPaths[template]}";
+            string finalFilePath = $"{finalPath}{templateProtocolPaths[template]}";
 
-        //    wordDoc.Variables["ObjectName"].Value = objectinfo.ObjectName;
-        //    wordDoc.Variables["ObjectAddress"].Value = objectinfo.ObjectAddress;
-        //    wordDoc.Variables["CustomerName"].Value = objectinfo.CustomerName;
-        //    wordDoc.Variables["CustomerAddress"].Value = objectinfo.CustomerAddress;
-        //    wordDoc.Variables["Measurement"].Value = objectinfo.Measurement;
-        //    wordDoc.Variables["Purpose"].Value = objectinfo.Purpose;
-        //    wordDoc.Variables["Order"].Value = objectinfo.Order;
+            var wordDoc = wordApp.Documents.Open(templateFilePath);
+            var objectData = orderData.ObjectData;
 
-        //    wordDoc.Fields.Update();
+            wordDoc.Variables["ObjectName"].Value = objectData.ObjectName;
+            wordDoc.Variables["ObjectAddress"].Value = objectData.ObjectAddress;
+            wordDoc.Variables["CustomerName"].Value = objectData.CustomerName;
+            wordDoc.Variables["CustomerAddress"].Value = objectData.CustomerAddress;
+            wordDoc.Variables["Purpose"].Value = objectData.Purpose;
+            wordDoc.Variables["Order"].Value = objectData.Order;
 
-        //    wordApp.Visible = true;
-        //    wordDoc.Save();
-        //}
+            wordDoc.Fields.Update();
+
+            wordDoc.SaveAs2(finalFilePath);
+
+            wordDoc.Close();
+            wordApp.Quit();
+        }
     }
 }
