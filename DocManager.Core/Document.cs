@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 
 namespace DocManager.Core
 {
@@ -10,7 +11,5 @@ namespace DocManager.Core
         public string Dates { get; set; }
         public string Perfomer { get; set; }
         public string Path { get; set; }
-
-        protected abstract string GetNameForDocument(string species, string order);
     }
 }

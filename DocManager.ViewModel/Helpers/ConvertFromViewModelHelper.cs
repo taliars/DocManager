@@ -2,15 +2,10 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
-namespace DocManager.ViewModel
+namespace DocManager.ViewModel.Helpers
 {
-    internal static class Converter
+    internal static class ConvertFromViewModelHelper
     {
-        private static ObservableCollection<T> ToObservableCollection<T>(this IEnumerable<T> collection)
-        {
-            return collection == null ? null : new ObservableCollection<T>(collection);
-        }
-
         public static ObjectData ToObjectData(this ObjectDataViewModel viewModel)
         {
             return viewModel == null ? null : new ObjectData

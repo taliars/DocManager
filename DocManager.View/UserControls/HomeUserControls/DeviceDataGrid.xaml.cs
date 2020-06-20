@@ -8,6 +8,12 @@
         public DeviceDataGrid()
         {
             InitializeComponent();
+            DataContextChanged += DeviceDataGrid_DataContextChanged;
+        }
+
+        private void DeviceDataGrid_DataContextChanged(object sender, System.Windows.DependencyPropertyChangedEventArgs e)
+        {
+            var context = this.DataContext;
         }
     }
 }

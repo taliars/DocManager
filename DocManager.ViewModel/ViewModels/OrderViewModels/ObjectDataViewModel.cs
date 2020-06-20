@@ -1,4 +1,5 @@
-﻿using DocManager.Core;
+﻿using System;
+using DocManager.Core;
 using DocManager.ViewModel.Common;
 
 namespace DocManager.ViewModel
@@ -88,9 +89,9 @@ namespace DocManager.ViewModel
             }
         }
 
-        public ObjectDataViewModel(ObjectData objectData)
+        public ObjectDataViewModel(OrderData orderData)
         {
-            this.objectData = objectData ?? new ObjectData();
+            objectData = orderData.ObjectData;
         }
     }
 }

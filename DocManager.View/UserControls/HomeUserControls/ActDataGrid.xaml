@@ -15,7 +15,7 @@
             ColumnWidth="*"
             DataContext="{Binding ActsViewModel}"
             ItemsSource="{Binding Acts}"
-            SelectedItem="{Binding SelectedAct}">
+            SelectedItem="{Binding Selected}">
 
             <DataGrid.ContextMenu>
                 <ContextMenu>
@@ -29,16 +29,41 @@
                         Header=" Добавить"
                         Icon="{StaticResource icon_file_add}">
                         <MenuItem.Items>
-                            <MenuItem Header="Почва" Command="{Binding AddAct}" CommandParameter="Почва"/>
-                            <MenuItem Header="Природная вода"  Command="{Binding AddAct}" CommandParameter="Природная вода"/>
-                            <MenuItem Header="Сточная вода"  Command="{Binding AddAct}" CommandParameter="Сточная вода"/>
-                            <MenuItem Header="Донные отложения"  Command="{Binding AddAct}" CommandParameter="Донные отложения"/>
-                            <MenuItem Header="Воздух"  Command="{Binding AddAct}" CommandParameter="Воздух"/>
-                            <MenuItem Header="Атмосферные осадки"  Command="{Binding AddAct}" CommandParameter="Атмосферные осадки"/>
-                            <MenuItem Header="Отходы"  Command="{Binding AddAct}" CommandParameter="Отходы"/>
+                            <MenuItem
+                                Command="{Binding Add}"
+                                CommandParameter="Почва"
+                                Header="Почва" />
+                            <MenuItem
+                                Command="{Binding Add}"
+                                CommandParameter="Природная вода"
+                                Header="Природная вода" />
+                            <MenuItem
+                                Command="{Binding Add}"
+                                CommandParameter="Сточная вода"
+                                Header="Сточная вода" />
+                            <MenuItem
+                                Command="{Binding Add}"
+                                CommandParameter="Донные отложения"
+                                Header="Донные отложения" />
+                            <MenuItem
+                                Command="{Binding Add}"
+                                CommandParameter="Воздух"
+                                Header="Воздух" />
+                            <MenuItem
+                                Command="{Binding Add}"
+                                CommandParameter="Атмосферные осадки"
+                                Header="Атмосферные осадки" />
+                            <MenuItem
+                                Command="{Binding Add}"
+                                CommandParameter="Отходы"
+                                Header="Отходы" />
                         </MenuItem.Items>
                     </MenuItem>
-                    <MenuItem Header=" Удалить" Icon="{StaticResource icon_delete}" Command="{Binding RemoveAct}" CommandParameter="{Binding SelectedAct}"/>
+                    <MenuItem
+                        Command="{Binding Remove}"
+                        CommandParameter="{Binding Selected}"
+                        Header=" Удалить"
+                        Icon="{StaticResource icon_delete}" />
                     <Separator />
                     <MenuItem Header=" Экспортировать в PDF" Icon="{StaticResource icon_exportpdf}" />
                     <Separator />

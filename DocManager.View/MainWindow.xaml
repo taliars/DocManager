@@ -6,23 +6,123 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:usercontrols="clr-namespace:DocManager.View.UserControls"
-
     Title="DocManager"
     Width="900"
     Height="600"
-    
     GlowBrush="Black"
     ResizeMode="CanResizeWithGrip"
-    
     mc:Ignorable="d">
 
 
     <controls:MetroWindow.RightWindowCommands>
         <controls:WindowCommands>
+            <ToggleButton
+                Content="Настройки"
+                Cursor="Hand"
+                IsChecked="{Binding ElementName=settingsFlyout, Path=IsOpen}" />
+            <ToggleButton
+                Content="Заказы"
+                Cursor="Hand"
+                IsChecked="{Binding ElementName=ordersFlyout, Path=IsOpen}" />
         </controls:WindowCommands>
+
     </controls:MetroWindow.RightWindowCommands>
 
-    <usercontrols:Home/>
+    <controls:MetroWindow.Flyouts>
+        <controls:FlyoutsControl>
+            <controls:Flyout
+                x:Name="settingsFlyout"
+                Width="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType=controls:MetroWindow}, Path=ActualWidth}"
+                Header="Настройки">
+                <Grid>
+                    <Grid.RowDefinitions>
+
+                        <RowDefinition />
+                        <RowDefinition Height="15" />
+                        <RowDefinition />
+                        <RowDefinition Height="15" />
+                        <RowDefinition />
+                        <RowDefinition Height="15" />
+                        <RowDefinition />
+                        <RowDefinition Height="15" />
+                        <RowDefinition Height="Auto" />
+
+                    </Grid.RowDefinitions>
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="160" />
+                        <ColumnDefinition Width="150" />
+                        <ColumnDefinition Width="100" />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+
+                    <Label Grid.Row="2" Content="Объект:" />
+
+                    <TextBox
+                        Grid.Row="2"
+                        Grid.Column="1"
+                        Grid.ColumnSpan="3"
+                        VerticalAlignment="Stretch"
+                        controls:TextBoxHelper.ClearTextButton="True"
+                        controls:TextBoxHelper.Watermark="Введите наименование объекта"
+                        AcceptsReturn="True"
+                        Text="{Binding ObjectName, Mode=TwoWay}"
+                        TextWrapping="Wrap" />
+
+                    <Label Grid.Row="4" Content="Адрес объекта:" />
+
+                    <TextBox
+                        Grid.Row="4"
+                        Grid.Column="1"
+                        Grid.ColumnSpan="3"
+                        controls:TextBoxHelper.ClearTextButton="True"
+                        controls:TextBoxHelper.Watermark="Введите адрес объекта"
+                        Text="{Binding ObjectAddress, Mode=TwoWay}" />
+
+                    <Label Grid.Row="6" Content="Площадь участка:" />
+
+                    <TextBox
+                        Grid.Row="6"
+                        Grid.Column="1"
+                        controls:TextBoxHelper.ClearTextButton="True"
+                        controls:TextBoxHelper.Watermark="в га или кв.м."
+                        Text="{Binding Measurement, Mode=TwoWay}" />
+
+                    <Label
+                        Grid.Row="6"
+                        Grid.Column="2"
+                        Content="Назначение:" />
+
+                    <ComboBox
+                        Grid.Row="6"
+                        Grid.Column="4"
+                        VerticalContentAlignment="Center"
+                        controls:TextBoxHelper.ClearTextButton="True"
+                        controls:TextBoxHelper.Watermark="Выберите назначение объекта"
+                        FontSize="14"
+                        IsEditable="True"
+                        Text="{Binding Purpose, Mode=TwoWay}">
+
+                        <ComboBoxItem>новое строительство</ComboBoxItem>
+                        <ComboBoxItem>реконструкция</ComboBoxItem>
+                    </ComboBox>
+
+                </Grid>
+            </controls:Flyout>
+            <controls:Flyout
+                x:Name="ordersFlyout"
+                Width="235"
+                Header="Заказы"
+                Position="Right">
+                <StackPanel Margin="15">
+                    <TextBox controls:TextBoxHelper.Watermark="Найти..." TextChanged="TextBox_TextChanged" />
+                    <ListBox x:Name="AllOrders" Margin="15" />
+                </StackPanel>
+            </controls:Flyout>
+        </controls:FlyoutsControl>
+    </controls:MetroWindow.Flyouts>
+
+    <usercontrols:Home />
 
 
 </controls:MetroWindow>

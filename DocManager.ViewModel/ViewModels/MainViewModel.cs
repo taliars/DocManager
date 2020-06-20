@@ -1,7 +1,6 @@
-﻿using DocManager.Core;
-using DocManager.Data.DataProviders;
-using DocManager.Services;
+﻿using DocManager.Data.DataProviders;
 using DocManager.ViewModel.Common;
+using System;
 using System.Threading.Tasks;
 
 namespace DocManager.ViewModel
@@ -9,6 +8,8 @@ namespace DocManager.ViewModel
     public class MainViewModel : PropertyChangedBase
     {
         private IOrderDataProvider _objectDataProvider;
+        private string statusMessage;
+        private readonly Func<string, string, Task<bool>> confirm;
 
         public ObjectDataViewModel ObjectDataViewModel { get; set; }
 
@@ -22,35 +23,40 @@ namespace DocManager.ViewModel
 
         public SettingsViewModel SettingsViewModel { get; set; }
 
-        public void Save()
+        public RelayCommand Save => new RelayCommand(async o =>
         {
-            _objectDataProvider.Save();
+            bool delete = await confirm("Сохранить?", "бля");
+
+            if (!delete)
+            {
+                return;
+            }
+
+            await Task.Run(() => _objectDataProvider.Save());
+            StatusMessage = "Saved";
+        });
+
+        public string StatusMessage
+        {
+            get => statusMessage;
+            set
+            {
+                statusMessage = value;
+                NotifyPropertyChanged(nameof(StatusMessage));
+            }
         }
 
-        public RelayCommand PrintToWord =>
-                new RelayCommand(async o =>
-                {
-                    var objectData = ObjectDataViewModel.ToObjectData();
-                    var orderData = new OrderData { ObjectData = objectData };
-                    await Task.Run(() => WordService.WriteWord(orderData, TemplateType.Vibration));
-                });
-
-
-        public MainViewModel()
+        public MainViewModel(Func<string, string, Task<bool>> confirm)
         {
-            _objectDataProvider = new JsonDataProvider("abc");
-            var orderData = _objectDataProvider.OrderData;
+            this.confirm = confirm;
 
-            ObjectDataViewModel = new ObjectDataViewModel(orderData.ObjectData);
-            ProtocolViewModel = new ProtocolViewModel(orderData.Protocols);
-            ActsViewModel = new ActViewModel(orderData.Acts);
+            _objectDataProvider = new JsonDataProvider("abc", "devices");
+            var orderData = _objectDataProvider.OrderData;
+            ObjectDataViewModel = new ObjectDataViewModel(orderData);
+            ProtocolViewModel = new ProtocolViewModel(orderData);
+            ActsViewModel = new ActViewModel(orderData);
             WeatherDaysViewModel = new WeatherDayViewModel(orderData.WeatherDays);
             DevicesViewModel = new DeviceViewModel(orderData.Devices);
-
-            ObjectDataViewModel.Order = "123";
-            ObjectDataViewModel.CustomerAddress = "asdasd";
         }
-
-
     }
 }

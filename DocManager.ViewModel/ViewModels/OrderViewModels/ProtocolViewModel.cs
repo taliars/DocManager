@@ -1,24 +1,27 @@
 ﻿using DocManager.Core;
+using DocManager.Services;
 using DocManager.ViewModel.Common;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Threading.Tasks;
 
 namespace DocManager.ViewModel
 {
-    public class ProtocolViewModel: PropertyChangedBase
+    public class ProtocolViewModel : PropertyChangedBase
     {
+        private readonly OrderData orderData;
+
         private ObservableCollection<Protocol> protocols;
 
-        private Protocol selectedProtocol;
+        private Protocol selected;
 
-        public Protocol SelectedProtocol
+        public Protocol Selected
         {
-            get => selectedProtocol;
+            get => selected;
             set
             {
-                selectedProtocol = value;
-                NotifyPropertyChanged(nameof(SelectedProtocol));
+                selected = value;
+                NotifyPropertyChanged(nameof(Selected));
             }
         }
 
@@ -32,18 +35,30 @@ namespace DocManager.ViewModel
             }
         }
 
-        public RelayCommand AddProtocol => new RelayCommand(o =>
+        public RelayCommand Add => new RelayCommand(async o =>
         {
-            if (!(o is string species))
-            {
-                return;
-            }
+            if (!(o is string species)) { return; }
 
-            protocols.Add((new Protocol()).New(species, DateTime.Now, "123"));
+            var protocol = new Protocol
+            {
+                Date = DateTime.Now,
+                Dates = DateTime.Now.ToShortDateString(),
+                Name = Protocol.GetName(species, orderData.ObjectData.Order),
+                Perfomer = "Астахов",
+                Species = species
+            };
+
+            await Task.Run(() =>
+            {
+                WordService.WriteWord(orderData, protocol, species);
+            });
+
+            protocols.Add(protocol);
+
             NotifyPropertyChanged(nameof(Protocols));
         });
 
-        public RelayCommand RemoveProtocol => new RelayCommand(o =>
+        public RelayCommand Remove => new RelayCommand(o =>
         {
             if (!(o is Protocol protocol))
             {
@@ -54,9 +69,18 @@ namespace DocManager.ViewModel
             NotifyPropertyChanged(nameof(Protocols));
         });
 
-        public ProtocolViewModel(IEnumerable<Protocol> protocols)
+        public RelayCommand Open => new RelayCommand(o =>
         {
-            Protocols = new ObservableCollection<Protocol>(protocols);
+            if (Selected?.Path != null)
+            {
+                System.Diagnostics.Process.Start($"{Selected.Path}.docx");
+            }
+        });
+
+        public ProtocolViewModel(OrderData orderData)
+        {
+            Protocols = new ObservableCollection<Protocol>(orderData.Protocols);
+            this.orderData = orderData;
         }
     }
 }

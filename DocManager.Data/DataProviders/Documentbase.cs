@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using DocManager.Core;
+using System.IO;
 
 namespace DocManager.Data.DataProviders
 {
@@ -7,9 +8,13 @@ namespace DocManager.Data.DataProviders
     {
         private readonly string folderPath;
 
-        protected string fullPath;
+        protected string objectDataPath;
+
+        protected string devicePath;
 
         protected string WorkingFolderPath(string docName) => Path.Combine(folderPath, docName);
+
+        public OrderData OrderData { get; protected set; }
 
         protected DataProviderBase()
         {

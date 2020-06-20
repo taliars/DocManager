@@ -1,24 +1,24 @@
 ﻿using DocManager.Core;
 using DocManager.ViewModel.Common;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
 namespace DocManager.ViewModel
 {
     public class ActViewModel: PropertyChangedBase
     {
-        private Act selectedAct;
+        private Act selected;
 
         private ObservableCollection<Act> acts;
 
-        public Act SelectedAct
+        private readonly OrderData orderData;
+
+        public Act Selected
         {
-            get => selectedAct;
+            get => selected;
             set
             {
-                selectedAct = value;
-                NotifyPropertyChanged(nameof(SelectedAct));
+                selected = value;
+                NotifyPropertyChanged(nameof(Selected));
             }
         }
 
@@ -32,18 +32,18 @@ namespace DocManager.ViewModel
             }
         }
 
-        public RelayCommand AddAct => new RelayCommand(o =>
+        public RelayCommand Add => new RelayCommand(o =>
         {
             if (!(o is string species))
             {
                 return;
             }
 
-            acts.Add(new Act().New(species, DateTime.Now, "123"));
+            acts.Add(new Act());
             NotifyPropertyChanged(nameof(Acts));
         });
 
-        public RelayCommand RemoveAct => new RelayCommand(o =>
+        public RelayCommand Remove => new RelayCommand(o =>
         {
             if (!(o is Act act))
             {
@@ -54,9 +54,10 @@ namespace DocManager.ViewModel
             NotifyPropertyChanged(nameof(Acts));
         });
 
-        public ActViewModel(IEnumerable<Act> acts)
+        public ActViewModel(OrderData orderData)
         {
-            Acts = new ObservableCollection<Act>(acts);
+            Acts = new ObservableCollection<Act>(orderData.Acts);
+            this.orderData = orderData;
         }
     }
 }

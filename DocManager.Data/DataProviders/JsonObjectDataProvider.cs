@@ -1,21 +1,22 @@
 ﻿using DocManager.Core;
 using DocManager.Data.Json;
+using System.Collections.Generic;
 
 namespace DocManager.Data.DataProviders
 {
     public class JsonDataProvider : DataProviderBase, IOrderDataProvider
     {
-        public JsonDataProvider(string name)
+        public JsonDataProvider(string orderDataFile, string devicePath)
         {
-            fullPath = WorkingFolderPath($"{name}.json");
-            OrderData = JsonReader.Deserialize<OrderData>(fullPath);
+            objectDataPath = WorkingFolderPath($"{orderDataFile}.json");
+            OrderData = JsonReader.Deserialize<OrderData>(objectDataPath);
+            devicePath = WorkingFolderPath($"{devicePath}.json");
+            OrderData.Devices = JsonReader.Deserialize<IEnumerable<Device>>(devicePath);
         }
-
-        public OrderData OrderData { get; }
 
         public void Save()
         {
-            JsonReader.Serialize(OrderData, fullPath);
+            JsonReader.Serialize(OrderData, objectDataPath);
         }
     }
 }

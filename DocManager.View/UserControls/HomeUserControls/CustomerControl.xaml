@@ -22,7 +22,7 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
 
-        <Grid >
+        <Grid Margin="15,5">
             <Grid.RowDefinitions>
                 <RowDefinition />
             </Grid.RowDefinitions>
@@ -133,6 +133,8 @@
                     <RowDefinition Height="10" />
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="10" />
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="10" />
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
 
@@ -153,30 +155,39 @@
                     controls:TextBoxHelper.Watermark="Введите наименование организации заказчика"
                     Text="{Binding CustomerName, Mode=TwoWay}" />
 
-                <Label Grid.Row="3" Content="Юридический адрес:" />
+                <StackPanel Orientation="Horizontal" Grid.Row="3">
+                    <Label Content="ОГРН" Width="160"/>
+                    <TextBox controls:TextBoxHelper.ClearTextButton="True" controls:TextBoxHelper.Watermark="Введите ОГРН организации"
+                             Text="{Binding Ogrn, Mode=TwoWay}"/>
+                    <Label Content="ИНН" Width="160"/>
+                    <TextBox controls:TextBoxHelper.ClearTextButton="True" controls:TextBoxHelper.Watermark="Введите ИНН организации"
+                             Text="{Binding Inn, Mode=TwoWay}"/>
+                </StackPanel>
+
+                <Label Grid.Row="5" Content="Юридический адрес:" />
 
                 <TextBox
-                    Grid.Row="3"
+                    Grid.Row="5"
                     Grid.Column="1"
                     Grid.ColumnSpan="3"
                     controls:TextBoxHelper.ClearTextButton="True"
                     controls:TextBoxHelper.Watermark="Введите юридический адрес заказчика"
                     Text="{Binding CustomerAddress, Mode=TwoWay}" />
 
-                <Label Grid.Row="5" Content="Основание для работ:" />
+                <Label Grid.Row="7" Content="Основание для работ:" />
 
                 <TextBox
-                    Grid.Row="5"
+                    Grid.Row="7"
                     Grid.Column="1"
                     Grid.ColumnSpan="1"
                     controls:TextBoxHelper.ClearTextButton="True"
                     controls:TextBoxHelper.Watermark="Укажите основание для проведения работ"
                     Text="{Binding Order, Mode=TwoWay}" />
 
-                <Label Grid.Row="7" Content="Комментарии к заказу:" />
+                <Label Grid.Row="9" Content="Комментарии к заказу:" />
 
                 <TextBox
-                    Grid.Row="7"
+                    Grid.Row="9"
                     Grid.Column="1"
                     Grid.RowSpan="3"
                     Grid.ColumnSpan="3"

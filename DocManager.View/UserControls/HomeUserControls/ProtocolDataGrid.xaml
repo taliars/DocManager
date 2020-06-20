@@ -16,27 +16,29 @@
             ColumnWidth="*"
             DataContext="{Binding ProtocolViewModel}"
             ItemsSource="{Binding Protocols}"
-            SelectedItem="{Binding SelectedProtocol}">
+            SelectedItem="{Binding Selected}">
+            
+            <DataGrid.InputBindings>
+                <MouseBinding Gesture="LeftDoubleClick" Command="{Binding Open}" CommandParameter="{Binding SelectedProtocol}"/>
+            </DataGrid.InputBindings>
 
             <DataGrid.ContextMenu>
                 <ContextMenu>
-                    <MenuItem Header=" Открыть" Command="{Binding OpenProtocol}" CommandParameter="{Binding ObjectData.SelectedProtocol}" Icon="{StaticResource icon_file_edit}" />
+                    <MenuItem Header=" Открыть" Command="{Binding Open}" CommandParameter="{Binding Selected}" Icon="{StaticResource icon_file_edit}" />
                     <MenuItem Header=" Добавить" Icon="{StaticResource icon_file_add}">
                         <MenuItem.Items>
-                            <MenuItem Header="Шум" Command="{Binding AddProtocol}" CommandParameter="Шум"/>
-                            <MenuItem Header="Инфразвук" Command="{Binding AddProtocol}" CommandParameter="Инфразвук"/>
-                            <MenuItem Header="Вибрация" Command="{Binding AddProtocol}" CommandParameter="Вибрация"/>
-                            <MenuItem Header="ЭМИ 50 Гц" Command="{Binding AddProtocol}" CommandParameter="ЭМИ 50 Гц"/>
+                            <MenuItem Header="Шум" Command="{Binding Add}" CommandParameter="Шум"/>
+                            <MenuItem Header="Шум ЖД" Command="{Binding Add}" CommandParameter="Шум"/>
+                            <MenuItem Header="Шум Авиа" Command="{Binding Add}" CommandParameter="Шум"/>
+                            
+                            <MenuItem Header="Инфразвук" Command="{Binding Add}" CommandParameter="Инфразвук"/>
+                            <MenuItem Header="Вибрация" Command="{Binding Add}" CommandParameter="Вибрация"/>
+                            <MenuItem Header="ЭМИ 50 Гц" Command="{Binding Add}" CommandParameter="ЭМИ"/>
                             <Separator />
-                            <MenuItem Header="Радиация" Command="{Binding AddProtocol}" CommandParameter="Радиация"/>
-                            <MenuItem Header="Радионуклиды" Command="{Binding AddProtocol}" CommandParameter="Радионуклиды"/>
-                            <Separator />
-                            <MenuItem Header="Почва" Command="{Binding AddProtocol}" CommandParameter="Почва"/>
-                            <MenuItem Header="Вода" Command="{Binding AddProtocol}" CommandParameter="Вода"/>
-                            <MenuItem Header="Воздух" Command="{Binding AddProtocol}" CommandParameter="Воздух"/>
+                            <MenuItem Header="Радиация" Command="{Binding Add}" CommandParameter="Радиация"/>
                         </MenuItem.Items>
                     </MenuItem>
-                    <MenuItem Header=" Удалить" Command="{Binding RemoveProtocol}" CommandParameter="{Binding SelectedProtocol}" Icon="{StaticResource icon_delete}" />
+                    <MenuItem Header=" Удалить" Command="{Binding Remove}" CommandParameter="{Binding Selected}" Icon="{StaticResource icon_delete}" />
                     <Separator />
                     <MenuItem Header=" Открыть папку" Command="{Binding OpenFolder}" Icon="{StaticResource icon_folder_open}" />
                     <Separator />

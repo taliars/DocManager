@@ -1,5 +1,9 @@
 ﻿using DocManager.ViewModel;
 using MahApps.Metro.Controls;
+using MahApps.Metro.Controls.Dialogs;
+using System.Linq;
+using System.Threading.Tasks;
+using System.Windows.Controls;
 
 namespace DocManager.View
 {
@@ -8,38 +12,51 @@ namespace DocManager.View
     /// </summary>
     public partial class MainWindow : MetroWindow
     {
-        private bool _shutdown;
+        private int[] orders = { 1, 23, 45, 3, 2, 556, 3, 5, 45, 344, 444, 544, 556, 566 };
+
 
         public MainWindow()
         {
             InitializeComponent();
-            this.DataContext = new MainViewModel();
-         
+
+            var mySettings = new MetroDialogSettings
+            {
+                AffirmativeButtonText = "OK",
+                NegativeButtonText = "Отмена",
+                AnimateShow = false,
+                AnimateHide = false,
+            };
+
+            async Task<bool> Confirm(string msg, string capt)
+            {
+                return MessageDialogResult.Affirmative
+                 == await this.ShowMessageAsync(msg, capt, MessageDialogStyle.AffirmativeAndNegative, mySettings);
+            }
+
+            DataContext = new MainViewModel(Confirm);
+
+            foreach (int order in orders)
+            {
+                AllOrders.Items.Add(order);
+            }
         }
 
-        private async void MainWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        private void TextBox_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
         {
-            //    e.Cancel = !_shutdown;
-            //    if (_shutdown) return;
-            //    var mySettings = new MetroDialogSettings()
-            //    {
-            //        AffirmativeButtonText = "Выйти",
-            //        NegativeButtonText = "Отмена",
-            //        AnimateShow = false,
-            //        AnimateHide = false
-            //    };
-            //    var result = await this.ShowMessageAsync(
-            //        "Выйти из приложения",
-            //        "Есть не сохраненные данные. Отменить изменения и выйти?",
-            //        MessageDialogStyle.AffirmativeAndNegative,
-            //        mySettings);
+            TextBox textBox = sender as TextBox;
 
-            //    _shutdown = result == MessageDialogResult.Affirmative;
-            //    if (_shutdown)
-            //    {
-            //        Environment.Exit(0);
-            //    }
+            if (textBox is null)
+            {
+                return;
+            }
+
+            string text = textBox.Text;
+            AllOrders.Items.Clear();
+
+            foreach (int order in orders.Where(o => o.ToString().StartsWith(text)))
+            {
+                AllOrders.Items.Add(order);
+            }
         }
-
     }
 }
