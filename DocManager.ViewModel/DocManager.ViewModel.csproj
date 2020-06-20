@@ -36,7 +36,6 @@
     <Compile Include="Common\RelayCommand.cs" />
     <Compile Include="Helpers\ConvertFromViewModelHelper.cs" />
     <Compile Include="Helpers\ConvertToViewModelHelper.cs" />
-    <Compile Include="Helpers\MapperHelper.cs" />
     <Compile Include="ViewModels\OrderViewModels\ActViewModel.cs" />
     <Compile Include="ViewModels\OrderViewModels\AdditionalDocumetViewModel.cs" />
     <Compile Include="ViewModels\OrderViewModels\DeviceViewModel.cs" />
@@ -44,7 +43,6 @@
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="Lists.cs" />
     <Compile Include="ViewModels\OrderViewModels\ProtocolViewModel.cs" />
-    <Compile Include="ViewModels\OrderViewModels\VisibilityViewModel.cs" />
     <Compile Include="ViewModels\SettingsViewModel.cs" />
     <Compile Include="ViewModels\OrderViewModels\WeatherDayViewModel.cs" />
   </ItemGroup>
