@@ -88,6 +88,30 @@
     </Rectangle>
 
     <Rectangle
+        x:Key="icon_file_download"
+        Width="20"
+        Height="25"
+        Margin="10,0,0,0"
+        x:Shared="false"
+        Fill="#FF388A34">
+        <Rectangle.OpacityMask>
+            <VisualBrush Stretch="Fill" Visual="{DynamicResource appbar_page_download}" />
+        </Rectangle.OpacityMask>
+    </Rectangle>
+
+    <Rectangle
+        x:Key="icon_file_upload"
+        Width="20"
+        Height="25"
+        Margin="10,0,0,0"
+        x:Shared="false"
+        Fill="#FF388A34">
+        <Rectangle.OpacityMask>
+            <VisualBrush Stretch="Fill" Visual="{DynamicResource appbar_page_upload}" />
+        </Rectangle.OpacityMask>
+    </Rectangle>
+
+    <Rectangle
         x:Key="icon_delete"
         Width="20"
         Height="25"

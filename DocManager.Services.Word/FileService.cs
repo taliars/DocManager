@@ -5,7 +5,7 @@ namespace DocManager.Services
 {
     public static class FileService
     {
-        private const string FileNotFoundMessage = "Файл перемещен или удален";
+        private const string FileNotFoundMessage = "Исходный файл перемещен или удален";
         private const string DirectoryNotFoundMessage = "Конечная папка перемещена или удалена";
         private const string FileAlreadyExists = "Файл с таким именем уже существует в конечной папке";
 

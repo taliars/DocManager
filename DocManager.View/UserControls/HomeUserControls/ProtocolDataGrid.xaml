@@ -66,27 +66,41 @@
                                 Header="Радиация" />
                         </MenuItem.Items>
                     </MenuItem>
-                    <MenuItem
-                        Command="{Binding Move}"
-                        Header=" Переместить"
-                        Icon="{StaticResource icon_file_move}" />
-                    <MenuItem
-                        Command="{Binding Remove}"
-                        CommandParameter="{Binding Selected}"
-                        Header=" Удалить"
-                        Icon="{StaticResource icon_delete}" />
                     <Separator />
+
                     <MenuItem
                         Command="{Binding OpenFolder}"
                         Header=" Открыть папку"
                         Icon="{StaticResource icon_folder_open}" />
                     <Separator />
+
+                    <MenuItem
+                        Command="{Binding Move}"
+                        Header=" Переместить"
+                        Icon="{StaticResource icon_file_move}" />
+                    <MenuItem
+                        Command="{Binding StopTraking}"
+                        CommandParameter="{Binding Selected}"
+                        Header=" Не отслеживать"
+                        Icon="{StaticResource icon_file_download}" />
+                    <MenuItem
+                        Command="{Binding StartTracking}"
+                        CommandParameter="{Binding Selected}"
+                        Header=" Начать отслеживать"
+                        Icon="{StaticResource icon_file_upload}" />
+                    <Separator />
+
                     <MenuItem
                         Command="{Binding ExportToPDF}"
                         Header=" Экспортировать в PDF"
                         Icon="{StaticResource icon_exportpdf}" />
                     <Separator />
-                    <MenuItem Header="Справка" Icon="{StaticResource icon_information_circle}" />
+                    <MenuItem
+                        Command="{Binding Remove}"
+                        CommandParameter="{Binding Selected}"
+                        Header=" Удалить"
+                        Icon="{StaticResource icon_delete}" />
+                    <!--<MenuItem Header="Справка" Icon="{StaticResource icon_information_circle}" />-->
                 </ContextMenu>
             </DataGrid.ContextMenu>
 

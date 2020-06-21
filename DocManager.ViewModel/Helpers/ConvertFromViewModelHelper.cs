@@ -1,6 +1,4 @@
 ﻿using DocManager.Core;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
 
 namespace DocManager.ViewModel.Helpers
 {
