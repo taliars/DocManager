@@ -8,7 +8,7 @@
     xmlns:usercontrols="clr-namespace:DocManager.View.UserControls"
     Title="DocManager"
     Width="900"
-    Height="600"
+    Height="800"
     GlowBrush="Black"
     ResizeMode="CanResizeWithGrip"
     mc:Ignorable="d">
@@ -115,7 +115,13 @@
                 Header="Заказы"
                 Position="Right">
                 <StackPanel Margin="15">
-                    <TextBox controls:TextBoxHelper.Watermark="Найти..." TextChanged="TextBox_TextChanged" />
+                    <StackPanel Orientation="Horizontal">
+                        <TextBox controls:TextBoxHelper.Watermark="Найти..." TextChanged="TextBox_TextChanged" />
+                        <Button
+                            Width="15"
+                            Height="15"
+                            Content="{StaticResource appbar_add}" />
+                    </StackPanel>
                     <ListBox x:Name="AllOrders" Margin="15" />
                 </StackPanel>
             </controls:Flyout>

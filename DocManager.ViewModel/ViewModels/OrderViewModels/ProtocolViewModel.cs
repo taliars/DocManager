@@ -11,9 +11,11 @@ namespace DocManager.ViewModel
     {
         private readonly OrderData orderData;
 
-        private ObservableCollection<Protocol> protocols;
-
         private Protocol selected;
+
+        private readonly Func<string, string, string> move;
+
+        public ObservableCollection<Protocol> Protocols { get; set; }
 
         public Protocol Selected
         {
@@ -22,16 +24,6 @@ namespace DocManager.ViewModel
             {
                 selected = value;
                 NotifyPropertyChanged(nameof(Selected));
-            }
-        }
-
-        public ObservableCollection<Protocol> Protocols
-        {
-            get => protocols;
-            set
-            {
-                protocols = value;
-                NotifyPropertyChanged(nameof(Protocols));
             }
         }
 
@@ -48,14 +40,9 @@ namespace DocManager.ViewModel
                 Species = species
             };
 
-            await Task.Run(() =>
-            {
-                WordService.WriteWord(orderData, protocol, species);
-            });
+            await Task.Run(() => WordService.WriteWord(orderData, protocol, species));
 
-            protocols.Add(protocol);
-
-            NotifyPropertyChanged(nameof(Protocols));
+            Protocols.Add(protocol);
         });
 
         public RelayCommand Remove => new RelayCommand(o =>
@@ -65,22 +52,39 @@ namespace DocManager.ViewModel
                 return;
             }
 
-            protocols.Remove(protocol);
+            Protocols.Remove(protocol);
             NotifyPropertyChanged(nameof(Protocols));
         });
 
-        public RelayCommand Open => new RelayCommand(o =>
+        public RelayCommand Open => new RelayCommand(o => FileService.OpenWithDefaultApp(Selected?.Path));
+
+        public RelayCommand Move => new RelayCommand(async o =>
         {
-            if (Selected?.Path != null)
+            var newPath = move(null, null);
+
+            if (newPath == null)
             {
-                System.Diagnostics.Process.Start($"{Selected.Path}.docx");
+                return;
             }
+
+            newPath = $"{newPath}\\{Selected.Name}.docx";
+
+            await Task.Run(() => FileService.Move(Selected.Path, newPath));
+
+            var tempProtocol = Selected;
+            tempProtocol.Path = newPath;
+
+            Protocols.Remove(Selected);
+            Protocols.Add(tempProtocol);
+            NotifyPropertyChanged(nameof(Protocols));
         });
 
-        public ProtocolViewModel(OrderData orderData)
+
+        public ProtocolViewModel(OrderData orderData, Func<string, string, string> move)
         {
             Protocols = new ObservableCollection<Protocol>(orderData.Protocols);
             this.orderData = orderData;
+            this.move = move;
         }
     }
 }

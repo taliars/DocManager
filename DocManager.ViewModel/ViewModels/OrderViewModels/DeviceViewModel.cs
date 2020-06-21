@@ -8,35 +8,13 @@ namespace DocManager.ViewModel
 {
     public class DeviceViewModel : PropertyChangedBase
     {
-        private ObservableCollection<Device> devices;
-        private Visibility faultVisibility;
-
-        public ObservableCollection<Device> Devices
-        {
-            get => devices;
-            set
-            {
-                devices = value;
-                NotifyPropertyChanged(nameof(Devices));
-            }
-        }
-
-        public Visibility FaultVisibility
-        {
-            get => faultVisibility;
-            set
-            {
-                faultVisibility = value;
-                NotifyPropertyChanged(nameof(FaultVisibility));
-            }
-        }
+        public ObservableCollection<Device> Devices { get; set; }
 
         public Device SelectedDevice { get; set; }
 
         public DeviceViewModel(IEnumerable<Device> devices)
         {
-            FaultVisibility = Visibility.Hidden;
-            this.devices = new ObservableCollection<Device>(devices);
+            this.Devices = new ObservableCollection<Device>(devices);
         }
     }
 }

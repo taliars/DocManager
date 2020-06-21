@@ -8,8 +8,6 @@ namespace DocManager.ViewModel
     {
         private Act selected;
 
-        private ObservableCollection<Act> acts;
-
         private readonly OrderData orderData;
 
         public Act Selected
@@ -22,15 +20,7 @@ namespace DocManager.ViewModel
             }
         }
 
-        public ObservableCollection<Act> Acts
-        {
-            get => acts;
-            set
-            {
-                acts = value;
-                NotifyPropertyChanged(nameof(Acts));
-            }
-        }
+        public ObservableCollection<Act> Acts { get; set; }
 
         public RelayCommand Add => new RelayCommand(o =>
         {
@@ -39,7 +29,7 @@ namespace DocManager.ViewModel
                 return;
             }
 
-            acts.Add(new Act());
+            Acts.Add(new Act());
             NotifyPropertyChanged(nameof(Acts));
         });
 
@@ -50,7 +40,7 @@ namespace DocManager.ViewModel
                 return;
             }
 
-            acts.Remove(act);
+            Acts.Remove(act);
             NotifyPropertyChanged(nameof(Acts));
         });
 

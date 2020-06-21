@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DocManager.View", "DocManag
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DocManager.Core", "DocManager.Core\DocManager.Core.csproj", "{44142898-41BD-45BB-B636-D6132109E706}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DocManager.Services.Word", "DocManager.Services.Word\DocManager.Services.Word.csproj", "{ACF9EB16-75AF-4DFA-92CC-6664440FABF5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DocManager.Services", "DocManager.Services.Word\DocManager.Services.csproj", "{ACF9EB16-75AF-4DFA-92CC-6664440FABF5}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DocManager.ViewModel", "DocManager.ViewModel\DocManager.ViewModel.csproj", "{09D4EC1B-9D1B-4713-97A9-EA15A3E35563}"
 EndProject

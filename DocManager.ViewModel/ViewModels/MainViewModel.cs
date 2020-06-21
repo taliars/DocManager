@@ -25,9 +25,9 @@ namespace DocManager.ViewModel
 
         public RelayCommand Save => new RelayCommand(async o =>
         {
-            bool delete = await confirm("Сохранить?", "бля");
+            bool ensure = await confirm("Сохранить?", "Сохранить внесенные изменения");
 
-            if (!delete)
+            if (!ensure)
             {
                 return;
             }
@@ -46,14 +46,14 @@ namespace DocManager.ViewModel
             }
         }
 
-        public MainViewModel(Func<string, string, Task<bool>> confirm)
+        public MainViewModel(Func<string, string, Task<bool>> confirm, Func<string, string, string> move)
         {
             this.confirm = confirm;
 
             _objectDataProvider = new JsonDataProvider("abc", "devices");
             var orderData = _objectDataProvider.OrderData;
             ObjectDataViewModel = new ObjectDataViewModel(orderData);
-            ProtocolViewModel = new ProtocolViewModel(orderData);
+            ProtocolViewModel = new ProtocolViewModel(orderData, move);
             ActsViewModel = new ActViewModel(orderData);
             WeatherDaysViewModel = new WeatherDayViewModel(orderData.WeatherDays);
             DevicesViewModel = new DeviceViewModel(orderData.Devices);

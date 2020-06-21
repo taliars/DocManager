@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{09D4EC1B-9D1B-4713-97A9-EA15A3E35563}</ProjectGuid>
+    <ProjectGuid>{ACF9EB16-75AF-4DFA-92CC-6664440FABF5}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>DocManager.ViewModel</RootNamespace>
-    <AssemblyName>DocManager.ViewModel</AssemblyName>
+    <RootNamespace>DocManager.Services</RootNamespace>
+    <AssemblyName>DocManager.Services.Word</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -32,39 +32,46 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Common\PropertyChangedBase.cs" />
-    <Compile Include="Common\RelayCommand.cs" />
-    <Compile Include="Helpers\ConvertFromViewModelHelper.cs" />
-    <Compile Include="Helpers\ConvertToViewModelHelper.cs" />
-    <Compile Include="ViewModels\OrderViewModels\ActViewModel.cs" />
-    <Compile Include="ViewModels\OrderViewModels\AdditionalDocumentViewModel.cs" />
-    <Compile Include="ViewModels\OrderViewModels\DeviceViewModel.cs" />
-    <Compile Include="ViewModels\OrderViewModels\ObjectDataViewModel.cs" />
-    <Compile Include="ViewModels\MainViewModel.cs" />
-    <Compile Include="Lists.cs" />
-    <Compile Include="ViewModels\OrderViewModels\ProtocolViewModel.cs" />
-    <Compile Include="ViewModels\SettingsViewModel.cs" />
-    <Compile Include="ViewModels\OrderViewModels\WeatherDayViewModel.cs" />
+    <Compile Include="FileService.cs" />
+    <Compile Include="WordService.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="PresentationCore" />
-    <Reference Include="PresentationFramework" />
-    <Reference Include="System" />
-    <Reference Include="WindowsBase" />
+    <COMReference Include="Microsoft.Office.Core">
+      <Guid>{2DF8D04C-5BFA-101B-BDE5-00AA0044DE52}</Guid>
+      <VersionMajor>2</VersionMajor>
+      <VersionMinor>8</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="Microsoft.Office.Interop.Word">
+      <Guid>{00020905-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>8</VersionMajor>
+      <VersionMinor>7</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="VBIDE">
+      <Guid>{0002E157-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>5</VersionMajor>
+      <VersionMinor>3</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DocManager.Core\DocManager.Core.csproj">
-      <Project>{44142898-41bd-45bb-b636-d6132109e706}</Project>
+      <Project>{44142898-41BD-45BB-B636-D6132109E706}</Project>
       <Name>DocManager.Core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\DocManager.Data\DocManager.Data.csproj">
-      <Project>{f51b5dcb-b434-4e31-bd61-0d3f54a515c8}</Project>
-      <Name>DocManager.Data</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\DocManager.Services.Word\DocManager.Services.csproj">
-      <Project>{acf9eb16-75af-4dfa-92cc-6664440fabf5}</Project>
-      <Name>DocManager.Services</Name>
-    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

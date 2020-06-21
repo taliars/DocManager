@@ -15,34 +15,76 @@
             AutoGenerateColumns="False"
             ColumnWidth="*"
             DataContext="{Binding ProtocolViewModel}"
-            ItemsSource="{Binding Protocols}"
+            ItemsSource="{Binding Protocols, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
             SelectedItem="{Binding Selected}">
-            
+
             <DataGrid.InputBindings>
-                <MouseBinding Gesture="LeftDoubleClick" Command="{Binding Open}" CommandParameter="{Binding SelectedProtocol}"/>
+                <MouseBinding
+                    Command="{Binding Open}"
+                    CommandParameter="{Binding Selected}"
+                    Gesture="LeftDoubleClick" />
             </DataGrid.InputBindings>
 
             <DataGrid.ContextMenu>
                 <ContextMenu>
-                    <MenuItem Header=" Открыть" Command="{Binding Open}" CommandParameter="{Binding Selected}" Icon="{StaticResource icon_file_edit}" />
+                    <MenuItem
+                        Command="{Binding Open}"
+                        CommandParameter="{Binding Selected}"
+                        Header=" Открыть"
+                        Icon="{StaticResource icon_file_edit}" />
                     <MenuItem Header=" Добавить" Icon="{StaticResource icon_file_add}">
                         <MenuItem.Items>
-                            <MenuItem Header="Шум" Command="{Binding Add}" CommandParameter="Шум"/>
-                            <MenuItem Header="Шум ЖД" Command="{Binding Add}" CommandParameter="Шум"/>
-                            <MenuItem Header="Шум Авиа" Command="{Binding Add}" CommandParameter="Шум"/>
-                            
-                            <MenuItem Header="Инфразвук" Command="{Binding Add}" CommandParameter="Инфразвук"/>
-                            <MenuItem Header="Вибрация" Command="{Binding Add}" CommandParameter="Вибрация"/>
-                            <MenuItem Header="ЭМИ 50 Гц" Command="{Binding Add}" CommandParameter="ЭМИ"/>
+                            <MenuItem
+                                Command="{Binding Add}"
+                                CommandParameter="Шум"
+                                Header="Шум" />
+                            <MenuItem
+                                Command="{Binding Add}"
+                                CommandParameter="Шум"
+                                Header="Шум ЖД" />
+                            <MenuItem
+                                Command="{Binding Add}"
+                                CommandParameter="Шум"
+                                Header="Шум Авиа" />
                             <Separator />
-                            <MenuItem Header="Радиация" Command="{Binding Add}" CommandParameter="Радиация"/>
+                            <MenuItem
+                                Command="{Binding Add}"
+                                CommandParameter="Инфразвук"
+                                Header="Инфразвук" />
+                            <MenuItem
+                                Command="{Binding Add}"
+                                CommandParameter="Вибрация"
+                                Header="Вибрация" />
+                            <MenuItem
+                                Command="{Binding Add}"
+                                CommandParameter="ЭМИ"
+                                Header="ЭМИ 50 Гц" />
+                            <Separator />
+                            <MenuItem
+                                Command="{Binding Add}"
+                                CommandParameter="Радиация"
+                                Header="Радиация" />
                         </MenuItem.Items>
                     </MenuItem>
-                    <MenuItem Header=" Удалить" Command="{Binding Remove}" CommandParameter="{Binding Selected}" Icon="{StaticResource icon_delete}" />
+                    <MenuItem
+                        Command="{Binding Move}"
+                        Header=" Переместить"
+                        Icon="{StaticResource icon_file_move}" />
+                    <MenuItem
+                        Command="{Binding Remove}"
+                        CommandParameter="{Binding Selected}"
+                        Header=" Удалить"
+                        Icon="{StaticResource icon_delete}" />
                     <Separator />
-                    <MenuItem Header=" Открыть папку" Command="{Binding OpenFolder}" Icon="{StaticResource icon_folder_open}" />
+                    <MenuItem
+                        Command="{Binding OpenFolder}"
+                        Header=" Открыть папку"
+                        Icon="{StaticResource icon_folder_open}" />
                     <Separator />
-                    <MenuItem Header=" Экспортировать в PDF" Command="{Binding ExportToPDF}" Icon="{StaticResource icon_exportpdf}" />
+                    <MenuItem
+                        Command="{Binding ExportToPDF}"
+                        Header=" Экспортировать в PDF"
+                        Icon="{StaticResource icon_exportpdf}" />
                     <Separator />
                     <MenuItem Header="Справка" Icon="{StaticResource icon_information_circle}" />
                 </ContextMenu>
@@ -89,7 +131,7 @@
                     SortMemberPath="DocLocation">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <TextBlock Text="{Binding Path}" TextWrapping="Wrap" />
+                            <TextBlock Text="{Binding Path, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" TextWrapping="Wrap" />
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>

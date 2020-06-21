@@ -76,6 +76,18 @@
     </Rectangle>
 
     <Rectangle
+        x:Key="icon_file_move"
+        Width="20"
+        Height="25"
+        Margin="10,0,0,0"
+        x:Shared="false"
+        Fill="#FF388A34">
+        <Rectangle.OpacityMask>
+            <VisualBrush Stretch="Fill" Visual="{DynamicResource appbar_page_arrow}" />
+        </Rectangle.OpacityMask>
+    </Rectangle>
+
+    <Rectangle
         x:Key="icon_delete"
         Width="20"
         Height="25"
@@ -112,9 +124,6 @@
         </Rectangle.OpacityMask>
     </Rectangle>
 
-    <!--  Fill="#FFF8D777"  -->
-
-
     <Rectangle
         x:Key="icon_information_circle"
         Width="25"
@@ -124,18 +133,6 @@
         Fill="#64B5F6">
         <Rectangle.OpacityMask>
             <VisualBrush Stretch="Fill" Visual="{DynamicResource appbar_information_circle}" />
-        </Rectangle.OpacityMask>
-    </Rectangle>
-
-    <Rectangle
-        x:Key="icon_information_dublicate"
-        Width="25"
-        Height="25"
-        Margin="10,0,0,0"
-        x:Shared="false"
-        Fill="#64B5F6">
-        <Rectangle.OpacityMask>
-            <VisualBrush Stretch="Fill" Visual="{DynamicResource appbar_page_duplicate}" />
         </Rectangle.OpacityMask>
     </Rectangle>
 

@@ -4,36 +4,27 @@ using MahApps.Metro.Controls.Dialogs;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Controls;
+using Microsoft.WindowsAPICodePack.Dialogs;
 
 namespace DocManager.View
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
     public partial class MainWindow : MetroWindow
     {
         private int[] orders = { 1, 23, 45, 3, 2, 556, 3, 5, 45, 344, 444, 544, 556, 566 };
+
+        private MetroDialogSettings standardDialogSettings = new MetroDialogSettings
+        {
+            AffirmativeButtonText = "OK",
+            NegativeButtonText = "Отмена",
+            AnimateShow = false,
+            AnimateHide = false,
+        };
 
 
         public MainWindow()
         {
             InitializeComponent();
-
-            var mySettings = new MetroDialogSettings
-            {
-                AffirmativeButtonText = "OK",
-                NegativeButtonText = "Отмена",
-                AnimateShow = false,
-                AnimateHide = false,
-            };
-
-            async Task<bool> Confirm(string msg, string capt)
-            {
-                return MessageDialogResult.Affirmative
-                 == await this.ShowMessageAsync(msg, capt, MessageDialogStyle.AffirmativeAndNegative, mySettings);
-            }
-
-            DataContext = new MainViewModel(Confirm);
+            DataContext = new MainViewModel(Confirm, Move);
 
             foreach (int order in orders)
             {
@@ -41,7 +32,7 @@ namespace DocManager.View
             }
         }
 
-        private void TextBox_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
             TextBox textBox = sender as TextBox;
 
@@ -51,12 +42,36 @@ namespace DocManager.View
             }
 
             string text = textBox.Text;
-            AllOrders.Items.Clear();
 
+            AllOrders.Items.Clear();
             foreach (int order in orders.Where(o => o.ToString().StartsWith(text)))
             {
                 AllOrders.Items.Add(order);
             }
+        }
+
+        async Task<bool> Confirm(string message, string caption)
+        {
+            return MessageDialogResult.Affirmative
+             == await this.ShowMessageAsync(message, caption, MessageDialogStyle.AffirmativeAndNegative, standardDialogSettings);
+        }
+
+        string Move(string defaultFileName, string title)
+        {
+            defaultFileName = defaultFileName ?? "Выберите новое расположение файла";
+            title = title ?? "Выберите папку";
+
+            var dialog = new CommonOpenFileDialog
+            {
+                AllowNonFileSystemItems = true,
+                Multiselect = true,
+                IsFolderPicker = true,
+                Title = title,
+            };      
+
+            return dialog.ShowDialog() == CommonFileDialogResult.Ok
+                ? dialog.FileName
+                : null;
         }
     }
 }

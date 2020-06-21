@@ -42,7 +42,7 @@ namespace DocManager.Services
             var objectData = orderData.ObjectData;
 
             string finalFilePath = $"{finalPath}{Protocol.GetName(type.ToLower(), objectData.Order)}";
-            document.Path = finalFilePath;
+            document.Path = $"{finalFilePath}.docx";
 
             wordDoc.Variables[nameof(Document.Name)].Value = document.Name;
             wordDoc.Variables[nameof(Document.Date)].Value = document.Date.Value.ToShortDateString();

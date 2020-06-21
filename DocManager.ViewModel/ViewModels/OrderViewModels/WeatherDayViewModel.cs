@@ -8,7 +8,6 @@ namespace DocManager.ViewModel
     public class WeatherDayViewModel: PropertyChangedBase
     {
         private WeatherDay selectedWeatherDay;
-        private ObservableCollection<WeatherDay> weatherDays;
 
         public WeatherDay SelectedWeatherDay
         {
@@ -20,25 +19,17 @@ namespace DocManager.ViewModel
             }
         }
 
-        public ObservableCollection<WeatherDay> WeatherDays
-        {
-            get => weatherDays;
-            set
-            {
-                weatherDays = value;
-                NotifyPropertyChanged(nameof(WeatherDays));
-            }
-        }
+        public ObservableCollection<WeatherDay> WeatherDays { get; set; }
 
         public RelayCommand AddDate => new RelayCommand(o =>
         {
-            weatherDays.Add(new WeatherDay());
+            WeatherDays.Add(new WeatherDay());
             NotifyPropertyChanged(nameof(WeatherDays));
         });
 
         public RelayCommand RemoveDate => new RelayCommand(o =>
         {
-            weatherDays.Remove(SelectedWeatherDay);
+            WeatherDays.Remove(SelectedWeatherDay);
             NotifyPropertyChanged(nameof(WeatherDays));
         });
 
