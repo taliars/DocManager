@@ -31,7 +31,7 @@ namespace DocManager.Services
 
             if (File.Exists(newPath))
             {
-                throw new System.IO.IOException(FileAlreadyExists);
+                throw new IOException(FileAlreadyExists);
             }
 
             var directoryName = Path.GetDirectoryName(newPath);

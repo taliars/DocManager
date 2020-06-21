@@ -10,6 +10,7 @@ namespace DocManager.ViewModel
         private IOrderDataProvider _objectDataProvider;
         private string statusMessage;
         private readonly Func<string, string, Task<bool>> confirm;
+        private readonly Func<string, string, Task<bool>> affirm;
 
         public ObjectDataViewModel ObjectDataViewModel { get; set; }
 
@@ -46,14 +47,18 @@ namespace DocManager.ViewModel
             }
         }
 
-        public MainViewModel(Func<string, string, Task<bool>> confirm, Func<string, string, string> move)
+        public MainViewModel(
+            Func<string, string, Task<bool>> confirm,
+            Func<string, string, Task<bool>> affirm,
+            Func<string, string, string> move)
         {
             this.confirm = confirm;
+            this.affirm = affirm;
 
             _objectDataProvider = new JsonDataProvider("abc", "devices");
             var orderData = _objectDataProvider.OrderData;
             ObjectDataViewModel = new ObjectDataViewModel(orderData);
-            ProtocolViewModel = new ProtocolViewModel(orderData, move);
+            ProtocolViewModel = new ProtocolViewModel(orderData, move, affirm);
             ActsViewModel = new ActViewModel(orderData);
             WeatherDaysViewModel = new WeatherDayViewModel(orderData.WeatherDays);
             DevicesViewModel = new DeviceViewModel(orderData.Devices);

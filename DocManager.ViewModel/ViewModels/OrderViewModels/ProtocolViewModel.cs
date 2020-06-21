@@ -14,6 +14,7 @@ namespace DocManager.ViewModel
         private Protocol selected;
 
         private readonly Func<string, string, string> move;
+        private readonly Func<string, string, Task<bool>> affirm;
 
         public ObservableCollection<Protocol> Protocols { get; set; }
 
@@ -69,7 +70,15 @@ namespace DocManager.ViewModel
 
             newPath = $"{newPath}\\{Selected.Name}.docx";
 
-            await Task.Run(() => FileService.Move(Selected.Path, newPath));
+            try
+            {
+                await Task.Run(() => FileService.Move(Selected.Path, newPath));
+            }
+            catch (Exception e)
+            {
+                await affirm("Ошибка", e.Message);
+            }
+
 
             var tempProtocol = Selected;
             tempProtocol.Path = newPath;
@@ -80,11 +89,12 @@ namespace DocManager.ViewModel
         });
 
 
-        public ProtocolViewModel(OrderData orderData, Func<string, string, string> move)
+        public ProtocolViewModel(OrderData orderData, Func<string, string, string> move, Func<string, string, Task<bool>> affirm)
         {
             Protocols = new ObservableCollection<Protocol>(orderData.Protocols);
             this.orderData = orderData;
             this.move = move;
+            this.affirm = affirm;
         }
     }
 }

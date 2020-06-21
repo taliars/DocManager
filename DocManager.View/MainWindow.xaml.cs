@@ -20,11 +20,10 @@ namespace DocManager.View
             AnimateHide = false,
         };
 
-
         public MainWindow()
         {
             InitializeComponent();
-            DataContext = new MainViewModel(Confirm, Move);
+            DataContext = new MainViewModel(Confirm, Affirm, Move);
 
             foreach (int order in orders)
             {
@@ -54,6 +53,12 @@ namespace DocManager.View
         {
             return MessageDialogResult.Affirmative
              == await this.ShowMessageAsync(message, caption, MessageDialogStyle.AffirmativeAndNegative, standardDialogSettings);
+        }
+
+        async Task<bool> Affirm(string message, string caption)
+        {
+            return MessageDialogResult.Affirmative
+             == await this.ShowMessageAsync(message, caption, MessageDialogStyle.Affirmative, standardDialogSettings);
         }
 
         string Move(string defaultFileName, string title)
