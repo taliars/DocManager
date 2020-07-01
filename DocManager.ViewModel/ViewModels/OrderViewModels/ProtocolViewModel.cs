@@ -73,19 +73,18 @@ namespace DocManager.ViewModel
             try
             {
                 await Task.Run(() => FileService.Move(Selected.Path, newPath));
+                var tempProtocol = Selected;
+                tempProtocol.Path = newPath;
+
+                Protocols.Remove(Selected);
+                Protocols.Add(tempProtocol);
+                NotifyPropertyChanged(nameof(Protocols));
             }
             catch (Exception e)
             {
                 await affirm("Ошибка", e.Message);
+                return;
             }
-
-
-            var tempProtocol = Selected;
-            tempProtocol.Path = newPath;
-
-            Protocols.Remove(Selected);
-            Protocols.Add(tempProtocol);
-            NotifyPropertyChanged(nameof(Protocols));
         });
 
 

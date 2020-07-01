@@ -2,8 +2,7 @@
     x:Class="DocManager.App"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
-    xmlns:local="clr-namespace:DocManager.View"
+    xmlns:mahapps="http://metro.mahapps.com/winfx/xaml/controls"
     StartupUri="MainWindow.xaml">
 
     <Application.Resources>
@@ -50,12 +49,13 @@
             </Style>
 
             <Style BasedOn="{StaticResource MetroTabItem}" TargetType="{x:Type TabItem}">
-                <Setter Property="controls:ControlsHelper.HeaderFontSize" Value="14" />
+                <Setter Property="mahapps:ControlsHelper.HeaderFontSize" Value="14" />
             </Style>
 
             <Style BasedOn="{StaticResource MetroTextBox}" TargetType="{x:Type TextBox}">
                 <Setter Property="FontSize" Value="14" />
                 <Setter Property="BorderThickness" Value="0,0,0,1" />
+                <Setter Property="mahapps:TextBoxHelper.ClearTextButton" Value="True"/>
             </Style>
 
             <Style BasedOn="{StaticResource MetroComboBox}" TargetType="{x:Type ComboBox}">
