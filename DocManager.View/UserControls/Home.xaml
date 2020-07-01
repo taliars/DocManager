@@ -2,7 +2,7 @@
     x:Class="DocManager.View.UserControls.Home"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
+    xmlns:mahapps="http://metro.mahapps.com/winfx/xaml/controls"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:usercontrols="clr-namespace:DocManager.View.UserControls"
@@ -17,11 +17,11 @@
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
 
-        <controls:MetroAnimatedTabControl
-            controls:TabControlHelper.Transition="Up"
-            controls:TabControlHelper.UnderlineMouseOverBrush="Aquamarine"
-            controls:TabControlHelper.Underlined="TabPanel"
-            controls:TabStripPlacement="Top">
+        <mahapps:MetroAnimatedTabControl
+            mahapps:TabControlHelper.Transition="Up"
+            mahapps:TabControlHelper.UnderlineMouseOverBrush="Aquamarine"
+            mahapps:TabControlHelper.Underlined="TabPanel"
+            mahapps:TabStripPlacement="Top">
 
             <TabControl.Resources>
                 <Style TargetType="{x:Type TabPanel}">
@@ -41,7 +41,7 @@
                         <RowDefinition />
                     </Grid.RowDefinitions>
 
-                    <controls:MetroAnimatedTabControl Margin="5">
+                    <mahapps:MetroAnimatedTabControl Margin="5">
                         <TabControl.Resources>
                             <Style TargetType="{x:Type TabPanel}">
                                 <Setter Property="HorizontalAlignment" Value="Center" />
@@ -56,7 +56,7 @@
                         <TabItem Header="АКТЫ">
                             <usercontrols:ActDataGrid />
                         </TabItem>
-                    </controls:MetroAnimatedTabControl>
+                    </mahapps:MetroAnimatedTabControl>
                     <GridSplitter Grid.Row="1" Height="5" />
                     <usercontrols:TabControlDeviceMeteo Grid.Row="2" />
                 </Grid>
@@ -76,7 +76,7 @@
                 </Grid>
             </TabItem>
 
-        </controls:MetroAnimatedTabControl>
+        </mahapps:MetroAnimatedTabControl>
 
         <StackPanel
             Grid.Row="1"

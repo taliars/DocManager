@@ -1,9 +1,9 @@
-﻿<controls:MetroWindow
+﻿<mahapps:MetroWindow
     x:Class="DocManager.View.MainWindow"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mahapps="http://metro.mahapps.com/winfx/xaml/controls"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:usercontrols="clr-namespace:DocManager.View.UserControls"
     Title="DocManager"
@@ -14,8 +14,8 @@
     mc:Ignorable="d">
 
 
-    <controls:MetroWindow.RightWindowCommands>
-        <controls:WindowCommands>
+    <mahapps:MetroWindow.RightWindowCommands>
+        <mahapps:WindowCommands>
             <ToggleButton
                 Content="Настройки"
                 Cursor="Hand"
@@ -24,15 +24,15 @@
                 Content="Заказы"
                 Cursor="Hand"
                 IsChecked="{Binding ElementName=ordersFlyout, Path=IsOpen}" />
-        </controls:WindowCommands>
+        </mahapps:WindowCommands>
 
-    </controls:MetroWindow.RightWindowCommands>
+    </mahapps:MetroWindow.RightWindowCommands>
 
-    <controls:MetroWindow.Flyouts>
-        <controls:FlyoutsControl>
-            <controls:Flyout
+    <mahapps:MetroWindow.Flyouts>
+        <mahapps:FlyoutsControl>
+            <mahapps:Flyout
                 x:Name="settingsFlyout"
-                Width="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType=controls:MetroWindow}, Path=ActualWidth}"
+                Width="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType=mahapps:MetroWindow}, Path=ActualWidth}"
                 Header="Настройки">
                 <Grid>
                     <Grid.RowDefinitions>
@@ -63,8 +63,8 @@
                         Grid.Column="1"
                         Grid.ColumnSpan="3"
                         VerticalAlignment="Stretch"
-                        controls:TextBoxHelper.ClearTextButton="True"
-                        controls:TextBoxHelper.Watermark="Введите наименование объекта"
+                        mahapps:TextBoxHelper.ClearTextButton="True"
+                        mahapps:TextBoxHelper.Watermark="Введите наименование объекта"
                         AcceptsReturn="True"
                         Text="{Binding ObjectName, Mode=TwoWay}"
                         TextWrapping="Wrap" />
@@ -75,8 +75,8 @@
                         Grid.Row="4"
                         Grid.Column="1"
                         Grid.ColumnSpan="3"
-                        controls:TextBoxHelper.ClearTextButton="True"
-                        controls:TextBoxHelper.Watermark="Введите адрес объекта"
+                        mahapps:TextBoxHelper.ClearTextButton="True"
+                        mahapps:TextBoxHelper.Watermark="Введите адрес объекта"
                         Text="{Binding ObjectAddress, Mode=TwoWay}" />
 
                     <Label Grid.Row="6" Content="Площадь участка:" />
@@ -84,8 +84,8 @@
                     <TextBox
                         Grid.Row="6"
                         Grid.Column="1"
-                        controls:TextBoxHelper.ClearTextButton="True"
-                        controls:TextBoxHelper.Watermark="в га или кв.м."
+                        mahapps:TextBoxHelper.ClearTextButton="True"
+                        mahapps:TextBoxHelper.Watermark="в га или кв.м."
                         Text="{Binding Measurement, Mode=TwoWay}" />
 
                     <Label
@@ -97,8 +97,8 @@
                         Grid.Row="6"
                         Grid.Column="4"
                         VerticalContentAlignment="Center"
-                        controls:TextBoxHelper.ClearTextButton="True"
-                        controls:TextBoxHelper.Watermark="Выберите назначение объекта"
+                        mahapps:TextBoxHelper.ClearTextButton="True"
+                        mahapps:TextBoxHelper.Watermark="Выберите назначение объекта"
                         FontSize="14"
                         IsEditable="True"
                         Text="{Binding Purpose, Mode=TwoWay}">
@@ -108,15 +108,15 @@
                     </ComboBox>
 
                 </Grid>
-            </controls:Flyout>
-            <controls:Flyout
+            </mahapps:Flyout>
+            <mahapps:Flyout
                 x:Name="ordersFlyout"
                 Width="235"
                 Header="Заказы"
                 Position="Right">
                 <StackPanel Margin="15">
                     <StackPanel Orientation="Horizontal">
-                        <TextBox controls:TextBoxHelper.Watermark="Найти..." TextChanged="TextBox_TextChanged" />
+                        <TextBox mahapps:TextBoxHelper.Watermark="Найти..." TextChanged="TextBox_TextChanged" />
                         <Button
                             Width="15"
                             Height="15"
@@ -124,11 +124,16 @@
                     </StackPanel>
                     <ListBox x:Name="AllOrders" Margin="15" />
                 </StackPanel>
-            </controls:Flyout>
-        </controls:FlyoutsControl>
-    </controls:MetroWindow.Flyouts>
+            </mahapps:Flyout>
+        </mahapps:FlyoutsControl>
+    </mahapps:MetroWindow.Flyouts>
 
-    <usercontrols:Home />
+    <StackPanel>
+        <usercontrols:Home />
+        <mahapps:ProgressRing
+            Name="progress1"
+            IsActive="False"
+            Visibility="Collapsed" />
+    </StackPanel>
 
-
-</controls:MetroWindow>
+</mahapps:MetroWindow>

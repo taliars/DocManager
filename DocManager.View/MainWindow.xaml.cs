@@ -5,6 +5,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Controls;
 using Microsoft.WindowsAPICodePack.Dialogs;
+using System;
+using System.Threading;
 
 namespace DocManager.View
 {
@@ -29,6 +31,8 @@ namespace DocManager.View
             {
                 AllOrders.Items.Add(order);
             }
+
+            O();
         }
 
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
@@ -72,11 +76,20 @@ namespace DocManager.View
                 Multiselect = true,
                 IsFolderPicker = true,
                 Title = title,
-            };      
+            };
 
             return dialog.ShowDialog() == CommonFileDialogResult.Ok
                 ? dialog.FileName
                 : null;
+        }
+
+        void O()
+        {
+            Dispatcher.Invoke((() =>
+            {
+                progress1.IsActive = true;
+                progress1.Visibility = System.Windows.Visibility.Visible;
+            }));
         }
     }
 }
