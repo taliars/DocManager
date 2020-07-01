@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("DocManager.Data")]
+[assembly: AssemblyTitle("DocManager.Services2")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("DocManager.Data")]
+[assembly: AssemblyProduct("DocManager.Services2")]
 [assembly: AssemblyCopyright("Copyright ©  2020")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("f51b5dcb-b434-4e31-bd61-0d3f54a515c8")]
+[assembly: Guid("91a2f439-d2d9-42cd-bc98-af135a9fb199")]
 
 // Version information for an assembly consists of the following four values:
 //

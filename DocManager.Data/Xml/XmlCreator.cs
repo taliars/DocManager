@@ -1,7 +1,9 @@
+using System;
 using System.Xml.Linq;
 
 namespace DocManager.Services.Xml
 {
+    [Obsolete]
     internal class Creator
     {
         public static void Create()

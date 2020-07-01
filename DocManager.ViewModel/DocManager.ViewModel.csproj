@@ -53,19 +53,20 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\DocManager.Core\DocManager.Core.csproj">
-      <Project>{44142898-41bd-45bb-b636-d6132109e706}</Project>
-      <Name>DocManager.Core</Name>
+    <ProjectReference Include="..\DocManage.Core\DocManage.Core.csproj">
+      <Project>{34517165-99f7-4af1-9455-86bc9b46cb16}</Project>
+      <Name>DocManage.Core</Name>
     </ProjectReference>
     <ProjectReference Include="..\DocManager.Data\DocManager.Data.csproj">
-      <Project>{f51b5dcb-b434-4e31-bd61-0d3f54a515c8}</Project>
+      <Project>{b1e01b92-671e-4bbe-89af-929ecca115cd}</Project>
       <Name>DocManager.Data</Name>
     </ProjectReference>
-    <ProjectReference Include="..\DocManager.Services.Word\DocManager.Services.csproj">
-      <Project>{acf9eb16-75af-4dfa-92cc-6664440fabf5}</Project>
+    <ProjectReference Include="..\DocManager.Services\DocManager.Services.csproj">
+      <Project>{91a2f439-d2d9-42cd-bc98-af135a9fb199}</Project>
       <Name>DocManager.Services</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
          Other similar extension points exist, see Microsoft.Common.targets.

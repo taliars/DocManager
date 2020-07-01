@@ -1,11 +1,10 @@
-﻿using DocManager.Core;
+﻿using System;
 
 namespace DocManager.Data.DataProviders
 {
+    [Obsolete]
     public class XmlObjectInfoProvider : DataProviderBase, IOrderDataProvider
     {
-        public OrderData OrderData { get; }
-
         public XmlObjectInfoProvider()
         {
             throw new System.NotImplementedException();
