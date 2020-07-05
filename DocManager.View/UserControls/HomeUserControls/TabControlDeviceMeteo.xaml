@@ -17,10 +17,10 @@
             </TabControl.Resources>
 
             <TabItem Header="Метеоусловия">
-                <usercontrols:MeteoDataGrid Padding="10"/>
+                <usercontrols:MeteoDataGrid Padding="10" />
             </TabItem>
             <TabItem Header="Приборы">
-                <usercontrols:DeviceDataGrid Padding="10"/>
+                <usercontrols:DeviceDataGrid Padding="10" />
             </TabItem>
         </TabControl>
     </Grid>

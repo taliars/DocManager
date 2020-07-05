@@ -9,12 +9,14 @@ namespace DocManager.ViewModel
 {
     public class ProtocolViewModel : PropertyChangedBase
     {
-        private readonly OrderData orderData;
+        private readonly Order order;
+
+        private readonly WordService wordService;
 
         private Protocol selected;
 
         private readonly Func<string, string, string> move;
-        private readonly Func<string, string, Task<bool>> affirm;
+        private readonly Func<string, string, bool, Task<bool>> actionAffirm;
 
         public ObservableCollection<Protocol> Protocols { get; set; }
 
@@ -36,12 +38,12 @@ namespace DocManager.ViewModel
             {
                 Date = DateTime.Now,
                 Dates = DateTime.Now.ToShortDateString(),
-                Name = Protocol.GetName(species, orderData.ObjectData.Order),
+                Name = Protocol.GetName(species, order.ObjectData.Order),
                 Perfomer = "Астахов",
                 Species = species
             };
 
-            await Task.Run(() => WordService.WriteWord(orderData, protocol, species));
+            await Task.Run(() => wordService.WriteWord(order, protocol, species));
 
             Protocols.Add(protocol);
         });
@@ -82,18 +84,23 @@ namespace DocManager.ViewModel
             }
             catch (Exception e)
             {
-                await affirm("Ошибка", e.Message);
+                await actionAffirm("Ошибка", e.Message, true);
                 return;
             }
         });
 
 
-        public ProtocolViewModel(OrderData orderData, Func<string, string, string> move, Func<string, string, Task<bool>> affirm)
+        public ProtocolViewModel(
+            Order order,
+            Settings settings,
+            Func<string, string, string> move,
+            Func<string, string, bool, Task<bool>> actionAffirm)
         {
-            Protocols = new ObservableCollection<Protocol>(orderData.Protocols);
-            this.orderData = orderData;
+            Protocols = new ObservableCollection<Protocol>(order.Protocols);
+            wordService = new WordService(settings);
+            this.order = order;
             this.move = move;
-            this.affirm = affirm;
+            this.actionAffirm = actionAffirm;
         }
     }
 }

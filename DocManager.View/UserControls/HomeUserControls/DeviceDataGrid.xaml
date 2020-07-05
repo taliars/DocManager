@@ -4,8 +4,8 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:local="clr-namespace:DocManager.ViewModel;assembly=DocManager.ViewModel"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     d:DesignHeight="100"
     d:DesignWidth="900"
     mc:Ignorable="d">
@@ -59,20 +59,24 @@
                     Header="№ прибора" />
                 <DataGridTextColumn
                     Binding="{Binding VerNumber, Mode=TwoWay}"
-                    Header="Свидельство о поверке" Visibility="Hidden"/>
+                    Header="Свидельство о поверке"
+                    Visibility="Hidden" />
                 <DataGridTextColumn
                     Binding="{Binding VerOrganization, Mode=TwoWay}"
-                    Header="Организация-поверитель" Visibility="Hidden"                  />
+                    Header="Организация-поверитель"
+                    Visibility="Hidden" />
                 <DataGridTextColumn
                     Width="3*"
                     Binding="{Binding VerExpiration, Mode=TwoWay, StringFormat=dd.MM.yyyy г.}"
                     Header="Срок действия поверки" />
                 <DataGridTextColumn
                     Binding="{Binding Range, Mode=TwoWay}"
-                    Header="Диапазон" Visibility="Hidden"/>
+                    Header="Диапазон"
+                    Visibility="Hidden" />
                 <DataGridTextColumn
                     Binding="{Binding Fault, Mode=TwoWay}"
-                    Header="Погрешность" Visibility="Hidden" />
+                    Header="Погрешность"
+                    Visibility="Hidden" />
             </DataGrid.Columns>
 
             <DataGrid.RowStyle>

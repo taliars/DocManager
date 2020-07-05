@@ -15,11 +15,11 @@ namespace DocManager.Services
         Vibration,
     }
 
-    public static class WordService
+    public class WordService
     {
-        private static readonly string commonPath = @"D:\m\DocManager\норд\формы протоколов\";
+        private readonly string commonPath;
 
-        private static readonly string finalPath = @"D:\m\DocManager\норд\final\";
+        private readonly string finalPath;
 
         private static readonly Dictionary<string, string> templateProtocolPaths = new Dictionary<string, string>
         {
@@ -32,16 +32,16 @@ namespace DocManager.Services
             ["вибрация"] = @"вибрация.docx",
         };
 
-        public static void WriteWord(OrderData orderData, Document document, string type)
+        public void WriteWord(Order orderData, Document document, string type)
         {
             var wordApp = new Word.Application();
-            string templateFilePath = $"{commonPath}{templateProtocolPaths[type.ToLower()]}";
+            string templateFilePath = $"{commonPath}\\{templateProtocolPaths[type.ToLower()]}";
 
             // TODO:  Try
             var wordDoc = wordApp.Documents.Open(templateFilePath);
             var objectData = orderData.ObjectData;
 
-            string finalFilePath = $"{finalPath}{Protocol.GetName(type.ToLower(), objectData.Order)}";
+            string finalFilePath = $"{finalPath}\\{Protocol.GetName(type.ToLower(), objectData.Order)}";
             document.Path = $"{finalFilePath}.docx";
 
             wordDoc.Variables[nameof(Document.Name)].Value = document.Name;
@@ -61,8 +61,18 @@ namespace DocManager.Services
             wordApp.Quit();
         }
 
-        private static string GetOrEmpty(this string input)
-             => string.IsNullOrEmpty(input) ? " " : input;
 
+
+        public WordService(Settings settings)
+        {
+            commonPath = settings.TemplatesPath;
+            finalPath = settings.FinalPath;
+        }
+    }
+
+    internal static class Helper
+    {
+        public static string GetOrEmpty(this string input)
+            => string.IsNullOrEmpty(input) ? " " : input;
     }
 }

@@ -77,6 +77,12 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="UserControls\Flyouts\OrdersFlyout.xaml.cs">
+      <DependentUpon>OrdersFlyout.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\Flyouts\SettingsFlyout.xaml.cs">
+      <DependentUpon>SettingsFlyout.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\HomeUserControls\ActDataGrid.xaml.cs">
       <DependentUpon>ActDataGrid.xaml</DependentUpon>
     </Compile>
@@ -101,9 +107,6 @@
     <Compile Include="UserControls\HomeUserControls\TabControlDeviceMeteo.xaml.cs">
       <DependentUpon>TabControlDeviceMeteo.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\Settings.xaml.cs">
-      <DependentUpon>Settings.xaml</DependentUpon>
-    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -120,6 +123,14 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="UserControls\Flyouts\OrdersFlyout.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\Flyouts\SettingsFlyout.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="UserControls\HomeUserControls\ActDataGrid.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -144,10 +155,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UserControls\HomeUserControls\TabControlDeviceMeteo.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="UserControls\Settings.xaml">
-      <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>

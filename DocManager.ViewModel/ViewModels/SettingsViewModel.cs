@@ -17,13 +17,13 @@ namespace DocManager.ViewModel
             }
         }
 
-        public string RootPath
+        public string SourceFolderPath
         {
-            get => settings.RootPath;
+            get => settings.SourceFolderPath;
             set
             {
-                settings.RootPath = value;
-                NotifyPropertyChanged(RootPath);
+                settings.SourceFolderPath = value;
+                NotifyPropertyChanged(SourceFolderPath);
             }
         }
 

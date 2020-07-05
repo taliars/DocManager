@@ -2,6 +2,7 @@ namespace DocManager.Core
 {
     public class ObjectData
     {
+        public int Id { get; set; }
         public string Order { get; set; }
         public string CustomerName { get; set; }
         public string CustomerAddress { get; set; }

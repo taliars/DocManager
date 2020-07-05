@@ -1,5 +1,8 @@
-﻿using DocManager.Data.DataProviders;
+﻿using DocManager.Core;
+using DocManager.Data;
+using DocManager.Data.Json;
 using DocManager.ViewModel.Common;
+using DocManager.ViewModel.Helpers;
 using System;
 using System.Threading.Tasks;
 
@@ -7,10 +10,12 @@ namespace DocManager.ViewModel
 {
     public class MainViewModel : PropertyChangedBase
     {
-        private IOrderDataProvider _objectDataProvider;
-        private string statusMessage;
-        private readonly Func<string, string, Task<bool>> confirm;
-        private readonly Func<string, string, Task<bool>> affirm;
+        private IOrderData orderData;
+
+        private readonly Func<string, string, bool, Task<bool>> actionAffirm;
+        private readonly Func<string, string, Task<bool>> inputAffirm;
+        private readonly Settings settings;
+        private int orderId;
 
         public ObjectDataViewModel ObjectDataViewModel { get; set; }
 
@@ -26,42 +31,55 @@ namespace DocManager.ViewModel
 
         public RelayCommand Save => new RelayCommand(async o =>
         {
-            bool ensure = await confirm("Сохранить?", "Сохранить внесенные изменения");
+            bool ensure = await actionAffirm("Сохранить?", "Сохранить внесенные изменения", false);
 
             if (!ensure)
             {
                 return;
             }
 
-            await Task.Run(() => _objectDataProvider.Save());
-            StatusMessage = "Saved";
+            await Task.Run(() => orderData.Update(this.ToOrder(this.orderId)));
         });
 
-        public string StatusMessage
+        public RelayCommand Add => new RelayCommand(async o =>
         {
-            get => statusMessage;
-            set
+            bool ensure = await inputAffirm("Новый заказ", "Введите номер заказа");
+
+            if (!ensure)
             {
-                statusMessage = value;
-                NotifyPropertyChanged(nameof(StatusMessage));
+                return;
             }
-        }
+
+            await Task.Run(() => orderData.Add(order: new Order() { Id = 3, }));
+        });
 
         public MainViewModel(
-            Func<string, string, Task<bool>> confirm,
-            Func<string, string, Task<bool>> affirm,
+            Func<string, string, bool, Task<bool>> actionAffirm,
+            Func<string, string, Task<bool>> inputAffirm,
             Func<string, string, string> move)
         {
-            this.confirm = confirm;
-            this.affirm = affirm;
+            this.actionAffirm = actionAffirm;
+            this.inputAffirm = inputAffirm;
 
-            _objectDataProvider = new JsonDataProvider("abc", "devices");
-            var orderData = _objectDataProvider.OrderData;
-            ObjectDataViewModel = new ObjectDataViewModel(orderData);
-            ProtocolViewModel = new ProtocolViewModel(orderData, move, affirm);
-            ActsViewModel = new ActViewModel(orderData);
-            WeatherDaysViewModel = new WeatherDayViewModel(orderData.WeatherDays);
-            DevicesViewModel = new DeviceViewModel(orderData.Devices);
+            settings = new Settings
+            {
+                TemplatesPath = @"D:\trash\DocManager\норд\формы протоколов",
+                SourceFolderPath = @"D:\trash\DocManager\норд\source",
+                FinalPath = @"D:\trash\DocManager\норд\final",
+            };
+
+            var id = 2;
+            orderId = id;
+
+            orderData = new JsonOrderData(settings.SourceFolderPath);
+            var order = orderData.GetById(id);
+
+
+            ObjectDataViewModel = new ObjectDataViewModel(order);
+            ProtocolViewModel = new ProtocolViewModel(order, settings, move, actionAffirm);
+            ActsViewModel = new ActViewModel(order);
+            WeatherDaysViewModel = new WeatherDayViewModel(order.WeatherDays);
+            DevicesViewModel = new DeviceViewModel(order.Devices);
         }
     }
 }

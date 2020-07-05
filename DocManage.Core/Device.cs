@@ -4,6 +4,7 @@ namespace DocManager.Core
 {
     public class Device
     {
+        public int Id { get; set; }
         public bool IsSelected { get; set; } //выбранный прибор из списка
         public string Name { get; set; } //наименование прибора
         public string Use { get; set; } //назначение прибора

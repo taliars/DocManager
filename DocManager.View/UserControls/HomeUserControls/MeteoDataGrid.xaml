@@ -9,8 +9,8 @@
     d:DesignHeight="100"
     d:DesignWidth="900"
     mc:Ignorable="d">
-    
-    <Grid>        
+
+    <Grid>
         <DataGrid
             VerticalAlignment="Top"
             AutoGenerateColumns="False"

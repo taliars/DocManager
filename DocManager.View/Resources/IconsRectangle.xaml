@@ -16,6 +16,17 @@
     </Rectangle>
 
     <Rectangle
+        x:Key="icon_add_order"
+        Width="15"
+        Height="15"
+        x:Shared="false"
+        Fill="White">
+        <Rectangle.OpacityMask>
+            <VisualBrush Stretch="Fill" Visual="{DynamicResource appbar_add}" />
+        </Rectangle.OpacityMask>
+    </Rectangle>
+
+    <Rectangle
         x:Key="icon_file_delete"
         Width="20"
         Height="25"

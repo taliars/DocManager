@@ -1,19 +1,13 @@
 ﻿using DocManager.ViewModel;
 using MahApps.Metro.Controls;
 using MahApps.Metro.Controls.Dialogs;
-using System.Linq;
 using System.Threading.Tasks;
-using System.Windows.Controls;
 using Microsoft.WindowsAPICodePack.Dialogs;
-using System;
-using System.Threading;
 
 namespace DocManager.View
 {
     public partial class MainWindow : MetroWindow
     {
-        private int[] orders = { 1, 23, 45, 3, 2, 556, 3, 5, 45, 344, 444, 544, 556, 566 };
-
         private MetroDialogSettings standardDialogSettings = new MetroDialogSettings
         {
             AffirmativeButtonText = "OK",
@@ -25,44 +19,23 @@ namespace DocManager.View
         public MainWindow()
         {
             InitializeComponent();
-            DataContext = new MainViewModel(Confirm, Affirm, Move);
-
-            foreach (int order in orders)
-            {
-                AllOrders.Items.Add(order);
-            }
-
-            O();
+            DataContext = new MainViewModel(AffirmAction, InputAction, Move);    
         }
 
-        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        async Task<bool> AffirmAction(string message, string caption, bool isAffimativeOnly)
         {
-            TextBox textBox = sender as TextBox;
+            var messageDialogStyle = isAffimativeOnly
+                ? MessageDialogStyle.Affirmative
+                : MessageDialogStyle.AffirmativeAndNegative;
 
-            if (textBox is null)
-            {
-                return;
-            }
-
-            string text = textBox.Text;
-
-            AllOrders.Items.Clear();
-            foreach (int order in orders.Where(o => o.ToString().StartsWith(text)))
-            {
-                AllOrders.Items.Add(order);
-            }
-        }
-
-        async Task<bool> Confirm(string message, string caption)
-        {
             return MessageDialogResult.Affirmative
-             == await this.ShowMessageAsync(message, caption, MessageDialogStyle.AffirmativeAndNegative, standardDialogSettings);
+             == await this.ShowMessageAsync(message, caption, messageDialogStyle, standardDialogSettings);          
         }
 
-        async Task<bool> Affirm(string message, string caption)
+        async Task<bool> InputAction(string message, string caption)
         {
-            return MessageDialogResult.Affirmative
-             == await this.ShowMessageAsync(message, caption, MessageDialogStyle.Affirmative, standardDialogSettings);
+            return string.Empty
+                != await this.ShowInputAsync(message, caption, standardDialogSettings);
         }
 
         string Move(string defaultFileName, string title)
@@ -81,15 +54,6 @@ namespace DocManager.View
             return dialog.ShowDialog() == CommonFileDialogResult.Ok
                 ? dialog.FileName
                 : null;
-        }
-
-        void O()
-        {
-            Dispatcher.Invoke((() =>
-            {
-                progress1.IsActive = true;
-                progress1.Visibility = System.Windows.Visibility.Visible;
-            }));
         }
     }
 }

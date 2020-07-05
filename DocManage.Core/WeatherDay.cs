@@ -4,6 +4,7 @@ namespace DocManager.Core
 {
     public class WeatherDay
     {
+        public int Id { get; set; }
         public bool IsSelected { get; set; }
         public DateTime? Date { get; set; }
         public string Temperature { get; set; }

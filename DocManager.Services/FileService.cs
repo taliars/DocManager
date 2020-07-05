@@ -22,6 +22,13 @@ namespace DocManager.Services
             }
         }
 
+        public static void Open(string path)
+        {
+            var defaultPath = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.FullName;
+            path = path ?? defaultPath;
+
+        }
+
         public static void Move(string oldPath, string newPath)
         {
             if (!File.Exists(oldPath))
@@ -42,6 +49,22 @@ namespace DocManager.Services
             }
 
             File.Move(oldPath, newPath);
+        }
+
+        public static bool Delete(string path)
+        {
+            File.Delete(path);
+            return true;
+        }
+
+        public static string ToFullPath(this string folderPath, string docName)
+        {
+            return $"{Path.Combine(folderPath, docName)}.json";
+        }
+
+        public static string ToFullPath(this string folderPath, int docName)
+        {
+            return $"{Path.Combine(folderPath, docName.ToString())}.json";
         }
     }
 }

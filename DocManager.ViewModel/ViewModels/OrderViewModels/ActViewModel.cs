@@ -8,7 +8,7 @@ namespace DocManager.ViewModel
     {
         private Act selected;
 
-        private readonly OrderData orderData;
+        private readonly Order orderData;
 
         public Act Selected
         {
@@ -44,7 +44,7 @@ namespace DocManager.ViewModel
             NotifyPropertyChanged(nameof(Acts));
         });
 
-        public ActViewModel(OrderData orderData)
+        public ActViewModel(Order orderData)
         {
             Acts = new ObservableCollection<Act>(orderData.Acts);
             this.orderData = orderData;

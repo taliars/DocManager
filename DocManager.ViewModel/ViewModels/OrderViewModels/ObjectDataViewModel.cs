@@ -4,76 +4,76 @@ using DocManager.ViewModel.Common;
 
 namespace DocManager.ViewModel
 {
-    public class ObjectDataViewModel: PropertyChangedBase
+    public class ObjectDataViewModel : PropertyChangedBase
     {
-        private ObjectData objectData;
+        internal ObjectData ObjectData;
 
         public string ObjectName
         {
-            get => objectData?.ObjectName;
+            get => ObjectData?.ObjectName;
             set
             {
-                objectData.ObjectName = value;
+                ObjectData.ObjectName = value;
                 NotifyPropertyChanged(nameof(ObjectName));
             }
         }
 
         public string ObjectAddress
         {
-            get => objectData?.ObjectAddress;
+            get => ObjectData?.ObjectAddress;
             set
             {
-                objectData.ObjectAddress = value;
+                ObjectData.ObjectAddress = value;
                 NotifyPropertyChanged(nameof(ObjectAddress));
             }
         }
 
         public string Measurement
         {
-            get => objectData?.Measurement;
+            get => ObjectData?.Measurement;
             set
             {
-                objectData.Measurement = value;
+                ObjectData.Measurement = value;
                 NotifyPropertyChanged(nameof(Measurement));
             }
         }
 
         public string Purpose
         {
-            get => objectData?.Purpose;
+            get => ObjectData?.Purpose;
             set
             {
-                objectData.Purpose = value;
+                ObjectData.Purpose = value;
                 NotifyPropertyChanged(nameof(Purpose));
             }
         }
 
         public string CustomerName
         {
-            get => objectData?.CustomerName;
+            get => ObjectData?.CustomerName;
             set
             {
-                objectData.CustomerName = value;
+                ObjectData.CustomerName = value;
                 NotifyPropertyChanged(nameof(CustomerName));
             }
         }
 
         public string CustomerAddress
         {
-            get => objectData?.CustomerAddress;
+            get => ObjectData?.CustomerAddress;
             set
             {
-                objectData.CustomerAddress = value;
+                ObjectData.CustomerAddress = value;
                 NotifyPropertyChanged(nameof(CustomerAddress));
             }
         }
 
         public string Order
         {
-            get => objectData?.Order;
+            get => ObjectData?.Order;
             set
             {
-                objectData.Order = value;
+                ObjectData.Order = value;
                 NotifyPropertyChanged(nameof(Order));
                 NotifyPropertyChanged(nameof(ObjectDataViewModel));
             }
@@ -81,17 +81,37 @@ namespace DocManager.ViewModel
 
         public string Comment
         {
-            get => objectData?.Comment;
+            get => ObjectData?.Comment;
             set
             {
-                objectData.Comment = value;
+                ObjectData.Comment = value;
                 NotifyPropertyChanged(nameof(Comment));
             }
         }
 
-        public ObjectDataViewModel(OrderData orderData)
+        public string Inn
         {
-            objectData = orderData.ObjectData;
+            get => ObjectData?.Inn;
+            set
+            {
+                ObjectData.Inn = value;
+                NotifyPropertyChanged(nameof(Inn));
+            }
+        }
+
+        public string Ogrn
+        {
+            get => ObjectData?.Ogrn;
+            set
+            {
+                ObjectData.Ogrn = value;
+                NotifyPropertyChanged(nameof(Ogrn));
+            }
+        }
+
+        public ObjectDataViewModel(Order order)
+        {
+            this.ObjectData = order.ObjectData;
         }
     }
 }

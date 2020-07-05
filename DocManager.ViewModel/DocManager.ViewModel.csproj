@@ -35,7 +35,6 @@
     <Compile Include="Common\PropertyChangedBase.cs" />
     <Compile Include="Common\RelayCommand.cs" />
     <Compile Include="Helpers\ConvertFromViewModelHelper.cs" />
-    <Compile Include="Helpers\ConvertToViewModelHelper.cs" />
     <Compile Include="ViewModels\OrderViewModels\ActViewModel.cs" />
     <Compile Include="ViewModels\OrderViewModels\AdditionalDocumentViewModel.cs" />
     <Compile Include="ViewModels\OrderViewModels\DeviceViewModel.cs" />

@@ -2,8 +2,9 @@
 
 namespace DocManager.Core
 {
-    public class OrderData
+    public class Order
     {
+        public int Id { get; set; }
         public ObjectData ObjectData { get; set; }
         public IEnumerable<Act> Acts { get; set; }
         public IEnumerable<Protocol> Protocols { get; set; }
