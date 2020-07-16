@@ -6,8 +6,6 @@ namespace DocManager.ViewModel.Helpers
     {
         public static Order ToOrder(this MainViewModel viewModel, int orderId)
         {
-            var objectData = viewModel.ObjectDataViewModel;
-
             return viewModel == null ? null : new Order
             {
                 Id = orderId,
@@ -21,7 +19,7 @@ namespace DocManager.ViewModel.Helpers
 
         private static ObjectData ToObjectData(this ObjectDataViewModel viewModel)
         {
-            return new ObjectData
+            return viewModel == null ? null : new ObjectData
             {
                 Comment = viewModel.Comment,
                 CustomerAddress = viewModel.CustomerAddress,
