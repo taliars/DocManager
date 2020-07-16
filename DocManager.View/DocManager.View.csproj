@@ -84,28 +84,25 @@
     <Compile Include="UserControls\Flyouts\SettingsFlyout.xaml.cs">
       <DependentUpon>SettingsFlyout.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\HomeUserControls\ActDataGrid.xaml.cs">
+    <Compile Include="UserControls\OrderControls\ActDataGrid.xaml.cs">
       <DependentUpon>ActDataGrid.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\HomeUserControls\AdditionalDocumentsGrid.xaml.cs">
+    <Compile Include="UserControls\OrderControls\AdditionalDocumentsGrid.xaml.cs">
       <DependentUpon>AdditionalDocumentsGrid.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\HomeUserControls\CustomerControl.xaml.cs">
+    <Compile Include="UserControls\OrderControls\CustomerControl.xaml.cs">
       <DependentUpon>CustomerControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\HomeUserControls\DeviceDataGrid.xaml.cs">
+    <Compile Include="UserControls\OrderControls\DeviceDataGrid.xaml.cs">
       <DependentUpon>DeviceDataGrid.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\Home.xaml.cs">
-      <DependentUpon>Home.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="UserControls\HomeUserControls\MeteoDataGrid.xaml.cs">
+    <Compile Include="UserControls\OrderControls\MeteoDataGrid.xaml.cs">
       <DependentUpon>MeteoDataGrid.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\HomeUserControls\ProtocolDataGrid.xaml.cs">
+    <Compile Include="UserControls\OrderControls\ProtocolDataGrid.xaml.cs">
       <DependentUpon>ProtocolDataGrid.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\HomeUserControls\TabControlDeviceMeteo.xaml.cs">
+    <Compile Include="UserControls\OrderControls\TabControlDeviceMeteo.xaml.cs">
       <DependentUpon>TabControlDeviceMeteo.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
@@ -132,30 +129,26 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UserControls\HomeUserControls\ActDataGrid.xaml">
+    <Page Include="UserControls\OrderControls\ActDataGrid.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UserControls\HomeUserControls\AdditionalDocumentsGrid.xaml">
+    <Page Include="UserControls\OrderControls\AdditionalDocumentsGrid.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UserControls\HomeUserControls\CustomerControl.xaml">
+    <Page Include="UserControls\OrderControls\CustomerControl.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UserControls\HomeUserControls\DeviceDataGrid.xaml">
+    <Page Include="UserControls\OrderControls\DeviceDataGrid.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UserControls\Home.xaml">
-      <SubType>Designer</SubType>
+    <Page Include="UserControls\OrderControls\MeteoDataGrid.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UserControls\HomeUserControls\MeteoDataGrid.xaml">
+    <Page Include="UserControls\OrderControls\ProtocolDataGrid.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UserControls\HomeUserControls\ProtocolDataGrid.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="UserControls\HomeUserControls\TabControlDeviceMeteo.xaml">
+    <Page Include="UserControls\OrderControls\TabControlDeviceMeteo.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>

@@ -15,8 +15,9 @@ namespace DocManager.ViewModel
 
         private readonly Func<string, string, bool, Task<bool>> actionAffirm;
         private readonly Func<string, string, Task<string>> inputAffirm;
-        private readonly Settings settings;
         private int orderId;
+
+        public string StatusMessage { get; set; }
 
         public List<OrderTuple> OrderNames { get; set; }
 
@@ -34,7 +35,7 @@ namespace DocManager.ViewModel
 
         public RelayCommand Save => new RelayCommand(async o =>
         {
-            bool ensure = await actionAffirm("Сохранить?", "Сохранить внесенные изменения", false);
+            var ensure = await actionAffirm("Сохранить?", "Сохранить внесенные изменения", false);
 
             if (!ensure)
             {
@@ -64,6 +65,8 @@ namespace DocManager.ViewModel
             await Task.Run(() => orderData.Add(order));
             OrderNames = orderData.GetGetOrderNames();
             NotifyPropertyChanged(nameof(OrderNames));
+            StatusMessage = "Added";
+            NotifyPropertyChanged(nameof(StatusMessage));
         });
 
         public RelayCommand GetObjectName => new RelayCommand(o =>
@@ -83,7 +86,7 @@ namespace DocManager.ViewModel
             this.actionAffirm = actionAffirm;
             this.inputAffirm = inputAffirm;
 
-            settings = new Settings
+            var settings = new Settings
             {
                 TemplatesPath = @"D:\trash\DocManager\норд\формы протоколов",
                 SourceFolderPath = @"D:\trash\DocManager\норд\source",
@@ -98,6 +101,7 @@ namespace DocManager.ViewModel
 
             OrderNames = orderData.GetGetOrderNames();
 
+            StatusMessage = "Ready";
 
             ObjectDataViewModel = new ObjectDataViewModel(order);
             ProtocolViewModel = new ProtocolViewModel(order, settings, move, actionAffirm);

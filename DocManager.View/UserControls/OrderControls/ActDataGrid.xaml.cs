@@ -1,8 +1,5 @@
-﻿namespace DocManager.View.UserControls
+﻿namespace DocManager.View.UserControls.OrderControls
 {
-    /// <summary>
-    /// Interaction logic for ActsDataGrid.xaml
-    /// </summary>
     public partial class ActDataGrid : System.Windows.Controls.UserControl
     {
         public ActDataGrid()
