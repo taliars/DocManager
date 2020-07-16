@@ -10,7 +10,7 @@
     FontSize="14"
     mc:Ignorable="d">
 
-    <Grid DataContext="{Binding ObjectDataViewModel, Mode=TwoWay}">
+    <Grid DataContext="{Binding ObjectData, Mode=TwoWay}">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />

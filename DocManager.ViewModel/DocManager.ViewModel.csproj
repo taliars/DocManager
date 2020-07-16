@@ -32,18 +32,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="ActionsHelper.cs" />
     <Compile Include="Common\PropertyChangedBase.cs" />
     <Compile Include="Common\RelayCommand.cs" />
-    <Compile Include="Helpers\ConvertFromViewModelHelper.cs" />
-    <Compile Include="ViewModels\OrderViewModels\ActViewModel.cs" />
-    <Compile Include="ViewModels\OrderViewModels\AdditionalDocumentViewModel.cs" />
-    <Compile Include="ViewModels\OrderViewModels\DeviceViewModel.cs" />
-    <Compile Include="ViewModels\OrderViewModels\ObjectDataViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="Lists.cs" />
-    <Compile Include="ViewModels\OrderViewModels\ProtocolViewModel.cs" />
     <Compile Include="ViewModels\SettingsViewModel.cs" />
-    <Compile Include="ViewModels\OrderViewModels\WeatherDayViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="PresentationCore" />
@@ -65,7 +59,9 @@
       <Name>DocManager.Services</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Helpers\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
          Other similar extension points exist, see Microsoft.Common.targets.

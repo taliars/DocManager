@@ -2,69 +2,95 @@
 using DocManager.Data;
 using DocManager.Data.Json;
 using DocManager.ViewModel.Common;
-using DocManager.ViewModel.Helpers;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 
 namespace DocManager.ViewModel
 {
     public class MainViewModel : PropertyChangedBase
     {
-        private readonly IOrderData orderData;
+        private Act selectedAct;
+        private Protocol selectedProtocol;
+        private WeatherDay selectedWeatherDay;
 
-        private readonly Func<string, string, bool, Task<bool>> actionAffirm;
-        private readonly Func<string, string, Task<string>> inputAffirm;
+        private readonly IOrderData orderData;
+        private Order currentOrder;
+
         private int orderId;
+        private readonly ActionsHelper actionHelper;
 
         public string StatusMessage { get; set; }
 
         public List<OrderTuple> OrderNames { get; set; }
 
-        public ObjectDataViewModel ObjectDataViewModel { get; set; }
+        public ObjectData ObjectData { get; set; }
 
-        public ProtocolViewModel ProtocolViewModel { get; set; }
+        public ObservableCollection<Device> Devices { get; set; }
 
-        public ActViewModel ActsViewModel { get; set; }
+        public ObservableCollection<Act> Acts { get; set; }
 
-        public DeviceViewModel DevicesViewModel { get; set; }
+        public ObservableCollection<Protocol> Protocols { get; set; }
 
-        public WeatherDayViewModel WeatherDaysViewModel { get; set; }
+        public Act SelectedAct
+        {
+            get => selectedAct;
+            set
+            {
+                selectedAct = value;
+                NotifyPropertyChanged(nameof(SelectedAct));
+            }
+        }
+
+        public Protocol SelectedProtocol
+        {
+            get => selectedProtocol;
+            set
+            {
+                selectedProtocol = value;
+                NotifyPropertyChanged(nameof(SelectedProtocol));
+            }
+        }
+
+        public WeatherDay SelectedWeatherDay
+        {
+            get => selectedWeatherDay;
+            set
+            {
+                selectedWeatherDay = value;
+                NotifyPropertyChanged(nameof(SelectedWeatherDay));
+            }
+        }
+
+        public Device SelectedDevice { get; set; }
+
+        public ObservableCollection<WeatherDay> WeatherDays { get; set; }
+
+        public RelayCommand AddDate => new RelayCommand(o =>
+        {
+            WeatherDays.Add(new WeatherDay());
+            NotifyPropertyChanged(nameof(WeatherDays));
+        });
+
+        public RelayCommand RemoveDate => new RelayCommand(o =>
+        {
+            WeatherDays.Remove(SelectedWeatherDay);
+            NotifyPropertyChanged(nameof(WeatherDays));
+        });
+
+        public RelayCommand OpenAct => new RelayCommand(async o => await actionHelper.OpenWithDefaultApp(SelectedAct));
+
+        public RelayCommand Move => new RelayCommand(async o => await actionHelper.MoveDocument(SelectedProtocol, Protocols, nameof(Protocols)));
 
         public SettingsViewModel SettingsViewModel { get; set; }
 
-        public RelayCommand Save => new RelayCommand(async o =>
+        public RelayCommand SaveOrder => new RelayCommand(async o => await actionHelper.SaveOrderAsync());
+
+        public RelayCommand AddOrder => new RelayCommand(async o =>
         {
-            var ensure = await actionAffirm("Сохранить?", "Сохранить внесенные изменения", false);
-
-            if (!ensure)
-            {
-                return;
-            }
-
-            await Task.Run(() => orderData.Update(this.ToOrder(this.orderId)));
-        });
-
-        public RelayCommand Add => new RelayCommand(async o =>
-        {
-            var ensure = await inputAffirm("Новый заказ", "Введите номер заказа");
-
-            if (string.IsNullOrEmpty(ensure))
-            {
-                return;
-            }
-
-            var order = new Order
-            {
-                ObjectData = new ObjectData
-                {
-                    Order = ensure
-                }
-            };
-
-            await Task.Run(() => orderData.Add(order));
+            await actionHelper.CreateNewOrderAsync(orderData);
             OrderNames = orderData.GetGetOrderNames();
-            NotifyPropertyChanged(nameof(OrderNames));
             StatusMessage = "Added";
             NotifyPropertyChanged(nameof(StatusMessage));
         });
@@ -74,18 +100,23 @@ namespace DocManager.ViewModel
             var orderTuple = (OrderTuple)o;
             var order = orderData.GetById(orderTuple.Id);
             orderId = order.Id;
-            ObjectDataViewModel = new ObjectDataViewModel(order);
-            NotifyPropertyChanged(nameof(ObjectDataViewModel));
+            ObjectData = order.ObjectData;
+            NotifyPropertyChanged(nameof(ObjectData));
         });
+
+        public RelayCommand AddAct => new RelayCommand(o => { actionHelper.AddDocument(o, Acts, nameof(Acts)); });
+
+        public RelayCommand RemoveAct => new RelayCommand(o => { actionHelper.RemoveDocument(o, Acts, nameof(Acts)); });
+
+        public RelayCommand AddProtocol => new RelayCommand(o => { actionHelper.AddDocument(o, Protocols, nameof(Protocols)); });
+
+        public RelayCommand RemoveProtocol => new RelayCommand(o => { actionHelper.RemoveDocument(o, Protocols, nameof(Protocols)); });
 
         public MainViewModel(
             Func<string, string, bool, Task<bool>> actionAffirm,
             Func<string, string, Task<string>> inputAffirm,
-            Func<string, string, string> move)
+            Func<string, string, string> moveAffirm)
         {
-            this.actionAffirm = actionAffirm;
-            this.inputAffirm = inputAffirm;
-
             var settings = new Settings
             {
                 TemplatesPath = @"D:\trash\DocManager\норд\формы протоколов",
@@ -102,11 +133,12 @@ namespace DocManager.ViewModel
 
             StatusMessage = "Ready";
 
-            ObjectDataViewModel = new ObjectDataViewModel(order);
-            ProtocolViewModel = new ProtocolViewModel(order, settings, move, actionAffirm);
-            ActsViewModel = new ActViewModel(order);
-            WeatherDaysViewModel = new WeatherDayViewModel(order.WeatherDays);
-            DevicesViewModel = new DeviceViewModel(order.Devices);
+            ObjectData = order.ObjectData;
+            Acts = new ObservableCollection<Act>(order.Acts);
+            Protocols = new ObservableCollection<Protocol>(order.Protocols);
+            Devices = new ObservableCollection<Device>(order.Devices);
+
+            actionHelper = new ActionsHelper(moveAffirm, actionAffirm, inputAffirm);
         }
     }
 }

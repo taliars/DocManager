@@ -14,14 +14,13 @@
             VerticalAlignment="Top"
             AutoGenerateColumns="False"
             ColumnWidth="*"
-            DataContext="{Binding ProtocolViewModel}"
             ItemsSource="{Binding Protocols, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-            SelectedItem="{Binding Selected}">
+            SelectedItem="{Binding SelectedProtocol}">
 
             <DataGrid.InputBindings>
                 <MouseBinding
                     Command="{Binding Open}"
-                    CommandParameter="{Binding Selected}"
+                    CommandParameter="{Binding SelectedProtocol}"
                     Gesture="LeftDoubleClick" />
             </DataGrid.InputBindings>
 
@@ -35,33 +34,33 @@
                     <MenuItem Header=" Добавить" Icon="{StaticResource icon_file_add}">
                         <MenuItem.Items>
                             <MenuItem
-                                Command="{Binding Add}"
+                                Command="{Binding AddProtocol}"
                                 CommandParameter="Шум"
                                 Header="Шум" />
                             <MenuItem
-                                Command="{Binding Add}"
+                                Command="{Binding AddProtocol}"
                                 CommandParameter="Шум"
                                 Header="Шум ЖД" />
                             <MenuItem
-                                Command="{Binding Add}"
+                                Command="{Binding AddProtocol}"
                                 CommandParameter="Шум"
                                 Header="Шум Авиа" />
                             <Separator />
                             <MenuItem
-                                Command="{Binding Add}"
+                                Command="{Binding AddProtocol}"
                                 CommandParameter="Инфразвук"
                                 Header="Инфразвук" />
                             <MenuItem
-                                Command="{Binding Add}"
+                                Command="{Binding AddProtocol}"
                                 CommandParameter="Вибрация"
                                 Header="Вибрация" />
                             <MenuItem
-                                Command="{Binding Add}"
+                                Command="{Binding AddProtocol}"
                                 CommandParameter="ЭМИ"
                                 Header="ЭМИ 50 Гц" />
                             <Separator />
                             <MenuItem
-                                Command="{Binding Add}"
+                                Command="{Binding AddProtocol}"
                                 CommandParameter="Радиация"
                                 Header="Радиация" />
                         </MenuItem.Items>

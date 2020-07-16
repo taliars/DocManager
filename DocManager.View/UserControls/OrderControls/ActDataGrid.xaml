@@ -13,9 +13,8 @@
             VerticalAlignment="Top"
             AutoGenerateColumns="False"
             ColumnWidth="*"
-            DataContext="{Binding ActsViewModel}"
             ItemsSource="{Binding Acts}"
-            SelectedItem="{Binding Selected}">
+            SelectedItem="{Binding SelectedAct}">
 
             <DataGrid.ContextMenu>
                 <ContextMenu>
@@ -30,38 +29,38 @@
                         Icon="{StaticResource icon_file_add}">
                         <MenuItem.Items>
                             <MenuItem
-                                Command="{Binding Add}"
+                                Command="{Binding AddAct}"
                                 CommandParameter="Почва"
                                 Header="Почва" />
                             <MenuItem
-                                Command="{Binding Add}"
+                                Command="{Binding AddAct}"
                                 CommandParameter="Природная вода"
                                 Header="Природная вода" />
                             <MenuItem
-                                Command="{Binding Add}"
+                                Command="{Binding AddAct}"
                                 CommandParameter="Сточная вода"
                                 Header="Сточная вода" />
                             <MenuItem
-                                Command="{Binding Add}"
+                                Command="{Binding AddAct}"
                                 CommandParameter="Донные отложения"
                                 Header="Донные отложения" />
                             <MenuItem
-                                Command="{Binding Add}"
+                                Command="{Binding AddAct}"
                                 CommandParameter="Воздух"
                                 Header="Воздух" />
                             <MenuItem
-                                Command="{Binding Add}"
+                                Command="{Binding AddAct}"
                                 CommandParameter="Атмосферные осадки"
                                 Header="Атмосферные осадки" />
                             <MenuItem
-                                Command="{Binding Add}"
+                                Command="{Binding AddAct}"
                                 CommandParameter="Отходы"
                                 Header="Отходы" />
                         </MenuItem.Items>
                     </MenuItem>
                     <MenuItem
-                        Command="{Binding Remove}"
-                        CommandParameter="{Binding Selected}"
+                        Command="{Binding RemoveAct}"
+                        CommandParameter="{Binding SelectedAct}"
                         Header=" Удалить"
                         Icon="{StaticResource icon_delete}" />
                     <Separator />
