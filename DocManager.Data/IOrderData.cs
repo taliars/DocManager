@@ -13,7 +13,7 @@ namespace DocManager.Data
 
         Order Delete(int id);
 
-        IEnumerable<int> GetOrderIds { get; }
+        List<OrderTuple> GetGetOrderNames();
 
         int Commit();
     }

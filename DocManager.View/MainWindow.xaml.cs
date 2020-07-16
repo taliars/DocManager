@@ -19,7 +19,7 @@ namespace DocManager.View
         public MainWindow()
         {
             InitializeComponent();
-            DataContext = new MainViewModel(AffirmAction, InputAction, Move);    
+            DataContext = new MainViewModel(AffirmAction, InputAction, Move);
         }
 
         async Task<bool> AffirmAction(string message, string caption, bool isAffimativeOnly)
@@ -29,13 +29,13 @@ namespace DocManager.View
                 : MessageDialogStyle.AffirmativeAndNegative;
 
             return MessageDialogResult.Affirmative
-             == await this.ShowMessageAsync(message, caption, messageDialogStyle, standardDialogSettings);          
+             == await this.ShowMessageAsync(message, caption, messageDialogStyle, standardDialogSettings);
         }
 
-        async Task<bool> InputAction(string message, string caption)
+        async Task<string> InputAction(string message, string caption)
         {
-            return string.Empty
-                != await this.ShowInputAsync(message, caption, standardDialogSettings);
+            string result = await this.ShowInputAsync(message, caption, standardDialogSettings);
+            return result;
         }
 
         string Move(string defaultFileName, string title)

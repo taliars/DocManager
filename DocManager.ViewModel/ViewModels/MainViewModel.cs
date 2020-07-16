@@ -4,18 +4,21 @@ using DocManager.Data.Json;
 using DocManager.ViewModel.Common;
 using DocManager.ViewModel.Helpers;
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace DocManager.ViewModel
 {
     public class MainViewModel : PropertyChangedBase
     {
-        private IOrderData orderData;
+        private readonly IOrderData orderData;
 
         private readonly Func<string, string, bool, Task<bool>> actionAffirm;
-        private readonly Func<string, string, Task<bool>> inputAffirm;
+        private readonly Func<string, string, Task<string>> inputAffirm;
         private readonly Settings settings;
         private int orderId;
+
+        public List<OrderTuple> OrderNames { get; set; }
 
         public ObjectDataViewModel ObjectDataViewModel { get; set; }
 
@@ -43,19 +46,30 @@ namespace DocManager.ViewModel
 
         public RelayCommand Add => new RelayCommand(async o =>
         {
-            bool ensure = await inputAffirm("Новый заказ", "Введите номер заказа");
+            var ensure = await inputAffirm("Новый заказ", "Введите номер заказа");
 
-            if (!ensure)
+            if (string.IsNullOrEmpty(ensure))
             {
                 return;
             }
 
-            await Task.Run(() => orderData.Add(order: new Order() { Id = 3, }));
+            var order = new Order
+            {
+                ObjectData = new ObjectData
+                {
+                    Order = ensure
+                }
+            };
+
+            await Task.Run(() => orderData.Add(order));
+            OrderNames = orderData.GetGetOrderNames();
+            NotifyPropertyChanged(nameof(OrderNames));
         });
 
         public RelayCommand GetObjectName => new RelayCommand(o =>
         {
-            var order = orderData.GetById((int)o);
+            var orderTuple = (OrderTuple)o;
+            var order = orderData.GetById(orderTuple.Id);
             orderId = order.Id;
             ObjectDataViewModel = new ObjectDataViewModel(order);
             NotifyPropertyChanged(nameof(ObjectDataViewModel));
@@ -63,7 +77,7 @@ namespace DocManager.ViewModel
 
         public MainViewModel(
             Func<string, string, bool, Task<bool>> actionAffirm,
-            Func<string, string, Task<bool>> inputAffirm,
+            Func<string, string, Task<string>> inputAffirm,
             Func<string, string, string> move)
         {
             this.actionAffirm = actionAffirm;
@@ -81,6 +95,8 @@ namespace DocManager.ViewModel
 
             orderData = new JsonOrderData(settings.SourceFolderPath);
             var order = orderData.GetById(id);
+
+            OrderNames = orderData.GetGetOrderNames();
 
 
             ObjectDataViewModel = new ObjectDataViewModel(order);

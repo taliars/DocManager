@@ -26,8 +26,7 @@
 
         <TextBox
             Grid.Column="0"
-            mahapps:TextBoxHelper.Watermark="Найти..."
-            TextChanged="TextBox_TextChanged" />
+            mahapps:TextBoxHelper.Watermark="Найти..."          />
         <Button
             Grid.Column="1"
             Margin="10,0,0,0"
@@ -37,6 +36,8 @@
             x:Name="AllOrders"
             Grid.Row="1"
             Grid.ColumnSpan="2"
+            ItemsSource="{Binding OrderNames}"
+            DisplayMemberPath="Name"
             Margin="0,15,0,0" >
             <i:Interaction.Triggers>
                 <i:EventTrigger EventName="MouseDoubleClick">
