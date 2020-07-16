@@ -30,11 +30,11 @@
 
     <mahapps:MetroWindow.Flyouts>
         <mahapps:FlyoutsControl>
-            <flyouts:SettingsFlyout x:Name="settingsFlyout" />
+            <flyouts:SettingsFlyout x:Name="settingsFlyout"  />
             <flyouts:OrdersFlyout x:Name="ordersFlyout" />
         </mahapps:FlyoutsControl>
     </mahapps:MetroWindow.Flyouts>
 
-    <usercontrols:Home />
+    <usercontrols:Home PreviewMouseDown="Home_PreviewMouseDown"/>
 
 </mahapps:MetroWindow>

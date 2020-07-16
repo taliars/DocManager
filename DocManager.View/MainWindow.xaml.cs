@@ -55,5 +55,12 @@ namespace DocManager.View
                 ? dialog.FileName
                 : null;
         }
+
+
+
+        private void Home_PreviewMouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            ordersFlyout.IsOpen = false;
+        }
     }
 }
