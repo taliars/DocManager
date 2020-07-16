@@ -11,15 +11,13 @@
     Header="Настройки"
     mc:Ignorable="d">
 
-    <Grid>
+    <Grid Margin="45" DataContext="{Binding SettingsViewModel}">
         <Grid.RowDefinitions>
-            <RowDefinition />
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="15" />
-            <RowDefinition />
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="15" />
-            <RowDefinition />
-            <RowDefinition Height="15" />
-            <RowDefinition />
+            <RowDefinition Height="Auto" />
             <RowDefinition Height="15" />
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
@@ -28,10 +26,13 @@
             <ColumnDefinition Width="160" />
             <ColumnDefinition Width="150" />
             <ColumnDefinition Width="100" />
+            <ColumnDefinition Width="100" />
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
 
-        <Label Grid.Row="2" Content="Объект:" />
+        <CheckBox Content="Хранение на удаленном сервере" Grid.ColumnSpan="3"/>
+
+        <Label Content="Папка с данными:" Grid.Row="2" />
 
         <TextBox
             Grid.Row="2"
@@ -39,47 +40,19 @@
             Grid.ColumnSpan="3"
             VerticalAlignment="Stretch"
             mahapps:TextBoxHelper.ClearTextButton="True"
-            mahapps:TextBoxHelper.Watermark="Введите наименование объекта"
+            mahapps:TextBoxHelper.Watermark="Выберите папку для хранения информации и настроек"
             AcceptsReturn="True"
-            Text="{Binding ObjectName, Mode=TwoWay}"
+            Text="{Binding SourceFolderPath, Mode=TwoWay}"
             TextWrapping="Wrap" />
 
-        <Label Grid.Row="4" Content="Адрес объекта:" />
+        <Label Grid.Row="4" Content="Папка с шаблонами:" />
 
         <TextBox
             Grid.Row="4"
             Grid.Column="1"
             Grid.ColumnSpan="3"
             mahapps:TextBoxHelper.ClearTextButton="True"
-            mahapps:TextBoxHelper.Watermark="Введите адрес объекта"
-            Text="{Binding ObjectAddress, Mode=TwoWay}" />
-
-        <Label Grid.Row="6" Content="Площадь участка:" />
-
-        <TextBox
-            Grid.Row="6"
-            Grid.Column="1"
-            mahapps:TextBoxHelper.ClearTextButton="True"
-            mahapps:TextBoxHelper.Watermark="в га или кв.м."
-            Text="{Binding Measurement, Mode=TwoWay}" />
-
-        <Label
-            Grid.Row="6"
-            Grid.Column="2"
-            Content="Назначение:" />
-
-        <ComboBox
-            Grid.Row="6"
-            Grid.Column="4"
-            VerticalContentAlignment="Center"
-            mahapps:TextBoxHelper.ClearTextButton="True"
-            mahapps:TextBoxHelper.Watermark="Выберите назначение объекта"
-            FontSize="14"
-            IsEditable="True"
-            Text="{Binding Purpose, Mode=TwoWay}">
-
-            <ComboBoxItem>новое строительство</ComboBoxItem>
-            <ComboBoxItem>реконструкция</ComboBoxItem>
-        </ComboBox>
+            mahapps:TextBoxHelper.Watermark="Выберите папку с шаблоными документации"
+            Text="{Binding TemplatesPath, Mode=TwoWay}" />
     </Grid>
 </mahapps:Flyout>

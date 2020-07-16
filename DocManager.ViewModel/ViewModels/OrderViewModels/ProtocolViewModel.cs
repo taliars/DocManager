@@ -85,7 +85,6 @@ namespace DocManager.ViewModel
             catch (Exception e)
             {
                 await actionAffirm("Ошибка", e.Message, true);
-                return;
             }
         });
 

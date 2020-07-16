@@ -93,11 +93,10 @@ namespace DocManager.ViewModel
                 FinalPath = @"D:\trash\DocManager\норд\final",
             };
 
-            var id = 1;
-            orderId = id;
+            orderId = 1;
 
             orderData = new JsonOrderData(settings.SourceFolderPath);
-            var order = orderData.GetById(id);
+            var order = orderData.GetById(orderId);
 
             OrderNames = orderData.GetGetOrderNames();
 
