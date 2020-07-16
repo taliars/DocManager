@@ -8,14 +8,6 @@ namespace DocManager.View
 {
     public partial class MainWindow : MetroWindow
     {
-        private MetroDialogSettings standardDialogSettings = new MetroDialogSettings
-        {
-            AffirmativeButtonText = "OK",
-            NegativeButtonText = "Отмена",
-            AnimateShow = false,
-            AnimateHide = false,
-        };
-
         public MainWindow()
         {
             InitializeComponent();
@@ -29,18 +21,17 @@ namespace DocManager.View
                 : MessageDialogStyle.AffirmativeAndNegative;
 
             return MessageDialogResult.Affirmative
-             == await this.ShowMessageAsync(message, caption, messageDialogStyle, standardDialogSettings);
+             == await this.ShowMessageAsync(message, caption, messageDialogStyle, DialogSettings.Standard);
         }
 
         async Task<string> InputAction(string message, string caption)
         {
-            string result = await this.ShowInputAsync(message, caption, standardDialogSettings);
-            return result;
+            return await this.ShowInputAsync(message, caption, DialogSettings.Standard);
         }
 
         string Move(string defaultFileName, string title)
         {
-            defaultFileName = defaultFileName ?? "Выберите новое расположение файла";
+            _ = defaultFileName ?? "Выберите новое расположение файла";
             title = title ?? "Выберите папку";
 
             var dialog = new CommonOpenFileDialog
@@ -55,8 +46,6 @@ namespace DocManager.View
                 ? dialog.FileName
                 : null;
         }
-
-
 
         private void Home_PreviewMouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
