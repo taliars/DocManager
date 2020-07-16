@@ -1,6 +1,4 @@
 ﻿using DocManager.Core;
-using DocManager.Data;
-using DocManager.Data.Json;
 using DocManager.ViewModel.Common;
 using System;
 using System.Collections.Generic;
@@ -14,11 +12,10 @@ namespace DocManager.ViewModel
         private Act selectedAct;
         private Protocol selectedProtocol;
         private WeatherDay selectedWeatherDay;
+        private Device selectedDevice;
 
-        private readonly IOrderData orderData;
         private Order currentOrder;
 
-        private int orderId;
         private readonly ActionsHelper actionHelper;
 
         public string StatusMessage { get; set; }
@@ -63,7 +60,15 @@ namespace DocManager.ViewModel
             }
         }
 
-        public Device SelectedDevice { get; set; }
+        public Device SelectedDevice
+        {
+            get => selectedDevice;
+            set
+            {
+                selectedDevice = value;
+                NotifyPropertyChanged(nameof(SelectedDevice));
+            }
+        }
 
         public ObservableCollection<WeatherDay> WeatherDays { get; set; }
 
@@ -79,30 +84,22 @@ namespace DocManager.ViewModel
             NotifyPropertyChanged(nameof(WeatherDays));
         });
 
-        public RelayCommand OpenAct => new RelayCommand(async o => await actionHelper.OpenWithDefaultApp(SelectedAct));
+        public RelayCommand OpenAct => new RelayCommand(async o => await actionHelper.OpenWithDefaultAppAsync(SelectedAct));
 
-        public RelayCommand Move => new RelayCommand(async o => await actionHelper.MoveDocument(SelectedProtocol, Protocols, nameof(Protocols)));
+        public RelayCommand Move => new RelayCommand(async o => await actionHelper.MoveDocumentAsync(SelectedProtocol, Protocols, nameof(Protocols)));
 
         public SettingsViewModel SettingsViewModel { get; set; }
 
-        public RelayCommand SaveOrder => new RelayCommand(async o => await actionHelper.SaveOrderAsync());
+        public RelayCommand SaveOrder => new RelayCommand(async o => await actionHelper.SaveOrderAsync(currentOrder.Id, this));
 
         public RelayCommand AddOrder => new RelayCommand(async o =>
         {
-            await actionHelper.CreateNewOrderAsync(orderData);
-            OrderNames = orderData.GetGetOrderNames();
-            StatusMessage = "Added";
-            NotifyPropertyChanged(nameof(StatusMessage));
+            currentOrder = await actionHelper.CreateNewOrderAsync();
+            OrderNames = actionHelper.GetGetOrderNames();
+            NotifyPropertyChanged(nameof(OrderNames));
         });
 
-        public RelayCommand GetObjectName => new RelayCommand(o =>
-        {
-            var orderTuple = (OrderTuple)o;
-            var order = orderData.GetById(orderTuple.Id);
-            orderId = order.Id;
-            ObjectData = order.ObjectData;
-            NotifyPropertyChanged(nameof(ObjectData));
-        });
+        public RelayCommand GetOrder => new RelayCommand(o => { currentOrder = actionHelper.GetById(((OrderTuple)o)?.Id ?? currentOrder.Id , this); });
 
         public RelayCommand AddAct => new RelayCommand(o => { actionHelper.AddDocument(o, Acts, nameof(Acts)); });
 
@@ -124,21 +121,34 @@ namespace DocManager.ViewModel
                 FinalPath = @"D:\trash\DocManager\норд\final",
             };
 
-            orderId = 1;
+            actionHelper = new ActionsHelper(moveAffirm, actionAffirm, inputAffirm, settings);
 
-            orderData = new JsonOrderData(settings.SourceFolderPath);
-            var order = orderData.GetById(orderId);
+            currentOrder = actionHelper.GetById(1, this);
 
-            OrderNames = orderData.GetGetOrderNames();
+            OrderNames = actionHelper.GetGetOrderNames();
+            actionHelper.PassOrderData(this, currentOrder);
 
             StatusMessage = "Ready";
-
-            ObjectData = order.ObjectData;
-            Acts = new ObservableCollection<Act>(order.Acts);
-            Protocols = new ObservableCollection<Protocol>(order.Protocols);
-            Devices = new ObservableCollection<Device>(order.Devices);
-
-            actionHelper = new ActionsHelper(moveAffirm, actionAffirm, inputAffirm);
         }
+
+        
+        internal void UpdateAll()
+        {
+            string[] names =
+            {
+                nameof(OrderNames),
+                nameof(ObjectData),
+                nameof(Acts),
+                nameof(Protocols),
+                nameof(Devices),
+                nameof(WeatherDays)
+            };
+
+            foreach (var name in names)
+            {
+                NotifyPropertyChanged(name);
+            }
+        }
+
     }
 }

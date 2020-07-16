@@ -108,7 +108,7 @@
             <Button
                 Width="100"
                 Margin="10"
-                Command="{Binding Save}"
+                Command="{Binding SaveOrder}"
                 Content="Save" />
             <Button
                 Width="100"

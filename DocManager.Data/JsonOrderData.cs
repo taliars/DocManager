@@ -32,10 +32,18 @@ namespace DocManager.Data.Json
 
         public Order GetById(int id)
         {
-            var order = Deserialize<Order>(sourceFolderPath.ToFullPath(id));
+            var path = sourceFolderPath.ToFullPath(id);
+
+            if (!File.Exists(path))
+            {
+                return null;
+            }
+
+            var order = Deserialize<Order>(path);
             order.Devices = Deserialize<IEnumerable<Device>>(sourceFolderPath.ToFullPath("devices"));
             order.Id = id;
             return order;
+
         }
 
         public Order Update(Order order)

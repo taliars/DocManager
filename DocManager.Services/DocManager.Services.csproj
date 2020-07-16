@@ -42,9 +42,9 @@
     <Compile Include="WordService.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\DocManage.Core\DocManage.Core.csproj">
+    <ProjectReference Include="..\DocManage.Core\DocManager.Core.csproj">
       <Project>{34517165-99f7-4af1-9455-86bc9b46cb16}</Project>
-      <Name>DocManage.Core</Name>
+      <Name>DocManager.Core</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

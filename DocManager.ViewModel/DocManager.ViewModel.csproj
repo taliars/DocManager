@@ -46,9 +46,9 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\DocManage.Core\DocManage.Core.csproj">
-      <Project>{34517165-99f7-4af1-9455-86bc9b46cb16}</Project>
-      <Name>DocManage.Core</Name>
+    <ProjectReference Include="..\DocManage.Core\DocManager.Core.csproj">
+      <Project>{34517165-99F7-4AF1-9455-86BC9B46CB16}</Project>
+      <Name>DocManager.Core</Name>
     </ProjectReference>
     <ProjectReference Include="..\DocManager.Data\DocManager.Data.csproj">
       <Project>{b1e01b92-671e-4bbe-89af-929ecca115cd}</Project>

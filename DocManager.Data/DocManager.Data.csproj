@@ -11,7 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\DocManage.Core\DocManage.Core.csproj" />
+    <ProjectReference Include="..\DocManage.Core\DocManager.Core.csproj" />
     <ProjectReference Include="..\DocManager.Services\DocManager.Services.csproj" />
   </ItemGroup>
 

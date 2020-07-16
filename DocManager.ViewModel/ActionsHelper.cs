@@ -1,8 +1,10 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using DocManager.Core;
 using DocManager.Data;
+using DocManager.Data.Json;
 using DocManager.Services;
 using DocManager.ViewModel.Common;
 
@@ -13,15 +15,18 @@ namespace DocManager.ViewModel
         private readonly Func<string, string, string> moveAffirm;
         private readonly Func<string, string, bool, Task<bool>> actionAffirm;
         private readonly Func<string, string, Task<string>> inputAffirm;
+        private readonly IOrderData orderData;
 
         public ActionsHelper(
             Func<string, string, string> moveAffirm,
             Func<string, string, bool, Task<bool>> actionAffirm,
-            Func<string, string, Task<string>> inputAffirm)
+            Func<string, string, Task<string>> inputAffirm,
+            Settings settings)
         {
             this.moveAffirm = moveAffirm;
             this.actionAffirm = actionAffirm;
             this.inputAffirm = inputAffirm;
+            this.orderData = new JsonOrderData(settings.SourceFolderPath);
         }
 
         public void RemoveDocument<T>(object o, ObservableCollection<T> collection, string name) where T : Document, new()
@@ -31,7 +36,6 @@ namespace DocManager.ViewModel
                 return;
             }
             collection.Remove(item);
-            NotifyPropertyChanged(name);
         }
 
         public void AddDocument<T>(object o, ObservableCollection<T> collection, string name) where T : Document, new()
@@ -42,10 +46,9 @@ namespace DocManager.ViewModel
             }
 
             collection.Add(new T { Species = species });
-            NotifyPropertyChanged(name);
         }
 
-        public async Task MoveDocument<T>(
+        public async Task MoveDocumentAsync<T>(
             T document,
             ObservableCollection<T> documents,
             string name) where T : Document
@@ -75,12 +78,12 @@ namespace DocManager.ViewModel
             }
         }
 
-        public async Task OpenWithDefaultApp<T>(T document) where T : Document
+        public async Task OpenWithDefaultAppAsync<T>(T document) where T : Document
         {
             await Task.Run(() => FileService.OpenWithDefaultApp(document?.Path));
         }
 
-        public async Task SaveOrderAsync()
+        public async Task SaveOrderAsync(int orderId, MainViewModel mainViewModel)
         {
             var ensure = await actionAffirm("Сохранить?", "Сохранить внесенные изменения", false);
 
@@ -89,16 +92,26 @@ namespace DocManager.ViewModel
                 return;
             }
 
-            // TODO: Implement save logic
+            var order = new Order
+            {
+                Id = orderId,
+                ObjectData = mainViewModel.ObjectData,
+                Acts = mainViewModel.Acts,
+                Protocols = mainViewModel.Protocols,
+                Devices = mainViewModel.Devices,
+                WeatherDays = mainViewModel.WeatherDays,
+            };
+
+            orderData.Update(order);
         }
 
-        public async Task<IOrderData> CreateNewOrderAsync(IOrderData orderData)
+        public async Task<Order> CreateNewOrderAsync()
         {
             var ensure = await inputAffirm("Новый заказ", "Введите номер заказа");
 
             if (string.IsNullOrEmpty(ensure))
             {
-                return orderData;
+                return null;
             }
 
             var order = new Order
@@ -110,7 +123,30 @@ namespace DocManager.ViewModel
             };
 
             await Task.Run(() => orderData.Add(order));
-            return orderData;
+            return order;
+        }
+
+        public Order GetById(int orderId, MainViewModel mainViewModel)
+        {
+            var order = orderData.GetById(orderId);
+            PassOrderData(mainViewModel, order);
+            mainViewModel.UpdateAll();
+
+            return order;
+        }
+
+        public void PassOrderData(MainViewModel mainViewModel, Order order)
+        {
+            mainViewModel.ObjectData = order.ObjectData;
+            mainViewModel.Acts = new ObservableCollection<Act>(order.Acts ?? new List<Act>());
+            mainViewModel.Protocols = new ObservableCollection<Protocol>(order.Protocols ?? new List<Protocol>());
+            mainViewModel.Devices = new ObservableCollection<Device>(order.Devices ?? new List<Device>());
+            mainViewModel.WeatherDays = new ObservableCollection<WeatherDay>(order.WeatherDays ?? new List<WeatherDay>());
+        }
+
+        public List<OrderTuple> GetGetOrderNames()
+        {
+            return orderData.GetGetOrderNames();
         }
     }
 }
