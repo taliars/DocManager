@@ -53,6 +53,14 @@ namespace DocManager.ViewModel
             await Task.Run(() => orderData.Add(order: new Order() { Id = 3, }));
         });
 
+        public RelayCommand GetObjectName => new RelayCommand(o =>
+        {
+            var order = orderData.GetById((int)o);
+            orderId = order.Id;
+            ObjectDataViewModel = new ObjectDataViewModel(order);
+            NotifyPropertyChanged(nameof(ObjectDataViewModel));
+        });
+
         public MainViewModel(
             Func<string, string, bool, Task<bool>> actionAffirm,
             Func<string, string, Task<bool>> inputAffirm,
@@ -68,7 +76,7 @@ namespace DocManager.ViewModel
                 FinalPath = @"D:\trash\DocManager\норд\final",
             };
 
-            var id = 2;
+            var id = 1;
             orderId = id;
 
             orderData = new JsonOrderData(settings.SourceFolderPath);

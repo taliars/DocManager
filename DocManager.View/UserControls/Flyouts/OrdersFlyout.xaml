@@ -5,6 +5,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mahapps="http://metro.mahapps.com/winfx/xaml/controls"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
     Width="200"
     d:DesignHeight="800"
     d:DesignWidth="200"
@@ -36,6 +37,12 @@
             x:Name="AllOrders"
             Grid.Row="1"
             Grid.ColumnSpan="2"
-            Margin="0,15,0,0" />
+            Margin="0,15,0,0" >
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="MouseDoubleClick">
+                    <i:InvokeCommandAction Command="{Binding GetObjectName}" CommandParameter="{Binding ElementName=AllOrders, Path=SelectedItem}" />
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+        </ListBox>
     </Grid>
 </mahapps:Flyout>
