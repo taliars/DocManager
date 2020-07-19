@@ -13,6 +13,7 @@ namespace DocManager.ViewModel
         private Protocol selectedProtocol;
         private WeatherDay selectedWeatherDay;
         private Device selectedDevice;
+        private Settings settings;
 
         private Order currentOrder;
 
@@ -21,6 +22,16 @@ namespace DocManager.ViewModel
         public string StatusMessage { get; set; }
 
         public List<OrderTuple> OrderNames { get; set; }
+
+        public Settings Settings
+        {
+            get => settings;
+            set
+            {
+                settings = value;
+                NotifyPropertyChanged(nameof(Settings));
+            }
+        }
 
         public ObjectData ObjectData { get; set; }
 
@@ -88,6 +99,11 @@ namespace DocManager.ViewModel
 
         public RelayCommand Move => new RelayCommand(async o => await actionHelper.MoveDocumentAsync(SelectedProtocol, Protocols, nameof(Protocols)));
 
+        public RelayCommand Choose => new RelayCommand(async o =>
+        {
+            await actionHelper.Folder((string) o);
+        });
+
         public SettingsViewModel SettingsViewModel { get; set; }
 
         public RelayCommand SaveOrder => new RelayCommand(async o => await actionHelper.SaveOrderAsync(currentOrder.Id, this));
@@ -99,7 +115,7 @@ namespace DocManager.ViewModel
             NotifyPropertyChanged(nameof(OrderNames));
         });
 
-        public RelayCommand GetOrder => new RelayCommand(o => { currentOrder = actionHelper.GetById(((OrderTuple)o)?.Id ?? currentOrder.Id , this); });
+        public RelayCommand GetOrder => new RelayCommand(o => { currentOrder = actionHelper.GetById(((OrderTuple)o)?.Id ?? currentOrder.Id, this); });
 
         public RelayCommand AddAct => new RelayCommand(o => { actionHelper.AddDocument(o, Acts, nameof(Acts)); });
 
@@ -109,19 +125,15 @@ namespace DocManager.ViewModel
 
         public RelayCommand RemoveProtocol => new RelayCommand(o => { actionHelper.RemoveDocument(o, Protocols, nameof(Protocols)); });
 
-        public MainViewModel(
-            Func<string, string, bool, Task<bool>> actionAffirm,
-            Func<string, string, Task<string>> inputAffirm,
-            Func<string, string, string> moveAffirm)
+        public MainViewModel(SenderModel senderModel)
         {
-            var settings = new Settings
+            Settings = new Settings
             {
-                TemplatesPath = @"D:\trash\DocManager\норд\формы протоколов",
-                SourceFolderPath = @"D:\trash\DocManager\норд\source",
-                FinalPath = @"D:\trash\DocManager\норд\final",
+                TemplatesPath = Properties.DocManager.Default.TemplatesPath,
+                SourceFolderPath = Properties.DocManager.Default.SourcePath,
             };
 
-            actionHelper = new ActionsHelper(moveAffirm, actionAffirm, inputAffirm, settings);
+            actionHelper = new ActionsHelper(senderModel, Settings);
 
             currentOrder = actionHelper.GetById(1, this);
 
@@ -131,7 +143,7 @@ namespace DocManager.ViewModel
             StatusMessage = "Ready";
         }
 
-        
+
         internal void UpdateAll()
         {
             string[] names =

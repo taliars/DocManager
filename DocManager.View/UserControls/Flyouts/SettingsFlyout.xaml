@@ -11,7 +11,7 @@
     Header="Настройки"
     mc:Ignorable="d">
 
-    <Grid Margin="45" DataContext="{Binding SettingsViewModel}">
+    <Grid Margin="45" >
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="15" />
@@ -27,6 +27,7 @@
             <ColumnDefinition Width="150" />
             <ColumnDefinition Width="100" />
             <ColumnDefinition Width="100" />
+            <ColumnDefinition Width="Auto"/>
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
 
@@ -42,8 +43,10 @@
             mahapps:TextBoxHelper.ClearTextButton="True"
             mahapps:TextBoxHelper.Watermark="Выберите папку для хранения информации и настроек"
             AcceptsReturn="True"
-            Text="{Binding SourceFolderPath, Mode=TwoWay}"
+            Text="{Binding Settings.SourceFolderPath, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
             TextWrapping="Wrap" />
+
+        <Button Style="{StaticResource SelectFolderButton}" Command="{Binding Choose}" CommandParameter="Source" Grid.Row="2" Grid.Column="4"/>
 
         <Label Grid.Row="4" Content="Папка с шаблонами:" />
 
@@ -53,6 +56,8 @@
             Grid.ColumnSpan="3"
             mahapps:TextBoxHelper.ClearTextButton="True"
             mahapps:TextBoxHelper.Watermark="Выберите папку с шаблоными документации"
-            Text="{Binding TemplatesPath, Mode=TwoWay}" />
+            Text="{Binding Settings.TemplatesPath, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+        
+        <Button Style="{StaticResource SelectFolderButton}" Command="{Binding Choose}" CommandParameter="Templates" Grid.Row="4" Grid.Column="4"/>
     </Grid>
 </mahapps:Flyout>

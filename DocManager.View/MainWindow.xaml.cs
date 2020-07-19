@@ -11,12 +11,19 @@ namespace DocManager.View
         public MainWindow()
         {
             InitializeComponent();
-            DataContext = new MainViewModel(AffirmAction, InputAction, Move);
+
+            DataContext = new MainViewModel(
+                new SenderModel
+                {
+                    Action = AffirmAction,
+                    Input = InputAction,
+                    Move = Move,
+                });
         }
 
-        async Task<bool> AffirmAction(string message, string caption, bool isAffimativeOnly)
+        private async Task<bool> AffirmAction(string message, string caption, bool isAffirmativeOnly)
         {
-            var messageDialogStyle = isAffimativeOnly
+            var messageDialogStyle = isAffirmativeOnly
                 ? MessageDialogStyle.Affirmative
                 : MessageDialogStyle.AffirmativeAndNegative;
 
@@ -24,12 +31,12 @@ namespace DocManager.View
              == await this.ShowMessageAsync(message, caption, messageDialogStyle, DialogSettings.Standard);
         }
 
-        async Task<string> InputAction(string message, string caption)
+        private async Task<string> InputAction(string message, string caption)
         {
             return await this.ShowInputAsync(message, caption, DialogSettings.Standard);
         }
 
-        string Move(string defaultFileName, string title)
+        private string Move(string defaultFileName, string title)
         {
             _ = defaultFileName ?? "Выберите новое расположение файла";
             title = title ?? "Выберите папку";

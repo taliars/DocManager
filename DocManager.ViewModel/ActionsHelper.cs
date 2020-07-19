@@ -12,25 +12,22 @@ namespace DocManager.ViewModel
 {
     public class ActionsHelper : PropertyChangedBase
     {
-        private readonly Func<string, string, string> moveAffirm;
+        private readonly Func<string, string, string> folderAffirm;
         private readonly Func<string, string, bool, Task<bool>> actionAffirm;
         private readonly Func<string, string, Task<string>> inputAffirm;
         private readonly IOrderData orderData;
 
-        public ActionsHelper(
-            Func<string, string, string> moveAffirm,
-            Func<string, string, bool, Task<bool>> actionAffirm,
-            Func<string, string, Task<string>> inputAffirm,
-            Settings settings)
+        public ActionsHelper(SenderModel senderModel, Settings settings)
         {
-            this.moveAffirm = moveAffirm;
-            this.actionAffirm = actionAffirm;
-            this.inputAffirm = inputAffirm;
+            this.folderAffirm = senderModel.Move;
+            this.actionAffirm = senderModel.Action;
+            this.inputAffirm = senderModel.Input;
             this.orderData = new JsonOrderData(settings.SourceFolderPath);
         }
 
         public void RemoveDocument<T>(object o, ObservableCollection<T> collection, string name) where T : Document, new()
         {
+            if (name == null) throw new ArgumentNullException(nameof(name));
             if (!(o is T item))
             {
                 return;
@@ -40,6 +37,7 @@ namespace DocManager.ViewModel
 
         public void AddDocument<T>(object o, ObservableCollection<T> collection, string name) where T : Document, new()
         {
+            if (name == null) throw new ArgumentNullException(nameof(name));
             if (!(o is string species))
             {
                 return;
@@ -53,7 +51,7 @@ namespace DocManager.ViewModel
             ObservableCollection<T> documents,
             string name) where T : Document
         {
-            var newPath = moveAffirm(null, null);
+            var newPath = folderAffirm(null, null);
 
             if (newPath == null)
             {
@@ -76,6 +74,30 @@ namespace DocManager.ViewModel
             {
                 await actionAffirm("Ошибка", e.Message, true);
             }
+        }
+
+        public async Task Folder(string name)
+        {
+            var newPath = folderAffirm(null, null);
+
+            if (newPath == null)
+            {
+                return;
+            }
+
+            await Task.Run(() =>
+            {
+                switch (name)
+                {
+                    case "Templates":
+                        Properties.DocManager.Default.TemplatesPath = newPath;
+                        break;
+                    case "Source":
+                        Properties.DocManager.Default.SourcePath = newPath;
+                        break;
+                }
+                Properties.DocManager.Default.Save();
+            });
         }
 
         public async Task OpenWithDefaultAppAsync<T>(T document) where T : Document
@@ -137,16 +159,16 @@ namespace DocManager.ViewModel
 
         public void PassOrderData(MainViewModel mainViewModel, Order order)
         {
-            mainViewModel.ObjectData = order.ObjectData;
-            mainViewModel.Acts = new ObservableCollection<Act>(order.Acts ?? new List<Act>());
-            mainViewModel.Protocols = new ObservableCollection<Protocol>(order.Protocols ?? new List<Protocol>());
-            mainViewModel.Devices = new ObservableCollection<Device>(order.Devices ?? new List<Device>());
-            mainViewModel.WeatherDays = new ObservableCollection<WeatherDay>(order.WeatherDays ?? new List<WeatherDay>());
+            mainViewModel.ObjectData = order?.ObjectData ?? new ObjectData();
+            mainViewModel.Acts = new ObservableCollection<Act>(order?.Acts ?? new List<Act>());
+            mainViewModel.Protocols = new ObservableCollection<Protocol>(order?.Protocols ?? new List<Protocol>());
+            mainViewModel.Devices = new ObservableCollection<Device>(order?.Devices ?? new List<Device>());
+            mainViewModel.WeatherDays = new ObservableCollection<WeatherDay>(order?.WeatherDays ?? new List<WeatherDay>());
         }
 
         public List<OrderTuple> GetGetOrderNames()
         {
-            return orderData.GetGetOrderNames();
+            return orderData?.GetGetOrderNames() ?? new List<OrderTuple>();
         }
     }
 }

@@ -63,7 +63,7 @@ namespace DocManager.Data.Json
                 foreach (var file in allFiles)
                 {
                     var fileName = Path.GetFileNameWithoutExtension(file);
-                    bool isParsed = int.TryParse(fileName, out int parsedValue);
+                    var isParsed = int.TryParse(fileName, out var parsedValue);
                     if (isParsed)
                     {
                         result.Add(parsedValue);
@@ -75,6 +75,11 @@ namespace DocManager.Data.Json
 
         public List<OrderTuple> GetGetOrderNames()
         {
+            if (!File.Exists(sourceFolderPath))
+            {
+                return new List<OrderTuple>();
+            }
+
             var result = new List<OrderTuple>();
 
             var allFiles = Directory.GetFiles(sourceFolderPath);
@@ -82,7 +87,7 @@ namespace DocManager.Data.Json
             foreach (var file in allFiles)
             {
                 var fileName = Path.GetFileNameWithoutExtension(file);
-                bool isParsed = int.TryParse(fileName, out int parsedId);
+                var isParsed = int.TryParse(fileName, out var parsedId);
                 if (isParsed)
                 {
                     result.Add(

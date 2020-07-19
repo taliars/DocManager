@@ -76,6 +76,13 @@
                 <Setter Property="Foreground" Value="White" />
             </Style>
 
+            <Style x:Key="SelectFolderButton" BasedOn="{StaticResource MetroButton}" TargetType="{x:Type Button}">
+                <Setter Property="Content" Value="..."/>
+                <Setter Property="Margin" Value="15,0,0,0"/>
+                <Setter Property="Padding" Value="10,0,10,0"/>
+                <Setter Property="ToolTip" Value="Выберите папку"/>
+            </Style>
+
             <Style TargetType="{x:Type GridSplitter}">
                 <Setter Property="HorizontalAlignment" Value="Stretch" />
                 <Setter Property="FocusVisualStyle" Value="{x:Null}" />
