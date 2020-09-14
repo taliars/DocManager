@@ -35,13 +35,13 @@ namespace DocManager.Services
         public void WriteWord(Order orderData, Document document, string type)
         {
             var wordApp = new Word.Application();
-            string templateFilePath = $"{commonPath}\\{templateProtocolPaths[type.ToLower()]}";
+            var templateFilePath = $"{commonPath}\\{templateProtocolPaths[type.ToLower()]}";
 
             // TODO:  Try
             var wordDoc = wordApp.Documents.Open(templateFilePath);
             var objectData = orderData.ObjectData;
 
-            string finalFilePath = $"{finalPath}\\{Protocol.GetName(type.ToLower(), objectData.Order)}";
+            string finalFilePath = $"{finalPath}\\{Document.GetName(type.ToLower(), objectData.Order)}";
             document.Path = $"{finalFilePath}.docx";
 
             wordDoc.Variables[nameof(Document.Name)].Value = document.Name;
