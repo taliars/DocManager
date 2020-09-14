@@ -187,6 +187,10 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\DocManager.Abstractions\DocManager.Abstractions.csproj">
+      <Project>{6249F2E2-A11A-4276-94E3-B2E2FB71EEB2}</Project>
+      <Name>DocManager.Abstractions</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DocManager.ViewModel\DocManager.ViewModel.csproj">
       <Project>{09d4ec1b-9d1b-4713-97a9-ea15a3e35563}</Project>
       <Name>DocManager.ViewModel</Name>

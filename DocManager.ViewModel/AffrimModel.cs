@@ -1,16 +1,9 @@
 ﻿using System;
 using System.Threading.Tasks;
+using DocManager.Abstractions;
 
 namespace DocManager.ViewModel
 {
-    public interface IDialogCoordinator
-    {
-        Func<string, string, bool, Task<bool>> Affirm { get; set; }
-        Func<string, string, Task<string>> Input { get; set; }
-        Func<string, string, string> Move { get; set; }
-    }
-
-
     public sealed class DialogCoordinator: IDialogCoordinator
     {
         private static DialogCoordinator _instance;

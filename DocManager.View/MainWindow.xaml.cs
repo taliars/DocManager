@@ -1,5 +1,4 @@
-﻿using DocManager.ViewModel;
-using MahApps.Metro.Controls;
+﻿using MahApps.Metro.Controls;
 using MahApps.Metro.Controls.Dialogs;
 using System.Threading.Tasks;
 using DocManager.ViewModel.ViewModels;
