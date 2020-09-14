@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
+using DocManager.Abstractions;
 using DocManager.Core;
 using DocManager.Data;
 using DocManager.Data.Json;
@@ -10,19 +11,15 @@ using DocManager.ViewModel.Common;
 
 namespace DocManager.ViewModel
 {
-    public class ActionsHelper : PropertyChangedBase
+    public class ActionHelper : PropertyChangedBase, IActionHelper
     {
-        private readonly Func<string, string, string> folderAffirm;
-        private readonly Func<string, string, bool, Task<bool>> actionAffirm;
-        private readonly Func<string, string, Task<string>> inputAffirm;
+        private readonly IDialogCoordinator dialogCoordinator;
         private readonly IOrderData orderData;
 
-        public ActionsHelper(SenderModel senderModel, Settings settings)
+        public ActionHelper(IDialogCoordinator dialogCoordinator, Settings settings)
         {
-            this.folderAffirm = senderModel.Move;
-            this.actionAffirm = senderModel.Action;
-            this.inputAffirm = senderModel.Input;
-            this.orderData = new JsonOrderData(settings.SourceFolderPath);
+            this.dialogCoordinator = dialogCoordinator;
+            orderData = new JsonOrderData(settings.SourceFolderPath);
         }
 
         public void RemoveDocument<T>(object o, ObservableCollection<T> collection, string name) where T : Document, new()
@@ -46,12 +43,9 @@ namespace DocManager.ViewModel
             collection.Add(new T { Species = species });
         }
 
-        public async Task MoveDocumentAsync<T>(
-            T document,
-            ObservableCollection<T> documents,
-            string name) where T : Document
+        public async Task MoveDocumentAsync<T>(T document, ObservableCollection<T> documents, string name) where T : Document
         {
-            var newPath = folderAffirm(null, null);
+            var newPath = dialogCoordinator.Move(null, null);
 
             if (newPath == null)
             {
@@ -72,13 +66,13 @@ namespace DocManager.ViewModel
             }
             catch (Exception e)
             {
-                await actionAffirm("Ошибка", e.Message, true);
+                await dialogCoordinator.Affirm("Ошибка", e.Message, true);
             }
         }
 
-        public async Task Folder(string name)
+        public async Task UpdatePropertiesFolder(string name)
         {
-            var newPath = folderAffirm(null, null);
+            var newPath = dialogCoordinator.Move(null, null);
 
             if (newPath == null)
             {
@@ -102,34 +96,31 @@ namespace DocManager.ViewModel
 
         public async Task OpenWithDefaultAppAsync<T>(T document) where T : Document
         {
-            await Task.Run(() => FileService.OpenWithDefaultApp(document?.Path));
+            try
+            {
+                await Task.Run(() => FileService.OpenWithDefaultApp(document?.Path));
+            }
+            catch (Exception e)
+            {
+                await dialogCoordinator.Affirm("Ошибка", e.Message, true);
+            }
         }
 
-        public async Task SaveOrderAsync(int orderId, MainViewModel mainViewModel)
+        public async Task SaveOrderAsync(int orderId, Order order)
         {
-            var ensure = await actionAffirm("Сохранить?", "Сохранить внесенные изменения", false);
+            var ensure = await dialogCoordinator.Affirm("Сохранить?", "Сохранить внесенные изменения", false);
 
             if (!ensure)
             {
                 return;
             }
 
-            var order = new Order
-            {
-                Id = orderId,
-                ObjectData = mainViewModel.ObjectData,
-                Acts = mainViewModel.Acts,
-                Protocols = mainViewModel.Protocols,
-                Devices = mainViewModel.Devices,
-                WeatherDays = mainViewModel.WeatherDays,
-            };
-
             orderData.Update(order);
         }
 
         public async Task<Order> CreateNewOrderAsync()
         {
-            var ensure = await inputAffirm("Новый заказ", "Введите номер заказа");
+            var ensure = await dialogCoordinator.Input("Новый заказ", "Введите номер заказа");
 
             if (string.IsNullOrEmpty(ensure))
             {
@@ -148,22 +139,9 @@ namespace DocManager.ViewModel
             return order;
         }
 
-        public Order GetById(int orderId, MainViewModel mainViewModel)
+        public Order GetById(int orderId)
         {
-            var order = orderData.GetById(orderId);
-            PassOrderData(mainViewModel, order);
-            mainViewModel.UpdateAll();
-
-            return order;
-        }
-
-        public void PassOrderData(MainViewModel mainViewModel, Order order)
-        {
-            mainViewModel.ObjectData = order?.ObjectData ?? new ObjectData();
-            mainViewModel.Acts = new ObservableCollection<Act>(order?.Acts ?? new List<Act>());
-            mainViewModel.Protocols = new ObservableCollection<Protocol>(order?.Protocols ?? new List<Protocol>());
-            mainViewModel.Devices = new ObservableCollection<Device>(order?.Devices ?? new List<Device>());
-            mainViewModel.WeatherDays = new ObservableCollection<WeatherDay>(order?.WeatherDays ?? new List<WeatherDay>());
+            return orderData.GetById(orderId);
         }
 
         public List<OrderTuple> GetGetOrderNames()

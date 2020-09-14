@@ -2,7 +2,9 @@
 using MahApps.Metro.Controls;
 using MahApps.Metro.Controls.Dialogs;
 using System.Threading.Tasks;
+using DocManager.ViewModel.ViewModels;
 using Microsoft.WindowsAPICodePack.Dialogs;
+using DialogCoordinator = DocManager.ViewModel.DialogCoordinator;
 
 namespace DocManager.View
 {
@@ -11,34 +13,31 @@ namespace DocManager.View
         public MainWindow()
         {
             InitializeComponent();
+            var dialogCoordinator = DialogCoordinator.Instance;
+            dialogCoordinator.Move = Move;
+            dialogCoordinator.Affirm = Affirm;
+            dialogCoordinator.Input = Input;
 
-            DataContext = new MainViewModel(
-                new SenderModel
-                {
-                    Action = AffirmAction,
-                    Input = InputAction,
-                    Move = Move,
-                });
+            DataContext = new MainViewModel(DialogCoordinator.Instance);
         }
 
-        private async Task<bool> AffirmAction(string message, string caption, bool isAffirmativeOnly)
+        private async Task<bool> Affirm(string title, string message, bool isAffirmativeOnly)
         {
             var messageDialogStyle = isAffirmativeOnly
                 ? MessageDialogStyle.Affirmative
                 : MessageDialogStyle.AffirmativeAndNegative;
 
             return MessageDialogResult.Affirmative
-             == await this.ShowMessageAsync(message, caption, messageDialogStyle, DialogSettings.Standard);
+             == await this.ShowMessageAsync(title, message, messageDialogStyle, DialogSettings.Standard);
         }
 
-        private async Task<string> InputAction(string message, string caption)
+        private async Task<string> Input(string title, string message)
         {
-            return await this.ShowInputAsync(message, caption, DialogSettings.Standard);
+            return await this.ShowInputAsync(title, message, DialogSettings.Standard);
         }
 
-        private string Move(string defaultFileName, string title)
+        private static string Move(string defaultFileName, string title)
         {
-            _ = defaultFileName ?? "Выберите новое расположение файла";
             title = title ?? "Выберите папку";
 
             var dialog = new CommonOpenFileDialog

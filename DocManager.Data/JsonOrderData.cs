@@ -19,7 +19,8 @@ namespace DocManager.Data.Json
 
         public Order Add(Order order)
         {
-            order.Id = GetOrderIds.Max() + 1;
+            int maxOrderId = GetOrderIds.Any() ? GetOrderIds.Max() : 0;
+            order.Id = maxOrderId + 1;
             Serialize(order, sourceFolderPath.ToFullPath(order.Id));
             return order;
         }
@@ -40,7 +41,21 @@ namespace DocManager.Data.Json
             }
 
             var order = Deserialize<Order>(path);
-            order.Devices = Deserialize<IEnumerable<Device>>(sourceFolderPath.ToFullPath("devices"));
+
+            var devicePath = sourceFolderPath.ToFullPath("devices");
+
+            if (File.Exists(path))
+            {
+                try
+                {
+                    order.Devices = Deserialize<IEnumerable<Device>>(sourceFolderPath.ToFullPath("devices"));
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e);
+                }
+            }
+   
             order.Id = id;
             return order;
 
@@ -59,7 +74,7 @@ namespace DocManager.Data.Json
                 var result = new List<int>();
 
                 var allFiles = Directory.GetFiles(sourceFolderPath);
-
+                
                 foreach (var file in allFiles)
                 {
                     var fileName = Path.GetFileNameWithoutExtension(file);

@@ -1,11 +1,10 @@
-﻿using DocManager.Core;
-using DocManager.ViewModel.Common;
-using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Threading.Tasks;
+using DocManager.Abstractions;
+using DocManager.Core;
+using DocManager.ViewModel.Common;
 
-namespace DocManager.ViewModel
+namespace DocManager.ViewModel.ViewModels
 {
     public class MainViewModel : PropertyChangedBase
     {
@@ -17,7 +16,7 @@ namespace DocManager.ViewModel
 
         private Order currentOrder;
 
-        private readonly ActionsHelper actionHelper;
+        private readonly IActionHelper actionHelper;
 
         public string StatusMessage { get; set; }
 
@@ -95,18 +94,31 @@ namespace DocManager.ViewModel
             NotifyPropertyChanged(nameof(WeatherDays));
         });
 
-        public RelayCommand OpenAct => new RelayCommand(async o => await actionHelper.OpenWithDefaultAppAsync(SelectedAct));
+        public RelayCommand Open => new RelayCommand(async o => await actionHelper.OpenWithDefaultAppAsync((Document)o));
 
         public RelayCommand Move => new RelayCommand(async o => await actionHelper.MoveDocumentAsync(SelectedProtocol, Protocols, nameof(Protocols)));
 
         public RelayCommand Choose => new RelayCommand(async o =>
         {
-            await actionHelper.Folder((string) o);
+            await actionHelper.UpdatePropertiesFolder((string) o);
         });
 
         public SettingsViewModel SettingsViewModel { get; set; }
 
-        public RelayCommand SaveOrder => new RelayCommand(async o => await actionHelper.SaveOrderAsync(currentOrder.Id, this));
+        public RelayCommand SaveOrder => new RelayCommand(async o =>
+        {
+            var order = new Order
+            {
+                Id = currentOrder.Id,
+                ObjectData = ObjectData,
+                Acts = Acts,
+                Protocols = Protocols,
+                Devices = Devices,
+                WeatherDays = WeatherDays,
+            };
+
+            await actionHelper.SaveOrderAsync(currentOrder.Id, order);
+        });
 
         public RelayCommand AddOrder => new RelayCommand(async o =>
         {
@@ -115,7 +127,7 @@ namespace DocManager.ViewModel
             NotifyPropertyChanged(nameof(OrderNames));
         });
 
-        public RelayCommand GetOrder => new RelayCommand(o => { currentOrder = actionHelper.GetById(((OrderTuple)o)?.Id ?? currentOrder.Id, this); });
+        public RelayCommand GetOrder => new RelayCommand(o => { currentOrder = actionHelper.GetById(((OrderTuple)o)?.Id ?? currentOrder.Id); });
 
         public RelayCommand AddAct => new RelayCommand(o => { actionHelper.AddDocument(o, Acts, nameof(Acts)); });
 
@@ -125,7 +137,7 @@ namespace DocManager.ViewModel
 
         public RelayCommand RemoveProtocol => new RelayCommand(o => { actionHelper.RemoveDocument(o, Protocols, nameof(Protocols)); });
 
-        public MainViewModel(SenderModel senderModel)
+        public MainViewModel(IDialogCoordinator dialogCoordinator)
         {
             Settings = new Settings
             {
@@ -133,12 +145,12 @@ namespace DocManager.ViewModel
                 SourceFolderPath = Properties.DocManager.Default.SourcePath,
             };
 
-            actionHelper = new ActionsHelper(senderModel, Settings);
+            actionHelper = new ActionHelper(dialogCoordinator, Settings);
 
-            currentOrder = actionHelper.GetById(1, this);
+            currentOrder = actionHelper.GetById(1);
 
             OrderNames = actionHelper.GetGetOrderNames();
-            actionHelper.PassOrderData(this, currentOrder);
+            PassOrderData(this, currentOrder);
 
             StatusMessage = "Ready";
         }
@@ -162,5 +174,15 @@ namespace DocManager.ViewModel
             }
         }
 
+
+        public void PassOrderData(MainViewModel mainViewModel, Order order)
+        {
+            mainViewModel.ObjectData = order?.ObjectData ?? new ObjectData();
+            mainViewModel.Acts = new ObservableCollection<Act>(order?.Acts ?? new List<Act>());
+            mainViewModel.Protocols = new ObservableCollection<Protocol>(order?.Protocols ?? new List<Protocol>());
+            mainViewModel.Devices = new ObservableCollection<Device>(order?.Devices ?? new List<Device>());
+            mainViewModel.WeatherDays = new ObservableCollection<WeatherDay>(order?.WeatherDays ?? new List<WeatherDay>());
+            mainViewModel.UpdateAll();
+        }
     }
 }

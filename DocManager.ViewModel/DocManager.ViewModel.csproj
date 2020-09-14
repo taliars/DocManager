@@ -61,6 +61,10 @@
       <Project>{34517165-99F7-4AF1-9455-86BC9B46CB16}</Project>
       <Name>DocManager.Core</Name>
     </ProjectReference>
+    <ProjectReference Include="..\DocManager.Abstractions\DocManager.Abstractions.csproj">
+      <Project>{6249F2E2-A11A-4276-94E3-B2E2FB71EEB2}</Project>
+      <Name>DocManager.Abstractions</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DocManager.Data\DocManager.Data.csproj">
       <Project>{b1e01b92-671e-4bbe-89af-929ecca115cd}</Project>
       <Name>DocManager.Data</Name>
@@ -70,9 +74,7 @@
       <Name>DocManager.Services</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Helpers\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

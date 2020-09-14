@@ -10,7 +10,6 @@
 
     <Grid>
         <DataGrid
-            x:Name="r"
             VerticalAlignment="Top"
             AutoGenerateColumns="False"
             ColumnWidth="*"
@@ -28,7 +27,7 @@
                 <ContextMenu>
                     <MenuItem
                         Command="{Binding Open}"
-                        CommandParameter="{Binding Selected}"
+                        CommandParameter="{Binding SelectedProtocol}"
                         Header=" Открыть"
                         Icon="{StaticResource icon_file_edit}" />
                     <MenuItem Header=" Добавить" Icon="{StaticResource icon_file_add}">

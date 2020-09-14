@@ -1,7 +1,7 @@
 ﻿using DocManager.Core;
 using DocManager.ViewModel.Common;
 
-namespace DocManager.ViewModel
+namespace DocManager.ViewModel.ViewModels
 {
     public class SettingsViewModel : PropertyChangedBase
     {
