@@ -66,22 +66,7 @@
                         <RowDefinition />
                     </Grid.RowDefinitions>
 
-                    <mahapps:MetroAnimatedTabControl Margin="5">
-                        <TabControl.Resources>
-                            <Style TargetType="{x:Type TabPanel}">
-                                <Setter Property="HorizontalAlignment" Value="Center" />
-                            </Style>
-                        </TabControl.Resources>
-
-                        <TabItem Header="ПРОТОКОЛЫ">
-                            <Grid Margin="15">
-                                <ordercontrols:ProtocolDataGrid />
-                            </Grid>
-                        </TabItem>
-                        <TabItem Header="АКТЫ">
-                            <ordercontrols:ActDataGrid />
-                        </TabItem>
-                    </mahapps:MetroAnimatedTabControl>
+                    <ordercontrols:MainDocumentDataGrid />
                     <GridSplitter Grid.Row="1" Height="5" />
                     <ordercontrols:TabControlDeviceMeteo Grid.Row="2" />
                 </Grid>

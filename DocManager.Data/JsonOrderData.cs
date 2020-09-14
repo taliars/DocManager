@@ -1,12 +1,12 @@
-﻿using DocManager.Core;
-using DocManager.Services;
-using Newtonsoft.Json;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using DocManager.Core;
+using DocManager.Services;
+using Newtonsoft.Json;
 
-namespace DocManager.Data.Json
+namespace DocManager.Data
 {
     public class JsonOrderData : IOrderData
     {
@@ -19,7 +19,7 @@ namespace DocManager.Data.Json
 
         public Order Add(Order order)
         {
-            int maxOrderId = GetOrderIds.Any() ? GetOrderIds.Max() : 0;
+            var maxOrderId = GetOrderIds.Any() ? GetOrderIds.Max() : 0;
             order.Id = maxOrderId + 1;
             Serialize(order, sourceFolderPath.ToFullPath(order.Id));
             return order;
@@ -44,7 +44,7 @@ namespace DocManager.Data.Json
 
             var devicePath = sourceFolderPath.ToFullPath("devices");
 
-            if (File.Exists(path))
+            if (File.Exists(devicePath))
             {
                 try
                 {

@@ -1,5 +1,5 @@
 ﻿<UserControl
-    x:Class="DocManager.View.UserControls.OrderControls.ProtocolDataGrid"
+    x:Class="DocManager.View.UserControls.OrderControls.MainDocumentDataGrid"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -9,17 +9,17 @@
     mc:Ignorable="d">
 
     <Grid>
-        <DataGrid
+        <DataGrid Padding="10"
             VerticalAlignment="Top"
             AutoGenerateColumns="False"
             ColumnWidth="*"
-            ItemsSource="{Binding Protocols, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-            SelectedItem="{Binding SelectedProtocol}">
+            ItemsSource="{Binding Documents, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+            SelectedItem="{Binding SelectedDocument}">
 
             <DataGrid.InputBindings>
                 <MouseBinding
                     Command="{Binding Open}"
-                    CommandParameter="{Binding SelectedProtocol}"
+                    CommandParameter="{Binding SelectedDocument}"
                     Gesture="LeftDoubleClick" />
             </DataGrid.InputBindings>
 
@@ -27,39 +27,39 @@
                 <ContextMenu>
                     <MenuItem
                         Command="{Binding Open}"
-                        CommandParameter="{Binding SelectedProtocol}"
+                        CommandParameter="{Binding SelectedDocument}"
                         Header=" Открыть"
                         Icon="{StaticResource icon_file_edit}" />
                     <MenuItem Header=" Добавить" Icon="{StaticResource icon_file_add}">
                         <MenuItem.Items>
                             <MenuItem
-                                Command="{Binding AddProtocol}"
+                                Command="{Binding AddDocument}"
                                 CommandParameter="Шум"
                                 Header="Шум" />
                             <MenuItem
-                                Command="{Binding AddProtocol}"
+                                Command="{Binding AddDocument}"
                                 CommandParameter="Шум"
                                 Header="Шум ЖД" />
                             <MenuItem
-                                Command="{Binding AddProtocol}"
+                                Command="{Binding AddDocument}"
                                 CommandParameter="Шум"
                                 Header="Шум Авиа" />
                             <Separator />
                             <MenuItem
-                                Command="{Binding AddProtocol}"
+                                Command="{Binding AddDocument}"
                                 CommandParameter="Инфразвук"
                                 Header="Инфразвук" />
                             <MenuItem
-                                Command="{Binding AddProtocol}"
+                                Command="{Binding AddDocument}"
                                 CommandParameter="Вибрация"
                                 Header="Вибрация" />
                             <MenuItem
-                                Command="{Binding AddProtocol}"
+                                Command="{Binding AddDocument}"
                                 CommandParameter="ЭМИ"
                                 Header="ЭМИ 50 Гц" />
                             <Separator />
                             <MenuItem
-                                Command="{Binding AddProtocol}"
+                                Command="{Binding AddDocument}"
                                 CommandParameter="Радиация"
                                 Header="Радиация" />
                         </MenuItem.Items>
@@ -111,9 +111,9 @@
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
 
-                <DataGridTextColumn Binding="{Binding Name}" Header="Номер протокола" />
+                <DataGridTextColumn Binding="{Binding Name}" Header="Номер" />
 
-                <DataGridTemplateColumn Header="Дата протокола" SortMemberPath="Date">
+                <DataGridTemplateColumn Header="Дата" SortMemberPath="Date">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <TextBlock Text="{Binding Date, StringFormat='dd.MM.yyyy'}" />

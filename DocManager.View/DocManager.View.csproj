@@ -79,9 +79,6 @@
     <Compile Include="UserControls\Flyouts\SettingsFlyout.xaml.cs">
       <DependentUpon>SettingsFlyout.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\OrderControls\ActDataGrid.xaml.cs">
-      <DependentUpon>ActDataGrid.xaml</DependentUpon>
-    </Compile>
     <Compile Include="UserControls\OrderControls\AdditionalDocumentsGrid.xaml.cs">
       <DependentUpon>AdditionalDocumentsGrid.xaml</DependentUpon>
     </Compile>
@@ -94,8 +91,8 @@
     <Compile Include="UserControls\OrderControls\MeteoDataGrid.xaml.cs">
       <DependentUpon>MeteoDataGrid.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\OrderControls\ProtocolDataGrid.xaml.cs">
-      <DependentUpon>ProtocolDataGrid.xaml</DependentUpon>
+    <Compile Include="UserControls\OrderControls\MainDocumentDataGrid.xaml.cs">
+      <DependentUpon>MainDocumentDataGrid.xaml</DependentUpon>
     </Compile>
     <Compile Include="UserControls\OrderControls\TabControlDeviceMeteo.xaml.cs">
       <DependentUpon>TabControlDeviceMeteo.xaml</DependentUpon>
@@ -124,9 +121,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UserControls\OrderControls\ActDataGrid.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="UserControls\OrderControls\AdditionalDocumentsGrid.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -140,8 +134,9 @@
     <Page Include="UserControls\OrderControls\MeteoDataGrid.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UserControls\OrderControls\ProtocolDataGrid.xaml">
+    <Page Include="UserControls\OrderControls\MainDocumentDataGrid.xaml">
       <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="UserControls\OrderControls\TabControlDeviceMeteo.xaml">
       <Generator>MSBuild:Compile</Generator>
