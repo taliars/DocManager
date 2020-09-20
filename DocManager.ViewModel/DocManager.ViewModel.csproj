@@ -32,8 +32,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="ActionsHelper.cs" />
-    <Compile Include="AffrimModel.cs" />
+    <Compile Include="DialogCoordinator.cs" />
     <Compile Include="Common\PropertyChangedBase.cs" />
     <Compile Include="Common\RelayCommand.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
@@ -46,9 +45,13 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>DocManager.settings</DependentUpon>
     </Compile>
+    <Compile Include="ViewModels\DevicesViewModel.cs" />
+    <Compile Include="ViewModels\DocumentViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="Lists.cs" />
+    <Compile Include="ViewModels\OrderViewModel.cs" />
     <Compile Include="ViewModels\SettingsViewModel.cs" />
+    <Compile Include="ViewModels\WeatherDaysViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="PresentationCore" />
@@ -68,6 +71,10 @@
     <ProjectReference Include="..\DocManager.Data\DocManager.Data.csproj">
       <Project>{b1e01b92-671e-4bbe-89af-929ecca115cd}</Project>
       <Name>DocManager.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DocManager.Helpers\DocManager.Helpers.csproj">
+      <Project>{42B82A31-A110-4411-81A8-FA95FFFA5721}</Project>
+      <Name>DocManager.Helpers</Name>
     </ProjectReference>
     <ProjectReference Include="..\DocManager.Services\DocManager.Services.csproj">
       <Project>{91a2f439-d2d9-42cd-bc98-af135a9fb199}</Project>

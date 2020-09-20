@@ -6,11 +6,10 @@ using DocManager.Abstractions;
 using DocManager.Core;
 using DocManager.Data;
 using DocManager.Services;
-using DocManager.ViewModel.Common;
 
-namespace DocManager.ViewModel
+namespace DocManager.Helpers
 {
-    public class ActionHelper : PropertyChangedBase, IActionHelper
+    public class ActionHelper : IActionHelper
     {
         private readonly IDialogCoordinator dialogCoordinator;
         private readonly IOrderData orderData;
@@ -61,7 +60,6 @@ namespace DocManager.ViewModel
 
                 documents.Remove(document);
                 documents.Add(tempProtocol);
-                NotifyPropertyChanged(name);
             }
             catch (Exception e)
             {
@@ -80,16 +78,7 @@ namespace DocManager.ViewModel
 
             await Task.Run(() =>
             {
-                switch (name)
-                {
-                    case "Templates":
-                        Properties.DocManager.Default.TemplatesPath = newPath;
-                        break;
-                    case "Source":
-                        Properties.DocManager.Default.SourcePath = newPath;
-                        break;
-                }
-                Properties.DocManager.Default.Save();
+           
             });
         }
 

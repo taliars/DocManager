@@ -12,10 +12,7 @@ namespace DocManager.View
         public MainWindow()
         {
             InitializeComponent();
-            var dialogCoordinator = DialogCoordinator.Instance;
-            dialogCoordinator.Move = Move;
-            dialogCoordinator.Affirm = Affirm;
-            dialogCoordinator.Input = Input;
+            DialogCoordinator.Create(Affirm, Input, Move);
 
             DataContext = new MainViewModel(DialogCoordinator.Instance);
         }
