@@ -10,6 +10,11 @@ namespace DocManager.Infrastructure.Data
     {
         private OrderDbContext orderDbContext;
 
+        public OrderRepository(OrderDbContext orderDbContext)
+        {
+            this.orderDbContext = orderDbContext;
+        }
+
         public Order Add(Order order)
         {
             orderDbContext.Orders.Add(order);
@@ -35,7 +40,7 @@ namespace DocManager.Infrastructure.Data
 
         public IEnumerable<Order> GetOrderList()
         {
-            return orderDbContext.Orders;
+            return orderDbContext.Orders.Include(x => x.Subscription);
         }
 
         public void Save()

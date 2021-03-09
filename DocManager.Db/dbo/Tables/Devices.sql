@@ -1,4 +1,4 @@
-﻿CREATE TABLE [dbo].[Device]
+﻿CREATE TABLE [dbo].[Devices]
 (
     [Id]                   INT IDENTITY    NOT NULL,
     [SubscriptionId]       INT             NOT NULL,
@@ -8,6 +8,6 @@
     [Range]                NVARCHAR(256)   NULL,
     [Fault]                NVARCHAR(256)   NULL,
     [VerificationInfoId]   INT             NOT NULL
-    CONSTRAINT [PK_Device] PRIMARY KEY CLUSTERED ([Id] ASC),
-    CONSTRAINT [FK_Device_VerificationInfo] FOREIGN KEY ([VerificationInfoId], [SubscriptionId]) REFERENCES [VerificationInfo] ([Id], [SubscriptionId]),
+    CONSTRAINT [PK_Devices] PRIMARY KEY CLUSTERED ([Id] ASC),
+    CONSTRAINT [FK_Devices_VerificationInfos] FOREIGN KEY ([VerificationInfoId], [SubscriptionId]) REFERENCES [VerificationInfos] ([Id], [SubscriptionId]),
 )

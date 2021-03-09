@@ -60,17 +60,17 @@
     <Folder Include="dbo\Tables" />
   </ItemGroup>
   <ItemGroup>
-    <Build Include="dbo\Tables\Customer.sql" />
-    <Build Include="dbo\Tables\Device.sql" />
-    <Build Include="dbo\Tables\VerificationInfo.sql" />
-    <Build Include="dbo\Tables\Order.sql" />
-    <Build Include="dbo\Tables\WeatherDay.sql" />
-    <Build Include="dbo\Tables\WindDirection.sql" />
-    <Build Include="dbo\Tables\Document.sql" />
-    <Build Include="dbo\Tables\ObjectData.sql" />
-    <Build Include="dbo\Tables\User.sql" />
-    <Build Include="dbo\Tables\Role.sql" />
-    <Build Include="dbo\Tables\Subscription.sql" />
+    <Build Include="dbo\Tables\Customers.sql" />
+    <Build Include="dbo\Tables\Devices.sql" />
+    <Build Include="dbo\Tables\VerificationInfos.sql" />
+    <Build Include="dbo\Tables\Orders.sql" />
+    <Build Include="dbo\Tables\WeatherDays.sql" />
+    <Build Include="dbo\Tables\WindDirections.sql" />
+    <Build Include="dbo\Tables\Documents.sql" />
+    <Build Include="dbo\Tables\ObjectDatas.sql" />
+    <Build Include="dbo\Tables\Users.sql" />
+    <Build Include="dbo\Tables\Roles.sql" />
+    <Build Include="dbo\Tables\Subscriptions.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="DocManager.Db.refactorlog" />

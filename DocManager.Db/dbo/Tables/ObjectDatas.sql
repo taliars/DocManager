@@ -1,4 +1,4 @@
-﻿CREATE TABLE [dbo].[ObjectData]
+﻿CREATE TABLE [dbo].[ObjectDatas]
 (
     [Id]               INT IDENTITY    NOT NULL,
     [SubscriptionId]   INT             NOT NULL,
@@ -9,5 +9,5 @@
     [Purpose]          NVARCHAR(256)   NOT NULL,
     [Comment]          NVARCHAR(MAX)   NOT NULL,
     CONSTRAINT [PK_ObjectData] PRIMARY KEY CLUSTERED ([Id], [SubscriptionId] ASC),
-    CONSTRAINT [FK_ObjectData_Order] FOREIGN KEY ([OrderId], [SubscriptionId]) REFERENCES [Order] ([Id], [SubscriptionId])
+    CONSTRAINT [FK_ObjectData_Order] FOREIGN KEY ([OrderId], [SubscriptionId]) REFERENCES [Orders] ([Id], [SubscriptionId])
 )
