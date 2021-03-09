@@ -10,7 +10,6 @@ namespace DocManager.Services.Implementations
     {
         private readonly OrderDbContext orderDbContext;
 
-
         public OrderService(OrderDbContext orderDbContext)
         {
             this.orderDbContext = orderDbContext;

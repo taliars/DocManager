@@ -25,3 +25,5 @@ packages/Newtonsoft.Json.12.0.3/lib/portable-net45+win8+wp8+wpa81/Newtonsoft.Jso
 packages/Newtonsoft.Json.12.0.3/lib/portable-net45+win8+wp8+wpa81/Newtonsoft.Json.xml
 норд/
 packages/
+/DocManager.Db/DocManager.Db.dbmdl
+/DocManager.Db/DocManager.Db.jfm

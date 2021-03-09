@@ -6,8 +6,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using Microsoft.EntityFrameworkCore;
-using DocManager.Services.Interfaces;
-using DocManager.Services.Implementations;
+using DocManager.API.Helpers;
 
 namespace DocManager.API
 {
@@ -26,7 +25,7 @@ namespace DocManager.API
             services.AddDbContext<OrderDbContext>(options =>
               options.UseSqlServer(Configuration["ConnectionStrings:DocManagerDbConnection"]));
 
-            services.AddScoped<IOrderService, OrderService>();
+            services.RegisterScoped();
 
             services.AddControllers();
             services.AddSwaggerGen(c =>
