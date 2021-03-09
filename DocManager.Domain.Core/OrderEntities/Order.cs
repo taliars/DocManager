@@ -6,6 +6,10 @@ namespace DocManager.Domain.Core.OrderEntities
     {
         public int Id { get; set; }
 
+        public int SubscriptionId { get; set; }
+
+        public int ObjectDataId { get; set; }
+
         public ObjectData ObjectData { get; set; }
 
         public virtual ICollection<Document> Documents { get; set; }

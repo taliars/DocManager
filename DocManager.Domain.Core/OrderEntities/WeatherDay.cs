@@ -6,6 +6,8 @@ namespace DocManager.Domain.Core.OrderEntities
     {
         public int Id { get; set; }
 
+        public int SubscriptionId { get; set; }
+
         public DateTime? Date { get; set; }
 
         public string Temperature { get; set; }

@@ -2,7 +2,7 @@
 
 namespace DocManager.Domain.Core.UserEntities
 {
-    public class Company
+    public class Subscription
     {
         public int Id { get; set; }
 

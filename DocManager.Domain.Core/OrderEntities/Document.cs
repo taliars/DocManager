@@ -8,6 +8,8 @@ namespace DocManager.Domain.Core.OrderEntities
     {
         public int Id { get; set; }
 
+        public int SubscriptionId { get; set; }
+
         public string Species { get; set; }
 
         public string Name { get; set; }

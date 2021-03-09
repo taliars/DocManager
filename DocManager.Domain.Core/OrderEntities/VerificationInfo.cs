@@ -4,10 +4,14 @@ namespace DocManager.Domain.Core.OrderEntities
 {
     public class VerificationInfo
     {
-        public string VerificationNumber { get; set; }
+        public int Id { get; set; }
 
-        public string VerificationOrganization { get; set; }
+        public int SubscriptionId { get; set; }
 
-        public DateTime VerificationExpiration { get; set; }
+        public string Number { get; set; }
+
+        public string Organization { get; set; }
+
+        public DateTime Expiration { get; set; }
     }
 }

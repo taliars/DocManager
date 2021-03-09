@@ -6,13 +6,13 @@ namespace DocManager.Domain.Core.UserEntities
     {
         public int Id { get; set; }
 
-        public int FirstName { get; set; }
+        public int SubscriptionId { get; set; }
 
-        public int LastName { get; set; }
+        public string FirstName { get; set; }
 
-        public int CompanyId { get; set; }
+        public string LastName { get; set; }
 
-        public Company Company { get; set; }
+        public string Patronymic { get; set; }
 
         public virtual ICollection<Role> Roles { get; set; }
     }
