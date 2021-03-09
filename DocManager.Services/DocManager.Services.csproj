@@ -4,4 +4,9 @@
     <TargetFramework>net5.0</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\DocManager.Core\DocManager.Core.csproj" />
+    <ProjectReference Include="..\DocManager.Data\DocManager.Data.csproj" />
+  </ItemGroup>
+
 </Project>

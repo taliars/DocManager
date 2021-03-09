@@ -2,6 +2,8 @@
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
+    <AssemblyName>DocManager.Core</AssemblyName>
+    <RootNamespace>DocManager.Core</RootNamespace>
   </PropertyGroup>
 
 </Project>

@@ -2,7 +2,7 @@
 
 namespace DocManager.Domain.Core.OrderEntities
 {
-    public class Customer
+    public class DbCustomer
     {
         public int Id { get; set; }
 
@@ -16,6 +16,6 @@ namespace DocManager.Domain.Core.OrderEntities
 
         public string Inn { get; set; }
 
-        public virtual Subscription Subscription{ get;set;}
+        public virtual DbSubscription Subscription{ get;set;}
     }
 }

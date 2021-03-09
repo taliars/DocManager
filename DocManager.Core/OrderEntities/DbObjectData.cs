@@ -1,6 +1,6 @@
 namespace DocManager.Domain.Core.OrderEntities
 {
-    public class ObjectData
+    public class DbObjectData
     {
         public int Id { get; set; }
 

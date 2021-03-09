@@ -2,7 +2,7 @@
 
 namespace DocManager.Domain.Core.OrderEntities
 {
-    public class VerificationInfo
+    public class DbVerificationInfo
     {
         public int Id { get; set; }
 

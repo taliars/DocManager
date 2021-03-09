@@ -11,8 +11,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\DocManager.Domain.Core\DocManager.Domain.Core.csproj" />
-    <ProjectReference Include="..\DocManager.Infrastructure.Data\DocManager.Infrastructure.Data.csproj" />
+    <ProjectReference Include="..\DocManager.Core\DocManager.Core.csproj" />
+    <ProjectReference Include="..\DocManager.Data\DocManager.Data.csproj" />
+    <ProjectReference Include="..\DocManager.Services\DocManager.Services.csproj" />
   </ItemGroup>
 
 </Project>

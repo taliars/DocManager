@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
@@ -9,8 +9,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\DocManager.Domain.Core\DocManager.Domain.Core.csproj" />
-    <ProjectReference Include="..\DocManager.Domain.Interfaces\DocManager.Domain.Interfaces.csproj" />
+    <ProjectReference Include="..\DocManager.Core\DocManager.Core.csproj" />
   </ItemGroup>
 
 </Project>

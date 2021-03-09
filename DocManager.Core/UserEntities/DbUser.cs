@@ -2,7 +2,7 @@
 
 namespace DocManager.Domain.Core.UserEntities
 {
-    public class User
+    public class DbUser
     {
         public int Id { get; set; }
 
@@ -14,6 +14,6 @@ namespace DocManager.Domain.Core.UserEntities
 
         public string Patronymic { get; set; }
 
-        public virtual ICollection<Role> Roles { get; set; }
+        public virtual ICollection<DbPerfomerRole> Roles { get; set; }
     }
 }

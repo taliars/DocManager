@@ -205,12 +205,6 @@
       <Version>1.1.0</Version>
     </PackageReference>
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\DocManager.Domain.Core\DocManager.Domain.Core.csproj">
-      <Project>{1874dfea-de78-4b7a-af03-c691497d4b0e}</Project>
-      <Name>DocManager.Domain.Core</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

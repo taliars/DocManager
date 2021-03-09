@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace DocManager.Domain.Core.OrderEntities
 {
-    public class Order
+    public class DbOrder
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -12,10 +12,10 @@ namespace DocManager.Domain.Core.OrderEntities
 
         public int SubscriptionId { get; set; }
 
-        public virtual Subscription Subscription { get; set; }
+        public virtual DbSubscription Subscription { get; set; }
 
-        public virtual ObjectData ObjectData { get; set; }
+        public virtual DbObjectData ObjectData { get; set; }
 
-        public virtual Customer Customer { get; set; }
+        public virtual DbCustomer Customer { get; set; }
     }
 }

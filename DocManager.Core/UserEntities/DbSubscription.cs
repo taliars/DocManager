@@ -2,12 +2,12 @@
 
 namespace DocManager.Domain.Core.UserEntities
 {
-    public class Subscription
+    public class DbSubscription
     {
         public int Id { get; set; }
 
         public string Name { get; set; }
 
-        public virtual ICollection<User> Users { get; set; }
+        public virtual ICollection<DbUser> Users { get; set; }
     }
 }

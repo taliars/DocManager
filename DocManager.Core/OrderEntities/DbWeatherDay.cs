@@ -2,7 +2,7 @@ using System;
 
 namespace DocManager.Domain.Core.OrderEntities
 {
-    public class WeatherDay
+    public class DbWeatherDay
     {
         public int Id { get; set; }
 

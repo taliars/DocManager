@@ -1,6 +1,6 @@
 namespace DocManager.Domain.Core.OrderEntities
 {
-    public class Device
+    public class DbDevice
     {
         public int Id { get; set; }
 
@@ -18,6 +18,6 @@ namespace DocManager.Domain.Core.OrderEntities
 
         public int VerificationInfoId { get; set; }
 
-        public virtual VerificationInfo VerificationInfo { get; set; }
+        public virtual DbVerificationInfo VerificationInfo { get; set; }
     }
 }

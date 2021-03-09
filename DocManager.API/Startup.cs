@@ -1,4 +1,3 @@
-using DocManager.Domain.Interfaces;
 using DocManager.Infrastructure.Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -7,6 +6,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using Microsoft.EntityFrameworkCore;
+using DocManager.Services.Interfaces;
+using DocManager.Services.Implementations;
 
 namespace DocManager.API
 {
@@ -25,7 +26,7 @@ namespace DocManager.API
             services.AddDbContext<OrderDbContext>(options =>
               options.UseSqlServer(Configuration["ConnectionStrings:DocManagerDbConnection"]));
 
-            services.AddTransient<IOrderRepository, OrderRepository>();
+            services.AddScoped<IOrderService, OrderService>();
 
             services.AddControllers();
             services.AddSwaggerGen(c =>
