@@ -1,0 +1,17 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\DocManager.Domain.Core\DocManager.Domain.Core.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="DocManager.Domain.Core">
+      <HintPath>..\DocManager.Domain.Core\bin\Debug\net5.0\ref\DocManager.Domain.Core.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>
