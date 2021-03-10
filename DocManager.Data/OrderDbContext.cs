@@ -18,7 +18,7 @@ namespace DocManager.Infrastructure.Data
 
         public DbSet<DbSubscription> Subscriptions { get; set; }
 
-        public DbSet<DbUser> Users { get; set; }
+        public DbSet<DbPerfomer> Users { get; set; }
 
         public DbSet<DbVerificationInfo> VerificationInfos { get; set; }
 

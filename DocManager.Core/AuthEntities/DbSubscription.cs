@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+﻿    using System.Collections.Generic;
 
 namespace DocManager.Domain.Core.UserEntities
 {
@@ -8,6 +8,6 @@ namespace DocManager.Domain.Core.UserEntities
 
         public string Name { get; set; }
 
-        public virtual ICollection<DbUser> Users { get; set; }
+        public virtual ICollection<DbPerfomer> Users { get; set; }
     }
 }

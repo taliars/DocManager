@@ -22,6 +22,6 @@ namespace DocManager.Domain.Core.OrderEntities
 
         public int PerfomerId { get; set; }
 
-        public virtual DbUser Perfomer { get; set; }
+        public virtual DbPerfomer Perfomer { get; set; }
     }
 }
