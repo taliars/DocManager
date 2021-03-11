@@ -8,6 +8,6 @@ namespace DocManager.Domain.Core.UserEntities
 
         public string Name { get; set; }
 
-        public virtual ICollection<DbPerfomer> Users { get; set; }
+        public virtual ICollection<DbPerson> Users { get; set; }
     }
 }

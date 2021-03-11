@@ -14,11 +14,11 @@ namespace DocManager.Infrastructure.Data
 
         public DbSet<DbObjectData> ObjectDatas { get; set; }
 
-        public DbSet<DbPerfomerRole> DbPerfomerRoles { get; set; }
+        public DbSet<DbPosition> DbPerfomerRoles { get; set; }
 
         public DbSet<DbSubscription> Subscriptions { get; set; }
 
-        public DbSet<DbPerfomer> Users { get; set; }
+        public DbSet<DbPerson> Users { get; set; }
 
         public DbSet<DbVerificationInfo> VerificationInfos { get; set; }
 

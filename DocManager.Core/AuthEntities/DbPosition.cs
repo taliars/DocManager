@@ -1,6 +1,6 @@
 ﻿namespace DocManager.Domain.Core.UserEntities
 {
-    public class DbPerfomerRole
+    public class DbPosition
     {
         public int Id { get; set; }
 

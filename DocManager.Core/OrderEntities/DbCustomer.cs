@@ -15,7 +15,5 @@ namespace DocManager.Domain.Core.OrderEntities
         public string Ogrn { get; set; }
 
         public string Inn { get; set; }
-
-        public virtual DbSubscription Subscription{ get;set;}
     }
 }
