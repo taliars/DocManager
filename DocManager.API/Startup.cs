@@ -7,6 +7,9 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using Microsoft.EntityFrameworkCore;
 using DocManager.API.Helpers;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 
 namespace DocManager.API
 {
@@ -22,6 +25,20 @@ namespace DocManager.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+                .AddJwtBearer(options => {
+                    options.RequireHttpsMetadata = false;
+                    options.TokenValidationParameters = new Microsoft.IdentityModel.Tokens.TokenValidationParameters{
+                        ValidateIssuer = true,
+                        ValidIssuer = "DocManager.Api",
+                        ValidateAudience = true,
+                        ValidAudience = "DocManager.Client",
+                        ValidateLifetime = true,
+                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes("hardcodedkey")),
+                        ValidateIssuerSigningKey = true,
+                    };
+                });
+
             services.AddDbContext<OrderDbContext>(options =>
               options.UseSqlServer(Configuration["ConnectionStrings:DocManagerDbConnection"]));
 
@@ -48,6 +65,7 @@ namespace DocManager.API
 
             app.UseRouting();
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
