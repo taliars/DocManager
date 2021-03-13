@@ -3,6 +3,7 @@ using Microsoft.Extensions.Logging;
 using System.Threading.Tasks;
 using DocManager.Services.Contract.Interfaces;
 using DocManager.Core.OrderEntities;
+using Microsoft.AspNetCore.Authorization;
 
 namespace DocManager.API.Controllers
 {
@@ -19,6 +20,7 @@ namespace DocManager.API.Controllers
             _logger = logger;
         }
 
+        [Authorize]
         [HttpGet]
         public async Task<DbOrder> Get()
         {
