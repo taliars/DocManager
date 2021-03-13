@@ -10,9 +10,11 @@ using DocManager.API.Helpers;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using DocManager.API.Models;
 
 namespace DocManager.API
 {
+
     public class Startup
     {
         public Startup(IConfiguration configuration)
@@ -25,16 +27,24 @@ namespace DocManager.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            var authOptionsSection = Configuration.GetSection("AuthOptions");
+            services.Configure<AuthOptions>(authOptionsSection);
+
+            // configure jwt authentication
+            var authOptions = authOptionsSection.Get<AuthOptions>();
+
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-                .AddJwtBearer(options => {
+                .AddJwtBearer(options =>
+                {
                     options.RequireHttpsMetadata = false;
-                    options.TokenValidationParameters = new Microsoft.IdentityModel.Tokens.TokenValidationParameters{
+                    options.TokenValidationParameters = new Microsoft.IdentityModel.Tokens.TokenValidationParameters
+                    {
                         ValidateIssuer = true,
-                        ValidIssuer = "DocManager.Api",
+                        ValidIssuer = authOptions.Issuer,
                         ValidateAudience = true,
-                        ValidAudience = "DocManager.Client",
+                        ValidAudience = authOptions.Audience,
                         ValidateLifetime = true,
-                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes("hardcodedkey")),
+                        IssuerSigningKey = authOptions.SymmetricSecurityKey,
                         ValidateIssuerSigningKey = true,
                     };
                 });

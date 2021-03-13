@@ -28,7 +28,7 @@ namespace DocManager.API.Controllers
 
         // PUT: api/TodoItems/5
         [HttpPut("{id}")]
-        public async Task<IActionResult> Put(long id, OrderModel orderModel)
+        public IActionResult Put(long id, OrderModel orderModel)
         {
             return BadRequest();
         }

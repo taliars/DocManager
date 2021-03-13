@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Security.Claims;
-using System.Text;
+using DocManager.API.Models;
 using DocManager.Core.AuthEntities;
 using DocManager.Infrastructure.Data;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 
 namespace DocManager.API.Controllers
@@ -14,31 +15,35 @@ namespace DocManager.API.Controllers
     public class AccountContoller : Controller
     {
         private readonly OrderDbContext orderDbContext;
+        private readonly AuthOptions authOptions;
 
-        public AccountContoller(OrderDbContext orderDbContext)
+        public AccountContoller(OrderDbContext orderDbContext, IOptions<AuthOptions> options)
         {
             this.orderDbContext = orderDbContext;
+            this.authOptions = options.Value;
         }
 
         [HttpPost("/token")]
         public IActionResult Token(string username, string password)
         {
+            var opt = authOptions;
+
             var claimsIdentity = GetClaimsIdentity(username, password);
 
             if (claimsIdentity == null)
             {
-                return BadRequest(new { ErrorText = "Invaliad userame or password" });
+                return BadRequest(new { ErrorText = "Invalid userame or password" });
             }
 
             var now = DateTime.Now;
 
             var jwtSecurityToken = new JwtSecurityToken(
-                issuer: "DocManager.Api",
-                audience: "DocManager.Client",
+                issuer: authOptions.Issuer,
+                audience: authOptions.Audience,
                 notBefore: now,
                 claims: claimsIdentity.Claims,
-                expires: now.Add(TimeSpan.FromHours(9)),
-                signingCredentials: new SigningCredentials(new SymmetricSecurityKey(Encoding.ASCII.GetBytes("hardcodedkey")), SecurityAlgorithms.HmacSha256));
+                expires: now.Add(TimeSpan.FromHours(authOptions.LifetimeInHours)),
+                signingCredentials: new SigningCredentials(authOptions.SymmetricSecurityKey, SecurityAlgorithms.HmacSha256));
 
             var jwtSecurityTokenHandler = new JwtSecurityTokenHandler();
             var encodedJwtSecurityToken = jwtSecurityTokenHandler.WriteToken(jwtSecurityToken);

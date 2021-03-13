@@ -7,5 +7,5 @@
     [Date]             DATETIME2 (7)    NULL,
     [PerfomerId]       INT              NOT NULL,
     CONSTRAINT [PK_Documents] PRIMARY KEY CLUSTERED ([Id] ASC),
-    CONSTRAINT [FK_Documents_Perfomers] FOREIGN KEY ([PerfomerId], [SubscriptionId]) REFERENCES [Users] ([Id], [SubscriptionId])
+    CONSTRAINT [FK_Documents_Perfomers] FOREIGN KEY ([PerfomerId], [SubscriptionId]) REFERENCES [Persons] ([Id], [SubscriptionId])
 )
