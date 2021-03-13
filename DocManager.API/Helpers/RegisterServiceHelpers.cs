@@ -1,5 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using DocManager.Services.Interfaces;
+using DocManager.Services.Contract.Interfaces;
 using DocManager.Services.Implementations;
 
 namespace DocManager.API.Helpers

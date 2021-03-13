@@ -1,8 +1,8 @@
-using DocManager.Domain.Core.UserEntities;
 using System;
 using System.Collections.Generic;
+using DocManager.Core.AuthEntities;
 
-namespace DocManager.Domain.Core.OrderEntities
+namespace DocManager.Core.OrderEntities
 {
     public class DbDocument
     {

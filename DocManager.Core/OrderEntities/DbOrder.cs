@@ -1,6 +1,6 @@
-﻿using DocManager.Domain.Core.UserEntities;
+﻿using DocManager.Core.AuthEntities;
 
-namespace DocManager.Domain.Core.OrderEntities
+namespace DocManager.Core.OrderEntities
 {
     public class DbOrder
     {

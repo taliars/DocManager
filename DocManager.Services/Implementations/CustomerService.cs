@@ -1,4 +1,4 @@
-﻿using DocManager.Services.Interfaces;
+﻿using DocManager.Services.Contract.Interfaces;
 
 namespace DocManager.Services.Implementations
 {

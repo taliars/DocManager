@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using DocManager.Domain.Core.OrderEntities;
 using System.Threading.Tasks;
-using DocManager.Services.Interfaces;
+using DocManager.Services.Contract.Interfaces;
+using DocManager.Core.OrderEntities;
 
 namespace DocManager.API.Controllers
 {

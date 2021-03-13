@@ -1,4 +1,4 @@
-﻿namespace DocManager.Domain.Core.OrderEntities
+﻿namespace DocManager.Core.OrderEntities
 {
     public enum WindDirection
     {

@@ -1,4 +1,4 @@
-﻿namespace DocManager.Services.Interfaces
+﻿namespace DocManager.Services.Contract.Interfaces
 {
     public interface IWeatherDayService
     {

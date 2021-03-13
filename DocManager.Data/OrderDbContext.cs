@@ -1,5 +1,5 @@
-﻿using DocManager.Domain.Core.OrderEntities;
-using DocManager.Domain.Core.UserEntities;
+﻿using DocManager.Core.OrderEntities;
+using DocManager.Core.AuthEntities;
 using Microsoft.EntityFrameworkCore;
 
 namespace DocManager.Infrastructure.Data
@@ -16,16 +16,19 @@ namespace DocManager.Infrastructure.Data
 
         public DbSet<DbPosition> DbPerfomerRoles { get; set; }
 
-        public DbSet<DbSubscription> Subscriptions { get; set; }
-
-        public DbSet<DbPerson> Users { get; set; }
-
         public DbSet<DbVerificationInfo> VerificationInfos { get; set; }
 
         public DbSet<DbWeatherDay> WeatherDays { get; set; }
 
+        public DbSet<DbLogin> Logins { get; set; }
+
+        public DbSet<DbPerson> Persons { get; set; }
+
+        public DbSet<DbPosition> Positions { get; set; }
+
+        public DbSet<DbSubscription> Subscriptions { get; set; }
+
         public OrderDbContext(DbContextOptions<OrderDbContext> options)
              : base(options) { }
-
     }
 }

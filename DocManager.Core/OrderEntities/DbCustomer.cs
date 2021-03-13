@@ -1,6 +1,4 @@
-﻿using DocManager.Domain.Core.UserEntities;
-
-namespace DocManager.Domain.Core.OrderEntities
+﻿namespace DocManager.Core.OrderEntities
 {
     public class DbCustomer
     {

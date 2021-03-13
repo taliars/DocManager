@@ -1,7 +1,7 @@
-﻿using DocManager.Domain.Core.OrderEntities;
+﻿using DocManager.Core.OrderEntities;
 using System.Threading.Tasks;
 
-namespace DocManager.Services.Interfaces
+namespace DocManager.Services.Contract.Interfaces
 {
     public interface IOrderService
     {

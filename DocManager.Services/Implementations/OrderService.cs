@@ -1,6 +1,6 @@
-﻿using DocManager.Domain.Core.OrderEntities;
+﻿using DocManager.Core.OrderEntities;
 using DocManager.Infrastructure.Data;
-using DocManager.Services.Interfaces;
+using DocManager.Services.Contract.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using System.Threading.Tasks;
 

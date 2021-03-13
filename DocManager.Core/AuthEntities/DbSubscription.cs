@@ -1,6 +1,6 @@
-﻿    using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
-namespace DocManager.Domain.Core.UserEntities
+namespace DocManager.Core.AuthEntities
 {
     public class DbSubscription
     {

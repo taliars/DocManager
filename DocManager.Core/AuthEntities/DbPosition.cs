@@ -1,4 +1,4 @@
-﻿namespace DocManager.Domain.Core.UserEntities
+﻿namespace DocManager.Core.AuthEntities
 {
     public class DbPosition
     {
