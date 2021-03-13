@@ -60,7 +60,7 @@ namespace DocManager.API.Controllers
         private ClaimsIdentity GetClaimsIdentity(string username, string password)
         {
             var login = orderDbContext.Set<DbLogin>()
-                .FirstOrDefault(x => x.UserName == password && x.UserName == username);
+                .FirstOrDefault(x => x.UserName == username && x.Password == password);
 
             if (login == null)
             {
