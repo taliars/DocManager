@@ -5,12 +5,14 @@ namespace DocManager.Services.Contract.Interfaces
 {
     public interface IOrderService
     {
-        public DbOrder Create();
+        DbOrder Create();
 
-        public void Delele(int id);
+        void Delele(int id);
 
-        public DbOrder Update(DbOrder dbOrder);
+        DbOrder Update(DbOrder dbOrder);
 
-        public Task<DbOrder> GetByIdAsync(int id);
+        Task<DbOrder> GetByIdAsync(int id);
+
+        Task<string[]> GetAllOrdersNames(int id);
     }
 }

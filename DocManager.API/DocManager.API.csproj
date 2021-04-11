@@ -5,6 +5,8 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="10.1.1" />
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="8.1.1" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="5.0.4" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.3" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="5.0.3" />
@@ -14,6 +16,7 @@
   <ItemGroup>
     <ProjectReference Include="..\DocManager.Core\DocManager.Core.csproj" />
     <ProjectReference Include="..\DocManager.Data\DocManager.Data.csproj" />
+    <ProjectReference Include="..\DocManager.Entities\DocManager.Entities.csproj" />
     <ProjectReference Include="..\DocManager.Services.Contract\DocManager.Services.Contract.csproj" />
     <ProjectReference Include="..\DocManager.Services\DocManager.Services.csproj" />
   </ItemGroup>

@@ -25,6 +25,11 @@ namespace DocManager.Services.Implementations
             throw new System.NotImplementedException();
         }
 
+        public Task<string[]> GetAllOrdersNames(int id)
+        {
+            throw new System.NotImplementedException();
+        }
+
         public async Task<DbOrder> GetByIdAsync(int id)
         {
             return await orderDbContext.Set<DbOrder>()

@@ -12,12 +12,10 @@ namespace DocManager.API.Controllers
     public class OrderController : ControllerBase
     {
         private readonly IOrderService orderService;
-        private readonly ILogger<OrderController> _logger;
 
-        public OrderController(IOrderService orderService, ILogger<OrderController> logger)
+        public OrderController(IOrderService orderService)
         {
             this.orderService = orderService;
-            _logger = logger;
         }
 
         [Authorize]

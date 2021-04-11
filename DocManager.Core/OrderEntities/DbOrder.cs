@@ -6,6 +6,8 @@ namespace DocManager.Core.OrderEntities
     {
         public int Id { get; set; }
 
+        public string Name { get; set; }
+
         public int SubscriptionId { get; set; }
 
         public virtual DbSubscription Subscription { get; set; }
